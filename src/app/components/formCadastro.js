@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from 'react';
 import '../components/css/formLoginCadastro.css';
-import { BiUser, BiEnvelope, BiLock, BiShow } from 'react-icons/bi'; // Importe os ícones do React Icons
+import { BiUser, BiEnvelope, BiLock, BiShow } from 'react-icons/bi';
 
 function CadastroForm({ onSubmit }) {
   const [nome, setNome] = useState('');

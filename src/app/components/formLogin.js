@@ -2,9 +2,6 @@
 import React, { useState } from 'react';
 import { BiEnvelope, BiLock, BiShow } from 'react-icons/bi';
 import '../components/css/formLoginCadastro.css';
-import Image from 'next/image';
-
-
 
 function LoginForm({ onSubmit }) {
   const [email, setEmail] = useState('');
