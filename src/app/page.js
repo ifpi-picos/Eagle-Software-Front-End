@@ -25,7 +25,7 @@ const Home = () => {
               <p>
                 Bem-vindo(a) ao <span>EAGLE'S SOFTWARE</span>, encontre seus pertences perdidos em um piscar de olhos.
               </p>
-              <a href="login.html" className="btn">Continuar</a>
+              <a href="/login" className="btn">Continuar</a>
             </div>
             <div className="imgPage">
               <img className="img-page" src="/imagePage.png" alt="Logo da Página"/>
