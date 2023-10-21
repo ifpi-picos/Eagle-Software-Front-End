@@ -17,11 +17,13 @@ function LoginForm({ onSubmit }) {
     <form className="form-login-cadastro" onSubmit={handleSubmit}>
       <div className="center">
         <div className="header">
-          <img src="src/app/components/imagens/logo.png" alt="Logo do Eagles Software" className="logo" />
+          <img src="/logo.png" alt="Logo do Eagles Software" className="logo" />
           <h1 className="site-name">Eagles Software</h1>
         </div>
 
-        <h1 className="h1-login">Login</h1>
+        <h1 className="h1-login-cadastro">Login</h1>
+
+        <h2>Email</h2>
 
         <div className="input-wrapper">
           <span className="icon-wrapper"><BiEnvelope /></span>
@@ -35,6 +37,8 @@ function LoginForm({ onSubmit }) {
             required
           />
         </div>
+
+        <h2>Senha</h2>
 
         <div className="input-wrapper">
           <span className="icon-wrapper"><BiLock /></span>
@@ -55,13 +59,13 @@ function LoginForm({ onSubmit }) {
         </div>
 
         <div className="forgot-password">
-          <a href="#">Esqueceu a senha?</a>
+          <a className= "forgot-password-link" href="#">Esqueceu a senha?</a>
         </div>
 
         <input type="submit" value="Entrar" name="login" />
         <div className="link-page">
-          <span>
-            Ainda não tem uma conta? <a className="link-cadastro" href="">Cadastre-se</a>
+          <span className="text-login-cadastro">
+            Ainda não tem uma conta? <a className="link-cadastro" href="/cadastro">Cadastre-se</a>
           </span>
         </div>
       </div>

@@ -18,9 +18,13 @@ function CadastroForm({ onSubmit }) {
     <form className="form-login-cadastro" onSubmit={handleSubmit}>
       <div className="center">
         <div className="header">
-          <img src="caminho/para/sua/imagem.jpg" alt="Logo do Eagles Software" className="logo" />
+          <img src="/logo.png" alt="Logo do Eagles Software" className="logo" />
           <h1 className="site-name">Eagles Software</h1>
         </div>
+
+        <h1 className="h1-login-cadastro">Cadastre-se</h1>
+
+        <h2>Usuário</h2>
 
         <div className="input-wrapper">
           <span className="icon-wrapper"><BiUser /></span>
@@ -35,6 +39,8 @@ function CadastroForm({ onSubmit }) {
           />
         </div>
 
+        <h2>Email</h2>
+
         <div className="input-wrapper">
           <span className="icon-wrapper"><BiEnvelope /></span>
           <input
@@ -47,6 +53,8 @@ function CadastroForm({ onSubmit }) {
             required
           />
         </div>
+
+        <h2>Senha</h2>
 
         <div className="input-wrapper">
           <span className="icon-wrapper"><BiLock /></span>
@@ -66,15 +74,13 @@ function CadastroForm({ onSubmit }) {
           />
         </div>
 
-        <div className="forgot-password">
-          <a href="#">Esqueceu a senha?</a>
-        </div>
-
         <input type="submit" value="Cadastrar" name="cadastrar" />
         <div className="link-page">
-          <span>
+
+          <span className="text-login-cadastro">
             Já tem uma conta? <a className="link-login" href="/login">Faça login</a>
           </span>
+
         </div>
       </div>
     </form>
