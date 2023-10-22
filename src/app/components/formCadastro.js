@@ -2,16 +2,33 @@
 import React, { useState } from 'react';
 import '../components/css/formLoginCadastro.css';
 import { BiUser, BiEnvelope, BiLock, BiShow } from 'react-icons/bi';
+import { validationSchema } from './validation';
 
-function CadastroForm({ onSubmit }) {
+
+function CadastroForm() {
   const [nome, setNome] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [showPassword, setShowPassword] = useState(false);
+  const [errors, setErrors] = useState({});
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    onSubmit({ nome, email, password });
+
+    try {
+      await validationSchema.validate({ nome, email, password }, { abortEarly: false });
+      setErrors({});
+
+      const response = await axios.post('', { nome, email, password });
+        // Retorna sucesso na validação
+      console.log('Usuário cadastrado com sucesso:', response.data);
+    } catch (error) {
+      if (error.response && error.response.status === 400) {
+        // Retorna um erro de validação
+        setErrors(error.response.data);
+      } else {
+        console.error('Erro ao cadastrar o usuário:', error);
+      }
+    }
   };
 
   return (
