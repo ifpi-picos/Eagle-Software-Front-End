@@ -1,34 +1,37 @@
-"use client";
 import React, { useState } from 'react';
-import '../components/css/formLoginCadastro.css';
 import { BiUser, BiEnvelope, BiLock, BiShow } from 'react-icons/bi';
+// import axios from 'axios';
 import { validationSchema } from './validation';
-
+import "../components/css/formLoginCadastro.css";
 
 function CadastroForm() {
   const [nome, setNome] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const [errors, setErrors] = useState({});
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async () => {
     e.preventDefault();
 
     try {
       await validationSchema.validate({ nome, email, password }, { abortEarly: false });
       setErrors({});
 
-      const response = await axios.post('', { nome, email, password });
-        // Retorna sucesso na validação
+      // const response = await axios.post('', { nome, email, password });
+
       console.log('Usuário cadastrado com sucesso:', response.data);
     } catch (error) {
       if (error.response && error.response.status === 400) {
-        // Retorna um erro de validação
         setErrors(error.response.data);
       } else {
         console.error('Erro ao cadastrar o usuário:', error);
       }
     }
+  };
+
+  const handleCadastrarClick = () => {
+    handleSubmit();
   };
 
   return (
@@ -91,13 +94,18 @@ function CadastroForm() {
           />
         </div>
 
-        <input type="submit" value="Cadastrar" name="cadastrar" />
-        <div className="link-page">
+        <button
+          type="button"
+          onClick={handleCadastrarClick}
+          className="button-style"
+        >
+          Cadastrar
+        </button>
 
+        <div className="link-page">
           <span className="text-login-cadastro">
             Já tem uma conta? <a className="link-login" href="/login">Faça login</a>
           </span>
-
         </div>
       </div>
     </form>
