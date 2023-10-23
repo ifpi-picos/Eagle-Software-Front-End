@@ -1,7 +1,7 @@
 "use client";
 import React from 'react';
-import Sidebar from "/src/app/components/sidebar.js";
-import Busca from "/src/app/components/Busca.js";
+import Sidebar from '../../components/sidebar';
+import Busca from '../../components/Busca';
 
 const Home = () => {
     return (

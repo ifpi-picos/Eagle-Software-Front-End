@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { FaHome, FaPlus, FaEye, FaUser, FaQuestion, FaArrowLeft } from 'react-icons/fa';
-import "/src/app/components/css/menu.css";
+import "../styles/css/menu.css";
 
 const Sidebar = () => {
   return (

@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-import "../app/components/css/telaInicial.css"
+import "../app/styles/css/telaInicial.css";
 
 const Home = () => {
   return (

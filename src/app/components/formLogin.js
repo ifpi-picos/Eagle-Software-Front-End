@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from 'react';
 import { BiEnvelope, BiLock, BiShow } from 'react-icons/bi';
-import '../components/css/formLoginCadastro.css';
+import "../styles/css/formLoginCadastro.css";
 
 function LoginForm({ onSubmit }) {
   const [email, setEmail] = useState('');
@@ -54,7 +54,6 @@ function LoginForm({ onSubmit }) {
           />
           <BiShow
             className="show-password"
-            onClick={() => setShowPassword(!showPassword)}
           />
         </div>
 
@@ -62,7 +61,11 @@ function LoginForm({ onSubmit }) {
           <a className= "forgot-password-link" href="#">Esqueceu a senha?</a>
         </div>
 
-        <input type="submit" value="Entrar" name="login" />
+        <input 
+          className= "button-style" 
+          type="submit" value="Entrar" 
+          name="login" 
+        />
         <div className="link-page">
           <span className="text-login-cadastro">
             Ainda não tem uma conta? <a className="link-cadastro" href="/cadastro">Cadastre-se</a>

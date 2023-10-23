@@ -1,6 +1,6 @@
 "use client";
 import React from 'react';
-import LoginForm from 'src/app/components/formLogin.js';
+import LoginForm from '../components/formLogin';
 
 function Login() {
   return (

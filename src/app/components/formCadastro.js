@@ -1,41 +1,49 @@
 import React, { useState } from 'react';
 import { BiUser, BiEnvelope, BiLock, BiShow } from 'react-icons/bi';
-// import axios from 'axios';
-import { validationSchema } from './validation';
-import "../components/css/formLoginCadastro.css";
+import "../styles/css/formLoginCadastro.css";
 
 function CadastroForm() {
-  const [nome, setNome] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
-  const [errors, setErrors] = useState({});
+  const [form, setForm] = useState({
+    name: '',
+    email: '',
+    password: ''
+  })
+  const [error, setError] = useState('')
 
-  const handleSubmit = async () => {
-    e.preventDefault();
+  const handleChangeForm = (event, field) => {
+    setForm({
+      ...form,
+      [field]: event.target.value
+    })
+  }
 
+  const handleForm = async (e) => {
+    e.preventDefault()
+
+    if (!form.name) return setError('O nome é obrigatório')
+    if (!form.email) return setError('O e-mail é obrigatório')
+    if (!form.password) return setError('a senha é obrigatório')
+
+    setError('')
     try {
-      await validationSchema.validate({ nome, email, password }, { abortEarly: false });
-      setErrors({});
+      const response = await fetch("../src/app/api/user/cadastro", {
+        method: 'POST',
+        body: JSON.stringify(form)
+      })
 
-      // const response = await axios.post('', { nome, email, password });
+      const json = await response.json()
 
-      console.log('Usuário cadastrado com sucesso:', response.data);
-    } catch (error) {
-      if (error.response && error.response.status === 400) {
-        setErrors(error.response.data);
-      } else {
-        console.error('Erro ao cadastrar o usuário:', error);
-      }
+      if (response.status !== 200) throw new Error(json)
+      setCookie('authorization', json)
+      router.push('/')
+    } catch (err) {
+      setError(err.message)
     }
-  };
-
-  const handleCadastrarClick = () => {
-    handleSubmit();
-  };
+  }
 
   return (
-    <form className="form-login-cadastro" onSubmit={handleSubmit}>
+    <form className="form-login-cadastro">
       <div className="center">
         <div className="header">
           <img src="/logo.png" alt="Logo do Eagles Software" className="logo" />
@@ -52,8 +60,7 @@ function CadastroForm() {
             type="text"
             id="nome"
             name="nome"
-            value={nome}
-            onChange={(e) => setNome(e.target.value)}
+            value={form['name']} onChange={(event) => handleChangeForm(event, 'name')}
             placeholder="Nome"
             required
           />
@@ -67,8 +74,7 @@ function CadastroForm() {
             type="email"
             id="email"
             name="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            value={form['email']} onChange={(event) => handleChangeForm(event, 'email')}
             placeholder="example@gmail.com"
             required
           />
@@ -82,8 +88,7 @@ function CadastroForm() {
             type={showPassword ? 'text' : 'password'}
             id="password"
             name="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            value={form['password']} onChange={(event) => handleChangeForm(event, 'password')}
             placeholder="*******"
             required
             minLength="8"
@@ -96,8 +101,8 @@ function CadastroForm() {
 
         <button
           type="button"
-          onClick={handleCadastrarClick}
           className="button-style"
+          onClick={handleForm}
         >
           Cadastrar
         </button>
