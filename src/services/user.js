@@ -10,8 +10,8 @@ export function cadastro(body) {
 
 export function login(body) {
     const user = users.find(({ email }) => email === body.email) //substituir por um bd
-    if (!user) throw new Error('usuario_nao_encontrado')
-    if (user.password !== body.password) throw new Error('senha_incorreta')
+    if (!user) throw new Error('usuario não encontrado')
+    if (user.password !== body.password) throw new Error('senha incorreta')
 
     return user
 }

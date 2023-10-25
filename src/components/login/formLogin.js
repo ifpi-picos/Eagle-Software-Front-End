@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
-import { BiEnvelope, BiLock, BiShow } from 'react-icons/bi';
-import styles from './formLoginCadastro.module.css';
+import React, { useState } from 'react'
+import { BiEnvelope, BiLock, BiShow } from 'react-icons/bi'
+import styles from './formLoginCadastro.module.css'
+import Link from 'next/link'  
 
 export default function LoginForm({ onSubmit }) {
   const [email, setEmail] = useState('');
@@ -53,6 +54,7 @@ export default function LoginForm({ onSubmit }) {
           />
           <BiShow
             className={styles['show-password']}
+            onClick={() => setShowPassword(!showPassword)}
           />
         </div>
 
@@ -68,7 +70,7 @@ export default function LoginForm({ onSubmit }) {
         />
         <div className={styles['link-page']}>
           <span className={styles['text-login-cadastro']}>
-            Ainda não tem uma conta? <a className={styles['link-cadastro']} href="/cadastro">Cadastre-se</a>
+            Ainda não tem uma conta? <Link className={styles['link-cadastro']} href="/cadastro">Cadastre-se</Link>
           </span>
         </div>
       </div>

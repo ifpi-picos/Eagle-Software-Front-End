@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import { BiUser, BiEnvelope, BiLock, BiShow } from 'react-icons/bi'
 import styles from '../login/formLoginCadastro.module.css'
+import Link from 'next/link'
 
-function CadastroForm() {
+export default function CadastroForm() {
   const [showPassword, setShowPassword] = useState(false);
   const [form, setForm] = useState({
     name: '',
@@ -102,22 +103,20 @@ function CadastroForm() {
           />
         </div>
 
-        <button
-          type="button"
-          className={styles['button-style']}
+        <input 
+          className={styles['button-style']} 
+          type="submit" 
+          value="Cadastrar" 
+          name="cadastro" 
           onClick={handleForm}
-        >
-          Cadastrar
-        </button>
+        />
 
         <div className={styles['link-page']}>
           <span className={styles['text-login-cadastro']}>
-            {/* Já tem uma conta? <a className={styles['link-login']} href="/login">Faça login</a> */}
+            Já tem uma conta? <Link className={styles['link-login']} href="/login">Faça login</Link>
           </span>
         </div>
       </div>
     </form>
   );
 }
-
-export default CadastroForm;
