@@ -7,60 +7,60 @@ export default function Sidebar () {
     <nav className={styles['sidebar-close']}>
       <header>
         <div className={styles['image-text']}>
-          <span className="image">
-            <img className="logo-sidebar" src="/logo.png" alt="logo da página" />
+          <span className={styles['image']}>
+            <img className={styles['logo-sidebar']} src="/logo.png" alt="logo da página" />
           </span>
 
-          <div className="text logo-text">
-            <h2 className="h2-home">EAGLE'S SOFTWARE</h2>
+          <div className={styles['logo-text']}>
+            <h2 className={styles['h2-home']}>EAGLE'S SOFTWARE</h2>
           </div>
         </div>
 
-        <i className="bi bi-chevron-right toggle"></i>
+        {/* <i className="bi bi-chevron-right toggle"></i> */}
       </header>
 
-      <div className="menu-bar">
-        <div className="menu">
-          <ul className="menu-links">
-            <li className="nav-link">
+      <div className={styles['menu-bar']}>
+        <div className={styles['menu']}>
+          <ul className={styles['menu-links']}>
+            <li className={styles['nav-link']}>
               <Link href="/telaInicio">
-                  <span className="icons"><FaHome /></span>
-                  <span className="nav-text">Home</span>
+                  <span className={styles['icons']}><FaHome /></span>
+                  <span className={styles['nav-text']}>Home</span>
               </Link>
             </li>
 
-            <li className="nav-link">
+            <li className={styles['nav-link']}>
               <Link href="/cadastroItem">
-                  <span className="icons"><FaPlus /></span>
-                  <span className="nav-text">Cadastrar Item</span>
+                  <span className={styles['icons']}><FaPlus /></span>
+                  <span className={styles['nav-text']}>Cadastrar Item</span>
               </Link>
             </li>
 
-            <li className="nav-link">
+            <li className={styles['nav-link']}>
               <Link href="/itensEncontrados">
-                  <span className="icons"><FaEye /></span>
-                  <span className="nav-text">Itens Encontrados</span>
+                  <span className={styles['icons']}><FaEye /></span>
+                  <span className={styles['nav-text']}>Itens Encontrados</span>
               </Link>
             </li>
 
-            <li className="nav-link">
+            <li className={styles['nav-link']}>
               <Link href="/perfil">
-                  <span className="icons"><FaUser /></span>
-                  <span className="nav-text">Perfil</span>
+                  <span className={styles['icons']}><FaUser /></span>
+                  <span className={styles['nav-text']}>Perfil</span>
               </Link>
             </li>
 
-            <li className="nav-link">
+            <li className={styles['nav-link']}>
               <Link href="/telaFaq">
-                  <span className="icons"><FaQuestion /></span>
-                  <span className="nav-text">FAQ</span>
+                  <span className={styles['icons']}><FaQuestion /></span>
+                  <span className={styles['nav-text']}>FAQ</span>
               </Link>
             </li>
 
-            <li className="nav-link">
+            <li className={styles['nav-link']}>
               <Link href="/login">
-                  <span className="icons"><FaArrowLeft /></span>
-                  <span className="nav-text">Sair</span>
+                  <span className={styles['icons']}><FaArrowLeft /></span>
+                  <span className={styles['nav-text']}>Sair</span>
               </Link>
             </li>
           </ul>
