@@ -4,19 +4,20 @@ import styles from './menu.module.css'
 
 export default function Sidebar () {
   return (
-    <nav className={styles['sidebar-close']}>
+    <nav className={styles['sidebar']}>
       <header>
+        
         <div className={styles['image-text']}>
           <span className={styles['image']}>
             <img className={styles['logo-sidebar']} src="/logo.png" alt="logo da página" />
           </span>
 
           <div className={styles['logo-text']}>
-            <h2 className={styles['h2-home']}>EAGLE'S SOFTWARE</h2>
+            <h2 className={styles['h2-home']}>EAGLE'S SOFTWARE</h2> 
           </div>
         </div>
 
-        {/* <i className="bi bi-chevron-right toggle"></i> */}
+
       </header>
 
       <div className={styles['menu-bar']}>

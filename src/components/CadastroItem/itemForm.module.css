@@ -1,0 +1,177 @@
+.bodyItem {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.formItem {
+    width: 800px;
+    height: 680px;
+    padding: 1cm;
+    display: grid;
+    background-color: #fff;
+    margin-left: 50px;
+    border-radius: 20px;
+    box-shadow: 0px 10px 40px #a3a3a3;
+    font-family: Arial, sans-serif;
+}
+
+.titulo {
+    font-family: sans-serif;
+    color: #000;
+}
+
+.grupoItens {
+    margin-bottom: 15px;
+    justify-content: space-between;
+}
+
+.textItem {
+    color: #000;
+}
+
+#achador,
+#local,
+#armazenado,
+#data {
+    width: 40vh;
+    padding: 8px;
+    border-radius: 5px;
+    border: 2px solid #000;
+    margin-bottom: 20px;
+    text-align: start;
+}
+
+#detalhes,
+#observacao {
+    width: 100%;
+    border: 2px solid #000;
+    margin-bottom: 20px;
+}
+
+.btn-acao {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.btn-submit {
+    width: 250px;
+    height: 40px;
+    margin-right: 10px;
+    background: #099887;
+    color: #FFF;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.btn-reset {
+    width: 250px;
+    height: 40px;
+    margin-left: 10px;
+    background: #c32d3f;
+    color: #FFF;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.container button {
+    cursor: pointer;
+    outline: none;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 10px 30px;
+    border-radius: 10px;
+    background: transparent;
+}
+
+.input-text {
+    font-weight: 700;
+    font-size: 26px;
+    margin-bottom: 15px;
+}
+
+.input-file-upload {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    margin-top: -40%;
+}
+
+.upload-button {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+}
+
+.btn-upload {
+    font-size: 15px;
+    color: #000;
+    margin-right: 70px;
+}
+
+.upload-button input[type=file] {
+    font-size: 20px;
+    position: absolute;
+    margin-top: 5px;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    margin-left: -65%;
+    cursor: pointer;
+}
+
+.upload_img {
+    width: 250px;
+    height: 250px;
+    margin-right: 40px;
+    border-radius: 10px;
+    object-fit: cover;
+    object-position: 50% 505;
+    vertical-align: middle;
+    margin-top: 10px;
+    border-radius: 10px;
+    border: 2px solid #000;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+.campoItem {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.textItem {
+    color: #000;
+}
+
+/* input[type="text"],
+    input[type="date"] {
+        width: 100%;
+        padding: 8px;
+        border-radius: 5px;
+        border: 2px solid #000;
+        margin-bottom: 20px;
+        text-align: start;
+    } */
+/* 
+    textarea {
+        width: 100%;
+        border: 2px solid #000;
+        margin-bottom: 20px;
+    } */
