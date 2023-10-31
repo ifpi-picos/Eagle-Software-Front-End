@@ -101,7 +101,7 @@ export default function CadastroForm() {
         </div>
 
         <button className={styles['button-style']}>
-          Continuar
+          Cadastrar
         </button>
 
         {error && <p className={styles['error']}>{error}</p>}

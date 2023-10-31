@@ -1,20 +1,49 @@
-import React, { useState } from 'react'
 import { BiEnvelope, BiLock, BiShow } from 'react-icons/bi'
 import styles from './formLoginCadastro.module.css'
 import Link from 'next/link'  
+import {setCookie} from 'cookies-next'
+import {useRouter} from 'next/router'
+import React, { useState } from 'react'
 
-export default function LoginForm({ onSubmit }) {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+export default function LoginForm () {
   const [showPassword, setShowPassword] = useState(false);
+  const [formData, setFormData] = useState({
+    email: '',
+    password: '',
+  });
+  const [error, setError] = useState('')
+  const router = useRouter() 
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    onSubmit({ email, password });
+  const handleFormEdit = (event, name) => {
+    setFormData({
+      ...formData,
+      [name]: event.target.value
+    });
   };
 
+  const handleForm = async (event) => {
+    try{
+      event.preventDefault()
+      const response = await fetch ('/api/user/login',{
+        method: 'POST',
+        body: JSON.stringify(formData)
+      })
+
+      const json = await response.json()
+      console.log(response.status)
+      console.log(json)
+      if(response.status !== 200) throw new Error(json)
+
+      setCookie('authorization', json)
+      router.push('/home')
+
+    }catch(err){
+      setError(err.message)
+    }
+  }
+
   return (
-    <form className={styles['form-login-cadastro']} onSubmit={handleSubmit}>
+    <form className={styles['form-login-cadastro']} onSubmit={handleForm}>
       <div className={styles.center}>
         <div className={styles.header}>
           <img src="/logo.png" alt="Logo do Eagles Software" className={styles.logo} />
@@ -31,10 +60,9 @@ export default function LoginForm({ onSubmit }) {
             type="email"
             id="email"
             name="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e) => handleFormEdit(e, 'email')}
             placeholder="example@gmail.com"
-            required
+            required value = {formData.email}
           />
         </div>
 
@@ -46,10 +74,9 @@ export default function LoginForm({ onSubmit }) {
             type={showPassword ? 'text' : 'password'}
             id="password"
             name="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={(e) => handleFormEdit(e, 'password')}
             placeholder="*******"
-            required
+            required value = {formData.password}
             minLength="8"
           />
           <BiShow
@@ -62,12 +89,10 @@ export default function LoginForm({ onSubmit }) {
           <a className={styles['forgot-password-link']} href="#">Esqueceu a senha?</a>
         </div>
 
-        <input 
-          className={styles['button-style']} 
-          type="submit" 
-          value="Entrar" 
-          name="login" 
-        />
+        <button className={styles['button-style']}>
+          Entrar
+        </button>
+
         <div className={styles['link-page']}>
           <span className={styles['text-login-cadastro']}>
             Ainda não tem uma conta? <Link className={styles['link-cadastro']} href="/cadastro">Cadastre-se</Link>
