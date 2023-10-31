@@ -24,3 +24,8 @@ body {
   align-items: center;
   height: 100vh;
 }
+
+.error{
+  color: red;
+  margin-top: -20px;
+}

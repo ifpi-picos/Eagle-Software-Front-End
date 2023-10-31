@@ -32,6 +32,7 @@
 
   .link-login {
     color: #038b8b;
+    text-decoration: none;
   }
 
   .link-login {
@@ -73,7 +74,7 @@
 
   .form-login-cadastro {
     width: 450px;
-    height: 580px;
+    height: 600px;
     padding: 20px;
     background-color: #fff;
     border-radius: 10px;
@@ -151,10 +152,22 @@
   .link-cadastro {
     color: #038b8b;
     position: relative;
+    text-decoration: none;
   }
 
   .link-cadastro:hover {
     transform: scaleX(1);
     text-decoration: underline;
     transition: transform 0.5s ease;
+  }
+
+  .link-login:hover{
+    transform: scaleX(1);
+    text-decoration: underline;
+    transition: transform 0.5s ease;
+  }
+
+  .error{
+    color: red;
+    margin-top: -15px;
   }

@@ -2,49 +2,49 @@ import React, { useState } from 'react'
 import { BiUser, BiEnvelope, BiLock, BiShow } from 'react-icons/bi'
 import styles from '../login/formLoginCadastro.module.css'
 import Link from 'next/link'
+import {setCookie} from 'cookies-next'
+import {useRouter} from 'next/router'
 
 export default function CadastroForm() {
   const [showPassword, setShowPassword] = useState(false);
-  const [form, setForm] = useState({
+  const [formData, setFormData] = useState({
     name: '',
     email: '',
-    password: ''
+    password: '',
   });
-  const [error, setError] = useState('');
+  const [error, setError] = useState('')
+  const router = useRouter() 
 
-  const handleChangeForm = (event, field) => {
-    setForm({
-      ...form,
-      [field]: event.target.value
+  const handleFormEdit = (event, name) => {
+    setFormData({
+      ...formData,
+      [name]: event.target.value
     });
   };
 
-  const handleForm = async (e) => {
-    e.preventDefault();
+  const handleForm = async (event) => {
+    try{
+      event.preventDefault()
+      const response = await fetch ('/api/user/cadastro',{
+        method: 'POST',
+        body: JSON.stringify(formData)
+      })
 
-    if (!form.name) return setError('O nome é obrigatório');
-    if (!form.email) return setError('O e-mail é obrigatório');
-    if (!form.password) return setError('A senha é obrigatória');
+      const json = await response.json()
+      console.log(response.status)
+      console.log(json)
+      if(response.status !== 201) throw new Error(json)
 
-    setError('');
-    try {
-        const response = await fetch('/api/user/cadastro', { 
-          method: 'POST',
-          body: JSON.stringify(form)
-        })
-  
-        const json = await response.json()
-  
-        if (response.status !== 200) throw new Error(json)
-        setCookie('authorization', json)
-        router.push('/')
-      } catch (err) {
-        setError(err.message)
-      }
-  };
+      setCookie('authorization', json)
+      router.push('/home')
+
+    }catch(err){
+      setError(err.message)
+    }
+  }
 
   return (
-    <form className={styles['form-login-cadastro']}>
+    <form className={styles['form-login-cadastro']} onSubmit={handleForm}>
       <div className={styles.center}>
         <div className={styles.header}>
           <img src="/logo.png" alt="Logo do Eagles Software" className={styles.logo} />
@@ -61,10 +61,9 @@ export default function CadastroForm() {
             type="text"
             id="nome"
             name="nome"
-            value={form['name']}
-            onChange={(event) => handleChangeForm(event, 'name')}
+            onChange={(e) => handleFormEdit(e, 'name')}
             placeholder="Nome"
-            required
+            required value = {formData.name}
           />
         </div>
 
@@ -76,10 +75,9 @@ export default function CadastroForm() {
             type="email"
             id="email"
             name="email"
-            value={form['email']}
-            onChange={(event) => handleChangeForm(event, 'email')}
+            onChange={(e) => handleFormEdit(e, 'email')}
             placeholder="example@gmail.com"
-            required
+            required value = {formData.email}
           />
         </div>
 
@@ -91,10 +89,9 @@ export default function CadastroForm() {
             type={showPassword ? 'text' : 'password'}
             id="password"
             name="password"
-            value={form['password']}
-            onChange={(event) => handleChangeForm(event, 'password')}
+            onChange={(e) => handleFormEdit(e, 'password')}
             placeholder="*******"
-            required
+            required value = {formData.password}
             minLength="8"
           />
           <BiShow
@@ -103,13 +100,11 @@ export default function CadastroForm() {
           />
         </div>
 
-        <input 
-          className={styles['button-style']} 
-          type="submit" 
-          value="Cadastrar" 
-          name="cadastro" 
-          onClick={handleForm}
-        />
+        <button className={styles['button-style']}>
+          Continuar
+        </button>
+
+        {error && <p className={styles['error']}>{error}</p>}
 
         <div className={styles['link-page']}>
           <span className={styles['text-login-cadastro']}>
