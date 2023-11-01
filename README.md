@@ -16,7 +16,7 @@ Siga estas etapas para iniciar o projeto em sua máquina:
 2. Acesse a pasta principal:
 
     ```bash
-    cd app
+    cd Eagle-Software-Front-End
 
 3. Instale as dependências necessárias:
 
