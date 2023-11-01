@@ -16,15 +16,22 @@ export default function Home (){
     );
 }
 
-export const getServerSideProps = async (req, res) => {
+export const getServerSideProps = async ({req, res}) => {
     try{
         const token = getCookie('authorization', {req, res})
         console.log(token)
+        if (!token) throw new Error ('Token Inválido')
+
+        verifica(token)
         return{
             props: {}
         }
     }catch(err){
         return{
+            // redirect:{
+            //     permanent: false,
+            //     destination: '/login'
+            // },
             props: {}
         }
     }

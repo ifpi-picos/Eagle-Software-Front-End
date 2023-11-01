@@ -4,18 +4,47 @@
 
 O Eagles Software é um sistema de gerenciamento online desenvolvido para o setor de achados e perdidos, com o objetivo de reduzir a quantidade de itens sob supervisão da instituição e tornar mais acessível o acervo de objetos para os frequentadores que, eventualmente, venham a perder um objeto pessoal.
 
+## Como Iniciar
+
+Siga estas etapas para iniciar o projeto em sua máquina:
+
+1. Clone o repositório:
+
+   ```bash
+   git clone https://github.com/ifpi-picos/Eagle-Software-Front-End.git
+
+2. Acesse a pasta principal:
+
+    ...bash
+    cd app
+
+3. Instale as dependências necessárias:
+
+    ...bash
+    npm install 
+
+4. Execute o projeto
+
+    ...bash
+    npm run dev
+
 ## Tecnologias Utilizadas
 
 ### Front-end
 
-- [HTML](https://developer.mozilla.org/pt-BR/docs/Web/HTML)
-- [CSS](https://developer.mozilla.org/pt-BR/docs/Web/CSS)
+- [Next.JS](https://nextjs.org/docs)
 - [Javascript](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript)
+- [Tailwind CSS]()
 
 ### Back-end
 
 - [Node.js](https://nodejs.org/en)
 - [Express](https://expressjs.com/pt-br/)
+
+### Repositórios
+
+- [Repositório Front-End](https://github.com/ifpi-picos/Eagle-Software-Front-End.git)
+- [Repositório Back-End](https://github.com/ifpi-picos/projeto-web-full-stack-eagles-software.git)
 
 ## Programadores
 

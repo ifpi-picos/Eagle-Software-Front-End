@@ -93,6 +93,8 @@ export default function LoginForm () {
           Entrar
         </button>
 
+        {error && <p className={styles['error']}>{error}</p>}
+
         <div className={styles['link-page']}>
           <span className={styles['text-login-cadastro']}>
             Ainda não tem uma conta? <Link className={styles['link-cadastro']} href="/cadastro">Cadastre-se</Link>

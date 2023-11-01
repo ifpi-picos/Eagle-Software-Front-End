@@ -25,7 +25,7 @@ export default function CadastroForm() {
   const handleForm = async (event) => {
     try{
       event.preventDefault()
-      const response = await fetch ('/api/user/cadastro',{
+      const response = await axios ('/api/user/cadastro',{
         method: 'POST',
         body: JSON.stringify(formData)
       })
