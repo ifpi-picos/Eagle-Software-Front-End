@@ -10,22 +10,22 @@ Siga estas etapas para iniciar o projeto em sua máquina:
 
 1. Clone o repositório:
 
-   ```bash
+    ```bash
    git clone https://github.com/ifpi-picos/Eagle-Software-Front-End.git
 
 2. Acesse a pasta principal:
 
-    ...bash
+    ```bash
     cd app
 
 3. Instale as dependências necessárias:
 
-    ...bash
+    ```bash
     npm install 
 
 4. Execute o projeto
 
-    ...bash
+    ```bash
     npm run dev
 
 ## Tecnologias Utilizadas
