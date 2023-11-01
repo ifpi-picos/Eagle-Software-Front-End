@@ -1,0 +1,85 @@
+.containerPerfil {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: -180px;
+}
+
+.profile-picture {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-bottom: 20px;
+    border: 1px solid;
+}
+
+.profile-picture img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile-picture input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+.edit-profile {
+    position: absolute;
+    top: 47%;
+    left: calc(50% + 75px);
+    transform: translate(-50%, -500%);
+}
+
+.edit-profile img {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    margin-top: 30px;
+}
+
+.profile-info {
+    text-align: center;
+    display: contents;
+}
+
+.profile-info h2 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 24px;
+    margin-bottom: 5px;
+}
+
+.profile-info p {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.profile-text{
+    margin-bottom: 10px;
+    font-size: bold;
+}
+
+.profile-user {
+    margin-bottom: 25px;
+    border-radius: 14px;
+    width: 300px;
+    height: 30px;
+    box-shadow: 3px 3px cadetblue;
+}
