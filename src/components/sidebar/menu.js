@@ -43,9 +43,9 @@ export default function Sidebar() {
         </ul>
       </div>
 
-      <div className='p-7 p1-32'>
+      {/* <div className='p-7 p1-32'>
         <h1 className='text-2xl fontsemibold'>Home Page</h1>
-      </div>
+      </div> */}
     </div >
   );
 };

@@ -22,6 +22,9 @@
 .titulo {
     font-family: sans-serif;
     color: #000;
+    text-align: center;
+    font-weight: bold;
+    font-size: 22px;
 }
 
 .grupoItens {
@@ -31,25 +34,31 @@
 
 .textItem {
     color: #000;
+    margin-bottom: 5px;
 }
 
-#achador,
-#local,
-#armazenado,
-#data {
+.input-cadastro{
     width: 40vh;
     padding: 8px;
-    border-radius: 5px;
-    border: 2px solid #000;
-    margin-bottom: 20px;
+    border-radius: 10px;
+    border: 1px solid #000;
+    margin-bottom: 5px;
     text-align: start;
+    background-color: #D9D9D9;
+    box-shadow: 3px 3px 4px  #323232;
 }
 
-#detalhes,
-#observacao {
+.input-upload{
+    align-self: center;
+}
+
+.itemDetails{
     width: 100%;
-    border: 2px solid #000;
+    border: 1px solid #000;
     margin-bottom: 20px;
+    border-radius: 10px;
+    background-color: #D9D9D9;
+    box-shadow: 3px 3px 4px  #323232;
 }
 
 .btn-acao {
@@ -62,7 +71,7 @@
     width: 250px;
     height: 40px;
     margin-right: 10px;
-    background: #099887;
+    background: #6ba0e8;
     color: #FFF;
     padding: 10px;
     border-radius: 8px;
@@ -76,7 +85,7 @@
     width: 250px;
     height: 40px;
     margin-left: 10px;
-    background: #c32d3f;
+    background: #6ba0e8;
     color: #FFF;
     padding: 10px;
     border-radius: 8px;
@@ -106,8 +115,14 @@
 .input-file-upload {
     display: flex;
     flex-direction: column;
-    align-items: end;
-    margin-top: -40%;
+    align-items: flex-end;
+    margin-top: 40%;
+    border: 2px solid;
+    width: 16rem;
+    margin-left: 5rem;
+    border-radius: 10px;
+    background-color: #D9D9D9;
+    box-shadow: 4px 4px 6px  #323232;
 }
 
 .upload-button {
