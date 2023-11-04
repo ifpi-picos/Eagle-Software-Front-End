@@ -1,4 +1,4 @@
-.body-home {
+/* .body-home {
   min-height: 100vh;
   background-color: aliceblue;
   transition: all 0.3s ease;
@@ -18,17 +18,18 @@
   border: 1px solid #000;
 }
 
-.icons{
+.sidebar-closed {
+  transform: translateX(-100%);
+  opacity: 0;
+}
+
+.icons {
   color: #000;
 }
 
 img.logo-sidebar {
   width: 10vh;
 }
-
-/* .sidebar.close {
-  width: 35px;
-} */
 
 .logo-text {
   margin-top: 5px;
@@ -120,3 +121,5 @@ img.logo-sidebar {
 .menu-bar::-webkit-scrollbar {
   display: none;
 }
+
+  */
