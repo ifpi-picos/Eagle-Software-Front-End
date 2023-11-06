@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { FaSearch } from 'react-icons/fa'
-import styles from './search..module.css'
+import styles from './search.module.css'
 
 export default function Busca() {
   const [searchQuery, setSearchQuery] = useState('');

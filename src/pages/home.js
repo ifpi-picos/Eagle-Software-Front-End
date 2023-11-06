@@ -8,8 +8,8 @@ export default function Home() {
     return (
         <div className={styles['body-home']}>
             <div className={styles['listaItens']}>
-                <Sidebar />
                 {/* <Busca /> */}
+                <Sidebar />
             </div>
         </div>
     );
