@@ -4,7 +4,7 @@ import { AiFillEnvironment, AiFillHome } from "react-icons/ai";
 import { RiDashboardFill } from "react-icons/ri"
 import { FaPlus, FaEye, FaUser, FaQuestion, FaArrowLeft, } from 'react-icons/fa'
 import { BsSearch } from "react-icons/bs"
-import Link from "next/link";
+import Link from "next/link"
 
 export default function Sidebar() {
   const [open, setOpen] = useState(true);
@@ -20,11 +20,11 @@ export default function Sidebar() {
   return (
     <div className='flex'>
       <div className={`bg-dark-purple h-screen p-4 pt-8 mt[-75px] ${open ? "w-80" : "w-20"} duration-300 relative`} x  >
-        <BsArrowLeftShort className={`bg-white text-dark-purple mt-12 text-3xl rounded-full absolute top-9 border border-dark-purple cursor-pointer right-0 ${!open && "rotate-180"}`} onClick={() => setOpen(!open)} />
+        <BsArrowLeftShort className={`bg-white text-dark-purple mt-4 text-3xl rounded-full absolute top-9 border border-dark-purple cursor-pointer right-0 ${!open && "rotate-180"}`} onClick={() => setOpen(!open)} />
 
         <div className='inline-flex pt-12'>
-          <AiFillEnvironment className={`bg-amber-300 text-4xl rounded cursor-pointer block float-left mr-2 duration-500 ${open && "rotate-[360deg]"}`} />
-          <h1 className={`text-white origin-left font-small text-1xl duration-300 ${!open && "scale-0"}`}>
+          <img src='/logotipo-fotor.png' className='w-12 h-12'></img>
+          <h1 className={`text-white origin-left font-small mt-4 ml-4 text-1xl duration-300 ${!open && "scale-0"}`}>
             Eagles Software
           </h1>
         </div>
