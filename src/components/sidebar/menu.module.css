@@ -1,12 +1,16 @@
-/* .body-home {
+.body-home {
   min-height: 100vh;
   background-color: aliceblue;
   transition: all 0.3s ease;
   margin: 0;
   padding: 0;
+} 
+
+.menu{
+  display: flex;
 }
 
-.sidebar {
+/* .sidebar {
   position: fixed;
   top: 0;
   left: 0;
@@ -120,6 +124,4 @@ img.logo-sidebar {
 
 .menu-bar::-webkit-scrollbar {
   display: none;
-}
-
-  */
+} */

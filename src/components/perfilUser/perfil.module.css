@@ -9,7 +9,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: -180px;
 }
 
 .profile-picture {
@@ -39,10 +38,9 @@
 }
 
 .edit-profile {
-    position: absolute;
-    top: 47%;
-    left: calc(50% + 75px);
-    transform: translate(-50%, -500%);
+    position: relative;
+    top: 0;
+    left: calc(8% + 75px);
 }
 
 .edit-profile img {

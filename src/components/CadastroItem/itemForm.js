@@ -46,6 +46,15 @@ export default function ItemForm() {
                             </label>
                             <input className={styles['input-cadastro']} type="date" id="data" name="data" required />
                         </div>
+
+                        <div className={styles['campoItem']}>
+                            <label className={styles['textItem']} htmlFor="detalhes">
+                                Detalhes do item:
+                            </label>
+                            <textarea className={styles['itemDetails']} type="text" id="detalhes" name="detalhes" rows="4" cols="50" required />
+                        </div>
+
+                        
                     </div>
 
                     <div className={styles['input-upload']}>
@@ -62,11 +71,10 @@ export default function ItemForm() {
                         </div>
                     </div>
                 </div>
-
-                <div className={styles['details']}>
-                    <label htmlFor="detalhes">Detalhes do Item:</label>
-                    <textarea className={styles['itemDetails']} id="detalhes" name="detalhes" rows="4" cols="50" required></textarea>
-                </div>
+                {/* <div className={styles['details']}>
+                <label className={styles['textItem']} htmlFor="detalhes">Detalhes do item:</label>
+                    <input className={styles['input-cadastro']} type="text" id="detalhes" name="detalhes" required />
+                </div> */}
 
                 <div className={styles['btn-acao']}>
                     <button className={styles['btn-submit']} type="submit">

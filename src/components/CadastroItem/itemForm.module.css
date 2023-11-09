@@ -44,8 +44,8 @@
     border: 1px solid #000;
     margin-bottom: 5px;
     text-align: start;
-    background-color: #D9D9D9;
-    box-shadow: 3px 3px 4px  #323232;
+    background: linear-gradient(to right, #D9D9D9, #F0F0F0);
+    box-shadow: 8px 6px 10px rgba(0,0,0,0.3);
 }
 
 .input-upload{
@@ -53,12 +53,12 @@
 }
 
 .itemDetails{
-    width: 100%;
+    width: 45rem;
     border: 1px solid #000;
     margin-bottom: 20px;
     border-radius: 10px;
-    background-color: #D9D9D9;
-    box-shadow: 3px 3px 4px  #323232;
+    background: linear-gradient(to right, #D9D9D9, #F0F0F0);
+    box-shadow: 8px 6px 10px rgba(0,0,0,0.3);
 }
 
 .btn-acao {
@@ -79,6 +79,7 @@
     cursor: pointer;
     text-align: center;
     margin-bottom: 30px;
+    box-shadow: 8px 6px 10px rgba(0,0,0,0.3);
 }
 
 .btn-reset {
@@ -93,6 +94,7 @@
     cursor: pointer;
     text-align: center;
     margin-bottom: 30px;
+    box-shadow: 8px 6px 10px rgba(0,0,0,0.3);
 }
 
 .container button {
@@ -115,14 +117,15 @@
 .input-file-upload {
     display: flex;
     flex-direction: column;
+    height: 4vh;
+    justify-content: center;
     align-items: flex-end;
-    margin-top: 40%;
-    border: 2px solid;
+    border: 1px solid;
     width: 16rem;
     margin-left: 5rem;
     border-radius: 10px;
-    background-color: #D9D9D9;
-    box-shadow: 4px 4px 6px  #323232;
+    background: linear-gradient(to right, #D9D9D9, #F0F0F0);
+    box-shadow: 8px 6px 10px rgba(0,0,0,0.3);
 }
 
 .upload-button {
