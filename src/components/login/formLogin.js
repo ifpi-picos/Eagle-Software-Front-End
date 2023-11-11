@@ -86,7 +86,7 @@ export default function LoginForm () {
         </div>
 
         <div className={styles['forgot-password']}>
-          <a className={styles['forgot-password-link']} href="#">Esqueceu a senha?</a>
+          <a className={styles['forgot-password-link']} href="/recuperarSenha">Esqueceu a senha?</a>
         </div>
 
         <button className={styles['button-style']}>
