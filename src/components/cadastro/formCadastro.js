@@ -1,50 +1,49 @@
-import React, { useState } from 'react'
-import { BiUser, BiEnvelope, BiLock, BiShow } from 'react-icons/bi'
-import styles from '../login/formLoginCadastro.module.css'
-import Link from 'next/link'
-import {setCookie} from 'cookies-next'
-import {useRouter} from 'next/router'
+import React, { useState } from 'react';
+import { BiUser, BiEnvelope, BiLock, BiShow } from 'react-icons/bi';
+import styles from '../login/formLoginCadastro.module.css';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 export default function CadastroForm() {
-  const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
-    name: '',
+    nome: '',
     email: '',
-    password: '',
+    senha: '',
   });
-  const [error, setError] = useState('')
-  const router = useRouter() 
+  const [showPassword, setShowPassword] = useState(false);
+  const router = useRouter();
 
-  const handleFormEdit = (event, name) => {
-    setFormData({
-      ...formData,
-      [name]: event.target.value
-    });
+  const handleFormEdit = (e, field) => {
+    setFormData({ ...formData, [field]: e.target.value });
   };
 
-  const handleForm = async (event) => {
-    try{
-      event.preventDefault()
-      const response = await fetch ('/api/user/cadastro',{
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await fetch('http://localhost:4000/usuarios', {
         method: 'POST',
-        body: JSON.stringify(formData)
-      })
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
 
-      const json = await response.json()
-      console.log(response.status)
-      console.log(json)
-      if(response.status !== 201) throw new Error(json)
-
-      setCookie('authorization', json)
-      router.push('/home')
-
-    }catch(err){
-      setError(err.message)
+      if (response.ok) {
+        const data = await response.json();
+        console.log('Usuário cadastrado com sucesso:', data);
+        router.push('/home'); 
+      } else {
+        const errorData = await response.json();
+        console.error('Erro ao cadastrar usuário:', errorData);
+      }
+    } catch (error) {
+      console.error('Erro inesperado:', error);
     }
-  }
+  };
 
   return (
-    <form className={styles['form-login-cadastro']} onSubmit={handleForm}>
+    <form className={styles['form-login-cadastro']} onSubmit={handleFormSubmit}>
       <div className={styles.center}>
         <div className={styles.header}>
           <img src="/logo.png" alt="Logo do Eagles Software" className={styles.logo} />
@@ -61,9 +60,9 @@ export default function CadastroForm() {
             type="text"
             id="nome"
             name="nome"
-            onChange={(e) => handleFormEdit(e, 'name')}
+            onChange={(e) => handleFormEdit(e, 'nome')}
             placeholder="Nome"
-            required value = {formData.name}
+            required value={formData.nome}
           />
         </div>
 
@@ -77,7 +76,7 @@ export default function CadastroForm() {
             name="email"
             onChange={(e) => handleFormEdit(e, 'email')}
             placeholder="example@gmail.com"
-            required value = {formData.email}
+            required value={formData.email}
           />
         </div>
 
@@ -87,11 +86,11 @@ export default function CadastroForm() {
           <span className={styles['icon-wrapper']}><BiLock /></span>
           <input className={styles['input-text']}
             type={showPassword ? 'text' : 'password'}
-            id="password"
-            name="password"
-            onChange={(e) => handleFormEdit(e, 'password')}
+            id="senha"
+            name="senha"
+            onChange={(e) => handleFormEdit(e, 'senha')}
             placeholder="*******"
-            required value = {formData.password}
+            required value={formData.senha}
             minLength="8"
           />
           <BiShow
@@ -100,11 +99,9 @@ export default function CadastroForm() {
           />
         </div>
 
-        <button className={styles['button-style']}>
+        <button type="submit" className={styles['button-style']}>
           Cadastrar
         </button>
-
-        {error && <p className={styles['error']}>{error}</p>}
 
         <div className={styles['link-page']}>
           <span className={styles['text-login-cadastro']}>
@@ -115,3 +112,45 @@ export default function CadastroForm() {
     </form>
   );
 }
+
+
+// const [formData, setFormData] = useState({
+//   name: '',
+//   email: '',
+//   password: '',
+// });
+// const [showPassword, setShowPassword] = useState(false);
+// const [error, setError] = useState('');
+
+// const handleFormEdit = (e, field) => {
+//   setFormData({
+//     ...formData,
+//     [field]: e.target.value,
+//   });
+// };
+
+// const handleForm = async (e) => {
+//   e.preventDefault();
+
+//   try {
+//     const response = await fetch('http://localhost:3000/usuarios', {
+//       method: 'POST',
+//       headers: {
+//         'Content-Type': 'application/json',
+//       },
+//       body: JSON.stringify(formData),
+//     });
+
+//     if (response.ok) {
+//       console.log('Usuário cadastrado com sucesso!');
+//       // Faça algo após o sucesso, por exemplo, redirecionar para outra página
+//     } else {
+//       const data = await response.json();
+//       throw new Error(data.errors[0].msg || 'Erro ao cadastrar usuário');
+//     }
+//   } catch (error) {
+//     console.error('Erro ao enviar solicitação:', error.message);
+//     setError('Erro ao cadastrar usuário. Tente novamente mais tarde.');
+
+//   }
+// };

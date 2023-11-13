@@ -1,49 +1,66 @@
-import { BiEnvelope, BiLock, BiShow } from 'react-icons/bi'
-import styles from './formLoginCadastro.module.css'
-import Link from 'next/link'  
-import {setCookie} from 'cookies-next'
-import {useRouter} from 'next/router'
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import { BiEnvelope, BiLock, BiShow } from 'react-icons/bi';
+import styles from './formLoginCadastro.module.css';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 
-export default function LoginForm () {
-  const [showPassword, setShowPassword] = useState(false);
+const LoginForm = () => {
   const [formData, setFormData] = useState({
     email: '',
-    password: '',
+    senha: '',
   });
-  const [error, setError] = useState('')
-  const router = useRouter() 
+  const [showPassword, setShowPassword] = useState(false);
+  const [error, setError] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const router = useRouter();
 
-  const handleFormEdit = (event, name) => {
-    setFormData({
-      ...formData,
-      [name]: event.target.value
-    });
+  const handleFormEdit = (e, field) => {
+    setFormData({ ...formData, [field]: e.target.value });
   };
 
-  const handleForm = async (event) => {
-    try{
-      event.preventDefault()
-      const response = await fetch ('/api/user/login',{
-        method: 'POST',
-        body: JSON.stringify(formData)
-      })
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
 
-      const json = await response.json()
-      console.log(response.status)
-      console.log(json)
-      if(response.status !== 200) throw new Error(json)
-
-      setCookie('authorization', json)
-      router.push('/home')
-
-    }catch(err){
-      setError(err.message)
+    if (!formData.email || !formData.senha) {
+      setError('Por favor, preencha todos os campos.');
+      return;
     }
-  }
+
+    setIsLoading(true);
+
+    try {
+      const response = await fetch('http://localhost:4000/usuarios/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        console.log('Login bem-sucedido:', data);
+
+        // Armazenar o token no localStorage
+        localStorage.setItem('token', data.token);
+
+        // Redirecionar para a página de home
+        router.push('/home');
+      } else {
+        const errorData = await response.json();
+        console.error('Erro ao fazer login:', errorData);
+        setError('Credenciais inválidas. Por favor, verifique seu e-mail e senha.');
+      }
+    } catch (error) {
+      console.error('Erro inesperado:', error);
+      setError('Ocorreu um erro ao processar o login. Tente novamente mais tarde.');
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   return (
-    <form className={styles['form-login-cadastro']} onSubmit={handleForm}>
+    <form className={styles['form-login-cadastro']} onSubmit={handleFormSubmit}>
       <div className={styles.center}>
         <div className={styles.header}>
           <img src="/logo.png" alt="Logo do Eagles Software" className={styles.logo} />
@@ -62,7 +79,7 @@ export default function LoginForm () {
             name="email"
             onChange={(e) => handleFormEdit(e, 'email')}
             placeholder="example@gmail.com"
-            required value = {formData.email}
+            required value={formData.email}
           />
         </div>
 
@@ -72,11 +89,11 @@ export default function LoginForm () {
           <span className={styles['icon-wrapper']}><BiLock /></span>
           <input className={styles['input-text']}
             type={showPassword ? 'text' : 'password'}
-            id="password"
-            name="password"
-            onChange={(e) => handleFormEdit(e, 'password')}
+            id="senha"
+            name="senha"
+            onChange={(e) => handleFormEdit(e, 'senha')}
             placeholder="*******"
-            required value = {formData.password}
+            required value={formData.senha}
             minLength="8"
           />
           <BiShow
@@ -89,18 +106,20 @@ export default function LoginForm () {
           <a className={styles['forgot-password-link']} href="/recuperarSenha">Esqueceu a senha?</a>
         </div>
 
-        <button className={styles['button-style']}>
-          Entrar
+        <button type="submit" className={styles['button-style']} disabled={isLoading}>
+          {isLoading ? 'Carregando...' : 'Entrar'}
         </button>
 
         {error && <p className={styles['error']}>{error}</p>}
 
         <div className={styles['link-page']}>
           <span className={styles['text-login-cadastro']}>
-            Ainda não tem uma conta? <Link className={styles['link-cadastro']} href="/cadastro">Cadastre-se</Link>
+            Não tem uma conta? <Link className={styles['link-cadastro']} href="/cadastro">Cadastre-se</Link>
           </span>
         </div>
       </div>
     </form>
   );
-}
+};
+
+export default LoginForm;
