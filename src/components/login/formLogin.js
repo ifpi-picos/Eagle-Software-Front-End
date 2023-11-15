@@ -12,6 +12,7 @@ const LoginForm = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [showErrorModal, setShowErrorModal] = useState(false); // Adicione o estado para controlar o modal de erro
   const router = useRouter();
 
   const handleFormEdit = (e, field) => {
@@ -23,6 +24,7 @@ const LoginForm = () => {
 
     if (!formData.email || !formData.senha) {
       setError('Por favor, preencha todos os campos.');
+      setShowErrorModal(true); // Exibir o modal quando houver um erro
       return;
     }
 
@@ -50,13 +52,19 @@ const LoginForm = () => {
         const errorData = await response.json();
         console.error('Erro ao fazer login:', errorData);
         setError('Credenciais inválidas. Por favor, verifique seu e-mail e senha.');
+        setShowErrorModal(true); // Exibir o modal quando houver um erro
       }
     } catch (error) {
       console.error('Erro inesperado:', error);
       setError('Ocorreu um erro ao processar o login. Tente novamente mais tarde.');
+      setShowErrorModal(true); // Exibir o modal quando houver um erro
     } finally {
       setIsLoading(false);
     }
+  };
+
+  const closeErrorModal = () => {
+    setShowErrorModal(false); // Fechar o modal
   };
 
   return (
@@ -110,14 +118,20 @@ const LoginForm = () => {
           {isLoading ? 'Carregando...' : 'Entrar'}
         </button>
 
-        {error && <p className={styles['error']}>{error}</p>}
-
         <div className={styles['link-page']}>
           <span className={styles['text-login-cadastro']}>
             Não tem uma conta? <Link className={styles['link-cadastro']} href="/cadastro">Cadastre-se</Link>
           </span>
         </div>
       </div>
+      {showErrorModal && (
+        <div className={styles.modal}>
+          <div className={styles.modalContent}>
+            <p>{error}</p>
+            <button onClick={closeErrorModal}>Fechar</button>
+          </div>
+        </div>
+      )}
     </form>
   );
 };

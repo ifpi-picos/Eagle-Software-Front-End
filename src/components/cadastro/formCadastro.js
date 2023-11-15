@@ -11,6 +11,10 @@ export default function CadastroForm() {
     senha: '',
   });
   const [showPassword, setShowPassword] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
+  const [showErrorModal, setShowErrorModal] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(''); // Novo estado para controlar a exibição do modal
   const router = useRouter();
 
   const handleFormEdit = (e, field) => {
@@ -32,14 +36,23 @@ export default function CadastroForm() {
       if (response.ok) {
         const data = await response.json();
         console.log('Usuário cadastrado com sucesso:', data);
-        router.push('/home'); 
+        setShowSuccessModal(true); // Exibe o modal de sucesso
       } else {
         const errorData = await response.json();
         console.error('Erro ao cadastrar usuário:', errorData);
+        setErrorMessage(errorData.error || 'Erro desconhecido'); // Define a mensagem de erro
+        setShowErrorModal(true); // Exibe o modal de erro
       }
     } catch (error) {
       console.error('Erro inesperado:', error);
+      setErrorMessage('Erro interno do servidor'); // Mensagem de erro padrão
+      setShowErrorModal(true); // Exibe o modal de erro
     }
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
+    router.push('/login'); // Redireciona para a página de login após fechar o modal
   };
 
   return (
@@ -108,49 +121,34 @@ export default function CadastroForm() {
             Já tem uma conta? <Link className={styles['link-login']} href="/login">Faça login</Link>
           </span>
         </div>
+
+        {showSuccessModal && (
+          <div className={styles.modal}>
+            <div className={styles.modalContent}>
+              <p>Usuário cadastrado com sucesso!</p>
+              <button onClick={() => setShowSuccessModal(false)}>Fechar</button>
+            </div>
+          </div>
+        )}
+
+        {showErrorModal && (
+          <div className={styles.modal}>
+            <div className={styles.modalContent}>
+              <p>{errorMessage}</p>
+              <button onClick={() => setShowErrorModal(false)}>Fechar</button>
+            </div>
+          </div>
+        )}
+
+        {showModal && (
+          <div className={styles.modal}>
+            <div className={styles.modalContent}>
+              <p>Usuário cadastrado com sucesso!</p>
+              <button onClick={closeModal}>Fechar</button>
+            </div>
+          </div>
+        )}
       </div>
     </form>
   );
 }
-
-
-// const [formData, setFormData] = useState({
-//   name: '',
-//   email: '',
-//   password: '',
-// });
-// const [showPassword, setShowPassword] = useState(false);
-// const [error, setError] = useState('');
-
-// const handleFormEdit = (e, field) => {
-//   setFormData({
-//     ...formData,
-//     [field]: e.target.value,
-//   });
-// };
-
-// const handleForm = async (e) => {
-//   e.preventDefault();
-
-//   try {
-//     const response = await fetch('http://localhost:3000/usuarios', {
-//       method: 'POST',
-//       headers: {
-//         'Content-Type': 'application/json',
-//       },
-//       body: JSON.stringify(formData),
-//     });
-
-//     if (response.ok) {
-//       console.log('Usuário cadastrado com sucesso!');
-//       // Faça algo após o sucesso, por exemplo, redirecionar para outra página
-//     } else {
-//       const data = await response.json();
-//       throw new Error(data.errors[0].msg || 'Erro ao cadastrar usuário');
-//     }
-//   } catch (error) {
-//     console.error('Erro ao enviar solicitação:', error.message);
-//     setError('Erro ao cadastrar usuário. Tente novamente mais tarde.');
-
-//   }
-// };
