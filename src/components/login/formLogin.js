@@ -12,7 +12,7 @@ const LoginForm = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const [showErrorModal, setShowErrorModal] = useState(false); // Adicione o estado para controlar o modal de erro
+  const [showErrorModal, setShowErrorModal] = useState(false);
   const router = useRouter();
 
   const handleFormEdit = (e, field) => {
@@ -24,7 +24,7 @@ const LoginForm = () => {
 
     if (!formData.email || !formData.senha) {
       setError('Por favor, preencha todos os campos.');
-      setShowErrorModal(true); // Exibir o modal quando houver um erro
+      setShowErrorModal(true);
       return;
     }
 
@@ -52,19 +52,20 @@ const LoginForm = () => {
         const errorData = await response.json();
         console.error('Erro ao fazer login:', errorData);
         setError('Credenciais inválidas. Por favor, verifique seu e-mail e senha.');
-        setShowErrorModal(true); // Exibir o modal quando houver um erro
+        setShowErrorModal(true);
       }
     } catch (error) {
       console.error('Erro inesperado:', error);
       setError('Ocorreu um erro ao processar o login. Tente novamente mais tarde.');
-      setShowErrorModal(true); // Exibir o modal quando houver um erro
+      setShowErrorModal(true); 
+      
     } finally {
       setIsLoading(false);
     }
   };
 
   const closeErrorModal = () => {
-    setShowErrorModal(false); // Fechar o modal
+    setShowErrorModal(false);
   };
 
   return (

@@ -14,7 +14,7 @@ export default function CadastroForm() {
   const [showModal, setShowModal] = useState(false);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [showErrorModal, setShowErrorModal] = useState(false);
-  const [errorMessage, setErrorMessage] = useState(''); // Novo estado para controlar a exibição do modal
+  const [errorMessage, setErrorMessage] = useState(''); 
   const router = useRouter();
 
   const handleFormEdit = (e, field) => {
@@ -36,23 +36,24 @@ export default function CadastroForm() {
       if (response.ok) {
         const data = await response.json();
         console.log('Usuário cadastrado com sucesso:', data);
-        setShowSuccessModal(true); // Exibe o modal de sucesso
+        setShowSuccessModal(true); 
       } else {
         const errorData = await response.json();
         console.error('Erro ao cadastrar usuário:', errorData);
-        setErrorMessage(errorData.error || 'Erro desconhecido'); // Define a mensagem de erro
-        setShowErrorModal(true); // Exibe o modal de erro
+        setErrorMessage(errorData.error || 'Erro desconhecido'); 
+        setShowErrorModal(true); 
       }
+      
     } catch (error) {
       console.error('Erro inesperado:', error);
-      setErrorMessage('Erro interno do servidor'); // Mensagem de erro padrão
-      setShowErrorModal(true); // Exibe o modal de erro
+      setErrorMessage('Erro interno do servidor'); 
+      setShowErrorModal(true);
     }
   };
 
   const closeModal = () => {
     setShowModal(false);
-    router.push('/login'); // Redireciona para a página de login após fechar o modal
+    router.push('/login');
   };
 
   return (

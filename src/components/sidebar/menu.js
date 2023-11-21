@@ -1,57 +1,73 @@
-import { useState } from "react";
-import { BsArrowLeftShort } from "react-icons/bs";
-import { AiFillEnvironment, AiFillHome } from "react-icons/ai";
-import { RiDashboardFill } from "react-icons/ri"
+import React, { useState } from "react";
+import { HiMenuAlt3 } from "react-icons/hi";
+import { AiFillHome } from "react-icons/ai"
 import { FaPlus, FaEye, FaUser, FaQuestion, FaArrowLeft, } from 'react-icons/fa'
-import { BsSearch } from "react-icons/bs"
-import Link from "next/link"
+import Link from 'next/link'
+import SearchBar from "../busca/search";
 
-export default function Sidebar() {
-  const [open, setOpen] = useState(true);
-  const Menus = [
-    { title: "Home", icon: <AiFillHome />, href: '/home' },
-    { title: "Cadastrar Itens", icon: <FaPlus />, href: '/cadastroItem' },
-    { title: "Itens Cadastrados", icon: <FaEye />, href: '/itensCadastrados' },
-    { title: "Perfil", icon: <FaUser />, href: '/perfil' },
-    { title: "FAQ", icon: <FaQuestion />, href: '/faq' },
-    { title: "Sair", icon: <FaArrowLeft />, href: '/login' },
+const Sidebar = () => {
+  const menus = [
+    { name: "Home", link: "/home", icon: AiFillHome },
+    { name: "Itens Cadastrados", link: "/cadastroItem", icon: FaEye },
+    { name: "Cadastrar Itens", link: "/cadastroItem", icon: FaPlus },
+    { name: "Perfil", link: "/perfil", icon: FaUser, margin: true },
+    { name: "FAQ", link: "/faq", icon: FaQuestion },
+    { name: "Sair", link: "/login", icon: FaArrowLeft }
   ];
-
+  const [open, setOpen] = useState(true);
   return (
-    <div className='flex'>
-      <div className={`bg-dark-purple h-screen p-4 pt-8 mt[-75px] ${open ? "w-80" : "w-20"} duration-300 relative`} x  >
-        <BsArrowLeftShort className={`bg-white text-dark-purple mt-4 text-3xl rounded-full absolute top-9 border border-dark-purple cursor-pointer right-0 ${!open && "rotate-180"}`} onClick={() => setOpen(!open)} />
-
-        <div className='inline-flex pt-12'>
-          <img src='/logotipo-fotor.png' className='w-12 h-12'></img>
-          <h1 className={`text-white origin-left font-small mt-4 ml-4 text-1xl duration-300 ${!open && "scale-0"}`}>
-            Eagles Software
-          </h1>
+    <section className="flex gap-6">
+      <div
+        className={`bg-dark-purple min-h-screen ${open ? "w-72" : "w-16"
+          } duration-500 text-gray-100 px-4`}
+      >
+        <div className="py-3 flex justify-end">
+          <HiMenuAlt3
+            size={26}
+            className="cursor-pointer"
+            onClick={() => setOpen(!open)}
+          />
         </div>
+        <div className="mt-4 flex flex-col gap-4 relative">
+          <div className="flex items-center gap-3.5 font-medium p-2">
+            <div>
+              <img src="/logotipo-fotor.png" alt="Logo" className="w-10 h-10" />
+            </div>
+            <div className={`whitespace-pre transition-all duration-500 ${!open ? "opacity-0 translate-x-[-1rem] overflow-hidden" : ""}`}>
+              <h2>Eagles Software</h2>
+            </div>
+          </div>
 
-        <div className={`flex items-center rounded-md bg-ligth-white mt-6 ${!open ? 'px-2.5' : 'px-4'} py-2`}>
-          <BsSearch className='text-white text-lg block float-left cursor-pointer mr-2' />
+          {/* <SearchBar open={open} /> */}
 
-          <input type={'search'} placeholder='Search'
-            className={`text-base bg-transparent w-full text-white focus:outline-none ${!open && 'hidden'}`} />
-
-        </div>
-
-        <ul className='pt-12 w-17rem ml-2 fixed'>
-          {Menus.map((menu, index) => (
-            <Link key={index} href={menu.href}>
-              <span className={`text-gray-300 mb-5 text-sm flex items-center gap-x-4 cursor-pointer p-4 hover:bg-ligth-white rounded-full transition-all ${open ? "duration-300 ease-in-out" : "duration-100 ease-out"} ${menu.spacing ? "mt-9" : "mt-2"} ${open ? "border-2" : "border-0"}`}>
-                <span className='text-2xl block float-left'>
-                  {menu.icon ? menu.icon : <RiDashboardFill />}
-                </span>
-                <span className={`text-base font-medium flex-1 duration-200 ${!open && "scale-0"}`}>{menu.title}</span>
-              </span>
-
+          {menus?.map((menu, i) => (
+            <Link href={menu?.link}
+              key={i}
+              className={` ${menu?.margin && "mt-5"
+                } group flex items-center text-sm  gap-3.5 font-medium p-2 hover:bg-gray-800 rounded-md`}
+            >
+              <div>{React.createElement(menu?.icon, { size: "20" })}</div>
+              <h2
+                style={{
+                  transitionDelay: `${i + 3}00ms`,
+                }}
+                className={`whitespace-pre duration-500 ${!open && "opacity-0 translate-x-28 overflow-hidden"
+                  }`}
+              >
+                {menu?.name}
+              </h2>
+              <h2
+                className={`${open && "hidden"
+                  } absolute left-48 bg-white font-semibold whitespace-pre text-gray-900 rounded-md drop-shadow-lg px-0 py-0 w-0 overflow-hidden group-hover:px-2 group-hover:py-1 group-hover:left-14 group-hover:duration-300 group-hover:w-fit  `}
+              >
+                {menu?.name}
+              </h2>
             </Link>
           ))}
-
-        </ul>
+        </div>
       </div>
-    </div >
+    </section>
   );
 };
+
+export default Sidebar;

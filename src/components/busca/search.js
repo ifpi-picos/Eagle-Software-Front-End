@@ -1,31 +1,17 @@
-import { useState } from 'react'
-import { FaSearch } from 'react-icons/fa'
-import styles from './search.module.css'
+import React from "react";
+import { BsSearch } from "react-icons/bs";
 
-export default function Busca() {
-  const [searchQuery, setSearchQuery] = useState('');
-
-  const handleSearch = (e) => {
-    e.preventDefault();
-  };
-
+const SearchBar = ({ open }) => {
   return (
-    <form className={styles['form-search']} id="searchForm" onSubmit={handleSearch}>
-      <div className={styles['form-input']}>
-        <input
-          className={styles['search-input']}
-          type="search"
-          id="searchInput"
-          placeholder="Buscar..."
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-        />
-
-        <button type="submit" className={styles['search-btn']}>
-          <FaSearch />
-        </button>
-        
-      </div>
-    </form>
+    <div className="flex items-center rounded-md bg-ligth-white mt-6 px-4 py-2">
+      <BsSearch className={`text-white text-lg ${!open && 'opacity-0'}`} />
+      <input
+        type="search"
+        placeholder="Search"
+        className={`text-base bg-transparent w-full text-white focus:outline-none ${!open && 'hidden'}`}
+      />
+    </div>
   );
-}
+};
+
+export default SearchBar;
