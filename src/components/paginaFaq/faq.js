@@ -44,9 +44,6 @@ const FaqPage = () => {
                 </p>
               </div>
             </div>
-
-            {/* Adicione outras perguntas e respostas conforme necessário */}
-
           </div>
         </main>
       </div>

@@ -10,7 +10,7 @@ const Sidebar = () => {
     { name: "Home", link: "/home", icon: AiFillHome },
     { name: "Itens Cadastrados", link: "/cadastroItem", icon: FaEye },
     { name: "Cadastrar Itens", link: "/cadastroItem", icon: FaPlus },
-    { name: "Perfil", link: "/perfil", icon: FaUser, margin: true },
+    { name: "Perfil", link: "/perfil", icon: FaUser},
     { name: "FAQ", link: "/faq", icon: FaQuestion },
     { name: "Sair", link: "/login", icon: FaArrowLeft }
   ];
@@ -19,7 +19,7 @@ const Sidebar = () => {
     <section className="flex gap-6">
       <div
         className={`bg-dark-purple min-h-screen ${open ? "w-72" : "w-16"
-          } duration-500 text-gray-100 px-4`}
+          } duration-500 text-gray-100 pl-2`}
       >
         <div className="py-3 flex justify-end">
           <HiMenuAlt3
@@ -30,21 +30,21 @@ const Sidebar = () => {
         </div>
         <div className="mt-4 flex flex-col gap-4 relative">
           <div className="flex items-center gap-3.5 font-medium p-2">
-            <div>
+            <div className='fixed mr-2'>
               <img src="/logotipo-fotor.png" alt="Logo" className="w-10 h-10" />
             </div>
             <div className={`whitespace-pre transition-all duration-500 ${!open ? "opacity-0 translate-x-[-1rem] overflow-hidden" : ""}`}>
-              <h2>Eagles Software</h2>
+              <h2 className='ml-16'>Eagles Software</h2>
             </div>
           </div>
 
-          {/* <SearchBar open={open} /> */}
+          <SearchBar open={open} />
 
           {menus?.map((menu, i) => (
             <Link href={menu?.link}
               key={i}
               className={` ${menu?.margin && "mt-5"
-                } group flex items-center text-sm  gap-3.5 font-medium p-2 hover:bg-gray-800 rounded-md`}
+                } group flex items-center text-sm  gap-3.5 font-medium p-4 hover:bg-gray-800 rounded-md`}
             >
               <div>{React.createElement(menu?.icon, { size: "20" })}</div>
               <h2
