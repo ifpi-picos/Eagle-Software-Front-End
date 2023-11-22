@@ -14,7 +14,7 @@ export default function CadastroForm() {
   const [showModal, setShowModal] = useState(false);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [showErrorModal, setShowErrorModal] = useState(false);
-  const [errorMessage, setErrorMessage] = useState(''); 
+  const [errorMessage, setErrorMessage] = useState('');
   const router = useRouter();
 
   const handleFormEdit = (e, field) => {
@@ -36,17 +36,17 @@ export default function CadastroForm() {
       if (response.ok) {
         const data = await response.json();
         console.log('Usuário cadastrado com sucesso:', data);
-        setShowSuccessModal(true); 
+        setShowSuccessModal(true);
       } else {
         const errorData = await response.json();
         console.error('Erro ao cadastrar usuário:', errorData);
-        setErrorMessage(errorData.error || 'Erro desconhecido'); 
-        setShowErrorModal(true); 
+        setErrorMessage(errorData.error || 'Erro desconhecido');
+        setShowErrorModal(true);
       }
-      
+
     } catch (error) {
       console.error('Erro inesperado:', error);
-      setErrorMessage('Erro interno do servidor'); 
+      setErrorMessage('Erro interno do servidor');
       setShowErrorModal(true);
     }
   };
@@ -124,8 +124,13 @@ export default function CadastroForm() {
         </div>
 
         {showSuccessModal && (
-          <div className={styles.modal}>
+          <div className={styles.modalBackground}>
             <div className={styles.modalContent}>
+              <div className={styles.successIcon}>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+              </div>
               <p>Usuário cadastrado com sucesso!</p>
               <button onClick={() => setShowSuccessModal(false)}>Fechar</button>
             </div>
@@ -133,8 +138,13 @@ export default function CadastroForm() {
         )}
 
         {showErrorModal && (
-          <div className={styles.modal}>
+          <div className={styles.modalBackground}>
             <div className={styles.modalContent}>
+              <div className={styles.errorIcon}>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+              </div>
               <p>{errorMessage}</p>
               <button onClick={() => setShowErrorModal(false)}>Fechar</button>
             </div>
@@ -142,7 +152,7 @@ export default function CadastroForm() {
         )}
 
         {showModal && (
-          <div className={styles.modal}>
+          <div className={styles.modalBackground}>
             <div className={styles.modalContent}>
               <p>Usuário cadastrado com sucesso!</p>
               <button onClick={closeModal}>Fechar</button>

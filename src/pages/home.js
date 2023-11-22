@@ -1,31 +1,14 @@
-import React, { useEffect } from "react"
-import Sidebar from '../components/sidebar/menu'
-import styles from '../components/sidebar/menu.module.css'
-import { getCookie } from 'cookies-next'
+import React, { useState, useEffect } from "react";
+import Sidebar from '../components/sidebar/menu';
+import styles from '../components/sidebar/menu.module.css';
 
-export default function Home() {
-    return (
-        <div className={styles['body-home']}>
-            <div className={styles['listaItens']}>
-                <Sidebar />
-            </div>
-        </div>
-    );
-}
 
-export const getServerSideProps = async ({ req, res }) => {
-    try {
-        const token = getCookie('authorization', { req, res })
-        console.log(token)
-        if (!token) throw new Error('Token Inválido')
-
-        verifica(token)
-        return {
-            props: {}
-        }
-    } catch (err) {
-        return {
-            props: {}
-        }
-    }
-}
+export default function Home () {
+  return (
+    <div className={styles['body-home']}>
+      <div className={styles['listaItens']}>
+        <Sidebar />
+      </div>
+   </div>
+  );
+};

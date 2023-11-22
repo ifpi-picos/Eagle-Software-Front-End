@@ -14,6 +14,14 @@ const LoginForm = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [showErrorModal, setShowErrorModal] = useState(false);
   const router = useRouter();
+  const [showWelcomeModal, setShowWelcomeModal] = useState(false);
+
+  const showWelcome = () => {
+    setShowWelcomeModal(true);
+    setTimeout(() => {
+      setShowWelcomeModal(false);
+    }, 5000); // O modal será exibido por 5 segundos
+  };
 
   const handleFormEdit = (e, field) => {
     setFormData({ ...formData, [field]: e.target.value });
@@ -43,11 +51,13 @@ const LoginForm = () => {
         const data = await response.json();
         console.log('Login bem-sucedido:', data);
 
-        // Armazenar o token no localStorage
         localStorage.setItem('token', data.token);
-
-        // Redirecionar para a página de home
+        
         router.push('/home');
+
+        showWelcome();
+        return;
+
       } else {
         const errorData = await response.json();
         console.error('Erro ao fazer login:', errorData);
@@ -57,16 +67,27 @@ const LoginForm = () => {
     } catch (error) {
       console.error('Erro inesperado:', error);
       setError('Ocorreu um erro ao processar o login. Tente novamente mais tarde.');
-      setShowErrorModal(true); 
-      
+      setShowErrorModal(true);
+
     } finally {
       setIsLoading(false);
     }
-  };
+  }; {
+    showWelcomeModal && (
+      <div className={styles.modalBackground}>
+        <div className={styles.modalContent}>
+          <p>Bem-vindo! Você fez login com sucesso.</p>
+          {/* Adicione aqui qualquer conteúdo adicional desejado para o modal de boas-vindas */}
+          <button onClick={() => setShowWelcomeModal(false)}>Fechar</button>
+        </div>
+      </div>
+    )
+  }
 
   const closeErrorModal = () => {
     setShowErrorModal(false);
   };
+
 
   return (
     <form className={styles['form-login-cadastro']} onSubmit={handleFormSubmit}>
@@ -126,10 +147,24 @@ const LoginForm = () => {
         </div>
       </div>
       {showErrorModal && (
-        <div className={styles.modal}>
+        <div className={styles.modalBackground}>
           <div className={styles.modalContent}>
+            <div className={styles.errorIcon}>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+              </svg>
+            </div>
             <p>{error}</p>
             <button onClick={closeErrorModal}>Fechar</button>
+          </div>
+        </div>
+      )}
+
+      {showWelcomeModal && (
+        <div className={styles.modalBackground}>
+          <div className={styles.modalContent}>
+            <p>Bem-vindo! Você fez login com sucesso.</p>
+            <button onClick={() => setShowWelcomeModal(false)}>Fechar</button>
           </div>
         </div>
       )}

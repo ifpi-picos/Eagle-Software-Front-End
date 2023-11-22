@@ -8,7 +8,7 @@ import SearchBar from "../busca/search";
 const Sidebar = () => {
   const menus = [
     { name: "Home", link: "/home", icon: AiFillHome },
-    { name: "Itens Cadastrados", link: "/cadastroItem", icon: FaEye },
+    { name: "Itens Encontrados", link: "/itensEncontrado", icon: FaEye },
     { name: "Cadastrar Itens", link: "/cadastroItem", icon: FaPlus },
     { name: "Perfil", link: "/perfil", icon: FaUser},
     { name: "FAQ", link: "/faq", icon: FaQuestion },
