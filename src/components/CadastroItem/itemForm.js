@@ -70,14 +70,14 @@ export default function ItemForm() {
     };
 
     return (
-        <div className={styles['bodyItem']}>
+        <div className={`${styles['bodyItem']} ${styles['form-container']}`}>
 
             <form className={styles['formItem']} id="itemForm" onSubmit={handleFormSubmit}>
                 <div>
                     <h1 className={styles['titulo']}>Cadastro de Itens</h1>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="grid grid-cols md:grid-cols-2 gap-4 justify-center">
                     <div>
                         <div className={styles['campoItem']}>
                             <label className={styles['textItem']} htmlFor="achador">

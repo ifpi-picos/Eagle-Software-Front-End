@@ -18,8 +18,8 @@ const Sidebar = () => {
   return (
     <section className="flex gap-6">
       <div
-        className={`bg-dark-purple min-h-screen ${open ? "w-72" : "w-16"
-          } duration-500 text-gray-100 pl-2`}
+        className={`bg-dark-purple min-h-screen fixed ${open ? "w-72" : "w-16"
+          } duration-500 text-gray-100 pl-2 z-10`}
       >
         <div className="py-3 flex justify-end">
           <HiMenuAlt3

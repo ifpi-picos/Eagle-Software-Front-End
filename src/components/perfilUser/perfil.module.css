@@ -3,8 +3,14 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
+    z-index: 1; /* Adicione um valor de z-index */
 }
 
+.bg-dark-purple {
+    position: fixed;
+    /* Outros estilos */
+    z-index: 2; /* Garanta que o menu tenha um valor de z-index maior */
+}
 .profile {
     display: flex;
     flex-direction: column;
@@ -69,7 +75,7 @@
     margin-bottom: 20px;
 }
 
-.profile-text{
+.profile-text {
     margin-bottom: 10px;
     font-size: bold;
 }
@@ -80,5 +86,5 @@
     width: 300px;
     height: 30px;
     border: 2px solid;
-    box-shadow: 8px 6px 10px rgba(0,0,0,0.3);
+    box-shadow: 8px 6px 10px rgba(0, 0, 0, 0.3);
 }
