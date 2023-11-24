@@ -1,20 +1,36 @@
-import React, { useState } from "react";
-import { HiMenuAlt3 } from "react-icons/hi";
+import React, { useState, useEffect } from "react"
+import { HiMenuAlt3 } from "react-icons/hi"
 import { AiFillHome } from "react-icons/ai"
 import { FaPlus, FaEye, FaUser, FaQuestion, FaArrowLeft, } from 'react-icons/fa'
 import Link from 'next/link'
-import SearchBar from "../busca/search";
+import SearchBar from "../busca/search"
+import { isMobile } from 'react-device-detect'
+
 
 const Sidebar = () => {
   const menus = [
     { name: "Home", link: "/home", icon: AiFillHome },
     { name: "Itens Encontrados", link: "/itensEncontrado", icon: FaEye },
     { name: "Cadastrar Itens", link: "/cadastroItem", icon: FaPlus },
-    { name: "Perfil", link: "/perfil", icon: FaUser},
+    { name: "Perfil", link: "/perfil", icon: FaUser },
     { name: "FAQ", link: "/faq", icon: FaQuestion },
     { name: "Sair", link: "/login", icon: FaArrowLeft }
   ];
-  const [open, setOpen] = useState(true);
+
+  const [open, setOpen] = useState(() => {
+    if (typeof window !== "undefined" && !isMobile) {
+      const storedState = localStorage.getItem("menuOpen");
+      return storedState ? JSON.parse(storedState) : true;
+    }
+    return false;
+  });
+
+  useEffect(() => {
+    if (typeof window !== "undefined" && !isMobile) {
+      localStorage.setItem("menuOpen", JSON.stringify(open));
+    }
+  }, [open]);
+
   return (
     <section className="flex gap-6">
       <div

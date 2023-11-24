@@ -8,7 +8,7 @@ export default function CadastrarItem() {
         <div className={styles['main-cadastro-item']}>
         <div className="flex">
             <Sidebar />
-            <div className=" w-full h-full p-4 self-center">
+            <div className=" h-screen w-screen p-4 self-center">
                 <h1 className="text-2xl font-semibold"></h1>
                 <ItemForm />
             </div>

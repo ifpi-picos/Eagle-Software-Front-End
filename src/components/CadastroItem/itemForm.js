@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { BiPlus } from 'react-icons/bi';
 import styles from './itemForm.module.css';
 
 export default function ItemForm() {
@@ -170,7 +169,7 @@ export default function ItemForm() {
                 </div>
                 <div className={styles['btn-acao']}>
                     <button className={styles['btn-submit']} type="submit">
-                        Cadastrar <BiPlus />
+                        Cadastrar
                     </button>
                     <button className={styles['btn-reset']} type="reset" onClick={handleFormClear}>
                         Limpar
