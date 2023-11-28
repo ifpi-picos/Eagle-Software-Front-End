@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import { BiUser, BiEnvelope, BiLock, BiShow } from 'react-icons/bi';
-import styles from '../login/formLoginCadastro.module.css';
-import Link from 'next/link';
-import { useRouter } from 'next/router';
+import React, { useState } from 'react'
+import { BiUser, BiEnvelope, BiLock, BiShow } from 'react-icons/bi'
+import styles from '../login/formLoginCadastro.module.css'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
 
 export default function CadastroForm() {
   const [formData, setFormData] = useState({
