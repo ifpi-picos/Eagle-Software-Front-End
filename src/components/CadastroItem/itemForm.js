@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import styles from './itemForm.module.css';
+import React, { useState } from 'react'
+import styles from './itemForm.module.css'
 
 export default function ItemForm() {
     const [formData, setFormData] = useState({
