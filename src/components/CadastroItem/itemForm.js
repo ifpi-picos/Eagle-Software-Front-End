@@ -9,23 +9,46 @@ export default function ItemForm() {
         data: '',
         detalhes: '',
     });
-
+    
     const handleFormClear = () => {
         setFormData({
-          achadoPor: '',
-          local: '',
-          armazenado: '',
-          data: '',
-          detalhes: '',
+            achadoPor: '',
+            local: '',
+            armazenado: '',
+            data: '',
+            detalhes: '',
         });
-      };
-
+    };
+    
     const [showSuccessModal, setShowSuccessModal] = useState(false);
     const [showErrorModal, setShowErrorModal] = useState(false);
     const [successMessage, setSuccessMessage] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
+    const [image, setImage] = useState(null);
 
-    const handleFileChange = (event) => {
+    const cloudinaryUploadPreset = 'my-uploads';
+    const cloudinaryAPI = 'https://api.cloudinary.com/v1_1/dsrnunimq/image/upload';
+    
+    const handleFileChange = async (event) => {
+        const file = event.target.files[0];
+
+        if (file) {
+            try {
+                const formData = new FormData();
+                formData.append('file', file);
+                formData.append('upload_preset', cloudinaryUploadPreset);
+
+                const response = await fetch(cloudinaryAPI, {
+                    method: 'POST',
+                    body: formData,
+                });
+
+                const data = await response.json();
+                setImage(data.secure_url);
+            } catch (error) {
+                console.error('Erro ao enviar imagem para o Cloudinary:', error);
+            }
+        }
     };
 
     const handleFormSubmit = async (event) => {
@@ -37,9 +60,11 @@ export default function ItemForm() {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(formData),
+                body: JSON.stringify({
+                    ...formData,
+                    imageUrl: image,
+                }),
             });
-
 
             if (response.ok) {
                 setSuccessMessage('Item cadastrado com sucesso!');
