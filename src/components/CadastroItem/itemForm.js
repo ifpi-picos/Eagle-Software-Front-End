@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import styles from './itemForm.module.css'
+import React, { useState, useEffect } from 'react';
+import styles from './itemForm.module.css';
 
 export default function ItemForm() {
     const [formData, setFormData] = useState({
@@ -9,7 +9,10 @@ export default function ItemForm() {
         data: '',
         detalhes: '',
     });
-    
+
+    const [localImage, setLocalImage] = useState(null);
+    const [readyToUpload, setReadyToUpload] = useState(false);
+
     const handleFormClear = () => {
         setFormData({
             achadoPor: '',
@@ -19,21 +22,26 @@ export default function ItemForm() {
             detalhes: '',
         });
     };
-    
+
     const [showSuccessModal, setShowSuccessModal] = useState(false);
     const [showErrorModal, setShowErrorModal] = useState(false);
     const [successMessage, setSuccessMessage] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
     const [image, setImage] = useState(null);
+    const [imageLoaded, setImageLoaded] = useState(false);
 
     const cloudinaryUploadPreset = 'my-uploads';
     const cloudinaryAPI = 'https://api.cloudinary.com/v1_1/dsrnunimq/image/upload';
-    
+
     const handleFileChange = async (event) => {
         const file = event.target.files[0];
 
         if (file) {
             try {
+                const localImageUrl = URL.createObjectURL(file);
+                setLocalImage(localImageUrl);
+                setReadyToUpload(true);
+
                 const formData = new FormData();
                 formData.append('file', file);
                 formData.append('upload_preset', cloudinaryUploadPreset);
@@ -45,6 +53,7 @@ export default function ItemForm() {
 
                 const data = await response.json();
                 setImage(data.secure_url);
+                setImageLoaded(true);
             } catch (error) {
                 console.error('Erro ao enviar imagem para o Cloudinary:', error);
             }
@@ -62,7 +71,7 @@ export default function ItemForm() {
                 },
                 body: JSON.stringify({
                     ...formData,
-                    imageUrl: image,
+                    imagem_URL: image,
                 }),
             });
 
@@ -79,7 +88,6 @@ export default function ItemForm() {
                     });
                     setShowSuccessModal(false);
                 }, 3000);
-
             } else {
                 const errorData = await response.json();
                 console.error('Erro ao cadastrar item:', errorData);
@@ -93,10 +101,18 @@ export default function ItemForm() {
         }
     };
 
+    useEffect(() => {
+        return () => {
+            if (localImage) {
+                URL.revokeObjectURL(localImage);
+            }
+        };
+    }, [localImage]);
+    
     return (
         <div className={`${styles['bodyItem']} ${styles['form-container']}`}>
 
-            <form className={styles['formItem']} id="itemForm" onSubmit={handleFormSubmit}>
+            <form className={styles['formItem']} id="itemForm" onSubmit={(e) => e.preventDefault()}>
                 <div>
                     <h1 className={styles['titulo']}>Cadastro de Itens</h1>
                 </div>
@@ -105,7 +121,7 @@ export default function ItemForm() {
                     <div>
                         <div className={styles['campoItem']}>
                             <label className={styles['textItem']} htmlFor="achador">
-                                Achado por:
+                                Encontrado por:
                             </label>
                             <input
                                 className={styles['input-cadastro']}
@@ -114,8 +130,24 @@ export default function ItemForm() {
                                 name="achadoPor"
                                 value={formData.achadoPor}
                                 onChange={(e) => setFormData({ ...formData, achadoPor: e.target.value })}
+                                maxLength={40}
                                 required
                             />
+                        </div>
+                        
+                        <div className={styles['campoItem']}>
+                            <label className={styles['textItem']} htmlFor="data">
+                                Data:
+                            </label>
+                            <input
+                                className={styles['input-cadastro']}
+                                type="date"
+                                id="data"
+                                name="data"
+                                value={formData.data}
+                                onChange={(e) => setFormData({ ...formData, data: e.target.value })}
+                                required
+                            />  
                         </div>
 
                         <div className={styles['campoItem']}>
@@ -129,6 +161,7 @@ export default function ItemForm() {
                                 name="local"
                                 value={formData.local}
                                 onChange={(e) => setFormData({ ...formData, local: e.target.value })}
+                                maxLength={50}
                                 required
                             />
                         </div>
@@ -144,24 +177,11 @@ export default function ItemForm() {
                                 name="armazenado"
                                 value={formData.armazenado}
                                 onChange={(e) => setFormData({ ...formData, armazenado: e.target.value })}
+                                maxLength={50}
                                 required
                             />
                         </div>
 
-                        <div className={styles['campoItem']}>
-                            <label className={styles['textItem']} htmlFor="data">
-                                Data:
-                            </label>
-                            <input
-                                className={styles['input-cadastro']}
-                                type="date"
-                                id="data"
-                                name="data"
-                                value={formData.data}
-                                onChange={(e) => setFormData({ ...formData, data: e.target.value })}
-                                required
-                            />
-                        </div>
 
                         <div className={styles['campoItem']}>
                             <label className={styles['textItem']} htmlFor="detalhes">
@@ -176,12 +196,23 @@ export default function ItemForm() {
                                 onChange={(e) => setFormData({ ...formData, detalhes: e.target.value })}
                                 rows="4"
                                 cols="50"
+                                maxLength={100}
                                 required
                             />
                         </div>
                     </div>
 
                     <div className={styles['input-upload']}>
+                        <div className={styles['image-preview-container']}>
+                            {localImage ? (
+                                <img src={localImage} alt="Imagem do item" className={styles['image-preview']} />
+                            ) : imageLoaded ? (
+                                <img src={image} alt="Imagem do item" className={styles['image-preview']} />
+                            ) : (
+                                <img src="/camera.jpg" alt="Imagem padrão" className={styles['image-preview']} />
+                            )}
+                        </div>
+
                         <div className={styles['input-file-upload']}>
                             <div className={styles['upload-button']}>
                                 <button className={styles['btn-upload']}>
@@ -193,7 +224,11 @@ export default function ItemForm() {
                     </div>
                 </div>
                 <div className={styles['btn-acao']}>
-                    <button className={styles['btn-submit']} type="submit">
+                    <button
+                        className={styles['btn-submit']}
+                        type="button"
+                        onClick={(event) => readyToUpload && handleFormSubmit(event)}
+                    >
                         Cadastrar
                     </button>
                     <button className={styles['btn-reset']} type="reset" onClick={handleFormClear}>

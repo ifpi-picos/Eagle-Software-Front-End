@@ -9,7 +9,7 @@ export default function telaInicial() {
         <header className={styles.headerTitle}>
 
           <div className={styles['logo-inicial']}>
-            <Image src="/logotipo-fotor.png" alt="" width={80} height={100} />
+            <Image className={styles['image-logo']} src="/logotipo-fotor.png" alt="" width={80} height={100} />
             <h2 className={styles['h2-header']}>EAGLE'S SOFTWARE</h2>
           </div>
 

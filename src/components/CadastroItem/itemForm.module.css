@@ -13,7 +13,7 @@
 }
 
 .formItem {
-    width: 800px;
+    width: 45rem;
     height: 680px;
     padding: 1cm;
     display: grid;
@@ -38,6 +38,7 @@
 }
 
 .textItem {
+    font-weight: bold;
     color: #000;
     margin-bottom: 5px;
 }
@@ -124,10 +125,11 @@
     flex-direction: column;
     height: 4vh;
     justify-content: center;
-    align-items: flex-end;
+    align-items: center;
     border: 1px solid;
     width: 16rem;
-    margin-left: 5rem;
+    margin-top: -5rem;
+    margin-left: 2rem;
     border-radius: 10px;
     background: linear-gradient(to right, #D9D9D9, #F0F0F0);
     box-shadow: 8px 6px 4px rgba(0, 0, 0, 0.3);
@@ -140,9 +142,9 @@
 }
 
 .btn-upload {
+    margin: 0;  
     font-size: 15px;
     color: #000;
-    margin-right: 70px;
 }
 
 .upload-button input[type=file] {
@@ -221,6 +223,33 @@
     transition: background-color 0.3s ease;
 }
 
+.image-preview-container {
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+  
+
+.image-preview {
+    margin-top: 20px; 
+    text-align: center;
+    border: 1px solid;
+    width: 16rem;
+    height: 15rem;
+    border-radius: 2rem;
+    margin-top: -14rem;
+  }
+  
+  .image-preview img {
+    max-width: 100%;
+    max-height: 100%;
+    border: 1px solid #ddd; 
+    border-radius: 1rem; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+  }
+
 .modalContent button:hover {
     background-color: #2a7aaf;
 }
@@ -254,7 +283,7 @@
 @media (max-width: 767px) and (max-height: 1080px) {
     .formItem{
         width: 35rem;
-        height: 50rem;
+        height: 55rem;
     }
 
     .input-cadastro{
@@ -275,12 +304,30 @@
 
     .input-upload{
         display: flex;
-        justify-content: center;
+        flex-wrap: nowrap;
+        flex-direction: column;
+        justify-content: space-around;
     }
 
     .input-file-upload{
         margin-left: 0;
         margin-bottom: 10px;
+        display: flex;
+        width: 12rem;
+    }
+
+    .image-preview-container{
+        display: flex;
+        justify-content: flex-start;
+        margin-bottom: 25px;
+    }
+
+    .image-preview{
+        text-align: center;
+        border: 1.5px solid;
+        width: 11rem;
+        height: 11rem;
+        margin-top: -6rem;
     }
 }
 

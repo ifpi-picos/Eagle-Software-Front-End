@@ -259,3 +259,16 @@
     }
   }
 
+@media (max-width: 375px) and (max-height: 667px){
+  .form-login-cadastro{
+    width: 22rem;
+  }
+
+  .site-name{
+    font-size: 20px;
+  }
+
+  .logo{
+    width: 75px;
+  }
+}
