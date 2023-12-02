@@ -1,6 +1,6 @@
-import React from "react";
-import Sidebar from '../components/sidebar/menu';
-import Perfil from "../components/perfilUser/perfil";
+import React from "react"
+import Sidebar from '../components/sidebar/menu'
+import Perfil from "../components/perfilUser/perfil"
 
 export default function PerfilUser() {
     return (
