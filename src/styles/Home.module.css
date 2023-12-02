@@ -318,6 +318,11 @@
   }
 }
 
+@media (max-width: 544px) {
+  .img-page{
+    display: none;
+  }
+}
 @media(max-width: 912px) {
   .content {
     display: block;
