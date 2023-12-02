@@ -25,7 +25,7 @@ export default function CadastroForm() {
     e.preventDefault();
 
     try {
-      const response = await fetch('http://localhost:4000/usuarios', {
+      const response = await fetch('https://api-eagles-software.onrender.com/usuarios', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -44,8 +44,8 @@ const Sidebar = () => {
             onClick={() => setOpen(!open)}
           />
         </div>
-        <div className="mt-4 flex flex-col gap-4 relative">
-          <div className="flex items-center gap-3.5 font-medium p-2">
+        <div className="mt-4 flex flex-col gap-2 relative">
+          <div className="flex items-center gap-3 font-medium p-2">
             <div className='fixed mr-2'>
               <img src="/logotipo-fotor.png" alt="Logo" className="w-10 h-10" />
             </div>

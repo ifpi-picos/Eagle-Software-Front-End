@@ -39,7 +39,7 @@ const LoginForm = () => {
     setIsLoading(true);
 
     try {
-      const response = await fetch('http://localhost:4000/usuarios/login', {
+      const response = await fetch('https://api-eagles-software.onrender.com/usuarios/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -77,7 +77,6 @@ const LoginForm = () => {
       <div className={styles.modalBackground}>
         <div className={styles.modalContent}>
           <p>Bem-vindo! Você fez login com sucesso.</p>
-          {/* Adicione aqui qualquer conteúdo adicional desejado para o modal de boas-vindas */}
           <button onClick={() => setShowWelcomeModal(false)}>Fechar</button>
         </div>
       </div>

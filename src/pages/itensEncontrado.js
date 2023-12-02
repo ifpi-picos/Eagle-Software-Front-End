@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Modal from 'react-modal';
-import { FaEdit, FaTrash, FaSearch } from 'react-icons/fa';
+import { FaEdit, FaTrash } from 'react-icons/fa';
 import { IoIosClose } from 'react-icons/io';
 import Sidebar from '../components/sidebar/menu';
 import styles from '../components/CadastroItem/itemForm.module.css';
@@ -44,7 +44,7 @@ const Itens = () => {
 
   const handleDeleteConfirmation = async () => {
     try {
-      const response = await fetch(`http://localhost:4000/itens/${selectedItem.id}`, {
+      const response = await fetch(`https://api-eagles-software.onrender.com/itens/${selectedItem.id}`, {
         method: 'DELETE',
       });
 
@@ -61,7 +61,7 @@ const Itens = () => {
   };
 
   useEffect(() => {
-    fetch(`http://localhost:4000/itens?search=${searchTerm}`)
+    fetch(`https://api-eagles-software.onrender.com/itens?search=${searchTerm}`)
       .then((response) => response.json())
       .then((data) => setItems(data))
       .catch((error) => console.error('Erro ao obter itens:', error));
@@ -79,7 +79,7 @@ const Itens = () => {
   
   const handleSave = async () => {
     try {
-      const response = await fetch(`http://localhost:4000/itens/${editedItem.id}`, {
+      const response = await fetch(`https://api-eagles-software.onrender.com/itens/${editedItem.id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
