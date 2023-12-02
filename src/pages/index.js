@@ -27,7 +27,7 @@ export default function telaInicial() {
           <div className={styles.content}>
             <div className={styles.text}>
               <p>
-                Bem-vindo(a) ao <span>EAGLE'S SOFTWARE</span>, encontre seus pertences perdidos em um piscar de olhos.
+                Bem-vindo(a) ao <span>EAGLE'S SOFTWARE</span>, uma solução inovadora e eficiente para resolver o problema comum de perda de itens. Encontre seus pertences perdidos em um piscar de olhos.
               </p>
 
               <a href="/login" className={styles.btn}>Continuar</a>
