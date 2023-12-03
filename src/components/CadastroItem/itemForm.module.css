@@ -88,9 +88,10 @@
     text-align: center;
     margin-bottom: 30px;
     box-shadow: 8px 6px 4px rgba(0, 0, 0, 0.3);
-}
-
-.btn-reset {
+    transition: background-color 1s ease;
+  }
+  
+  .btn-reset {
     width: 250px;
     height: 40px;
     margin-left: 10px;
@@ -103,6 +104,23 @@
     text-align: center;
     margin-bottom: 30px;
     box-shadow: 8px 6px 4px rgba(0, 0, 0, 0.3);
+    transition: background-color 1s ease;
+  }
+  
+  .btn-submit:hover {
+    background: #26537f;
+  }
+  
+  .btn-reset:hover {
+    background: #26537f;
+  }
+
+  .button-submit:active {
+    transform: translateY(4px);
+}
+
+.button-reset:active {
+    transform: translateY(4px);
 }
 
 .container button {

@@ -91,7 +91,7 @@
         
             try {
                 setButtonDisabled(true);
-                const response = await fetch('https://api-eagles-software.onrender.com/usuarios', {
+                const response = await fetch('https://api-eagles-software.onrender.com/itens', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -268,7 +268,6 @@
                         >
                             Limpar
                         </button>
-
                     </div>
 
                     {showSuccessModal && (
