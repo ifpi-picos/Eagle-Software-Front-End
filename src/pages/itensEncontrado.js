@@ -204,7 +204,7 @@ const Itens = () => {
               </div>
 
               <div className='flex'>
-                <p className="font-bold">Encontrado Por:</p>
+                <p className="font-bold">Achado Por:</p>
                 <p className='ml-2'>{item.achadoPor}</p>
               </div>
 
@@ -276,7 +276,7 @@ const Itens = () => {
 
               <div className="mb-2 w-10/12">
                 <div className="flex flex-col mb-2">
-                  <p className="font-bold whitespace-pre-wrap">Encontrado Por:</p>
+                  <p className="font-bold whitespace-pre-wrap">Achado Por:</p>
                   <p>{selectedItem.achadoPor}</p>
                 </div>
 
@@ -427,7 +427,7 @@ const Itens = () => {
               <div className="grid grid-cols md:grid-cols-2 gap-4 justify-center">
                 <div>
                   <div className={styles['campoItem']}>
-                    <p className="font-bold mb-2 whitespace-pre-wrap">Encontrado Por:</p>
+                    <p className="font-bold mb-2 whitespace-pre-wrap">Achado Por:</p>
                     <input
                       className={styles['input-cadastro']}
                       type="text"

@@ -71,16 +71,27 @@
 
         const handleFormSubmit = async (event) => {
             event.preventDefault();
-        
-            if (!formData.achadoPor || !formData.local || !formData.armazenado || !formData.data || !formData.detalhes) {
-                setErrorMessage('Por favor, preencha todos os campos antes de cadastrar.');
-                setShowErrorModal(true);
-                return;
+
+            const fieldsInOrder = ['achadoPor', 'data', 'local', 'armazenado', 'detalhes'];
+            let firstEmptyField = null;
+          
+            for (const field of fieldsInOrder) {
+              if (!formData[field]) {
+                firstEmptyField = field;
+                break;
+              }
             }
+          
+            if (firstEmptyField) {
+              setErrorMessage(`O campo "${firstEmptyField}" é obrigatório.`);
+              setShowErrorModal(true);
+              return;
+            }
+          
         
             try {
                 setButtonDisabled(true);
-                const response = await fetch('https://api-eagles-software.onrender.com/itens', {
+                const response = await fetch('https://api-eagles-software.onrender.com/usuarios', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -138,7 +149,7 @@
                         <div>
                             <div className={styles['campoItem']}>
                                 <label className={styles['textItem' ]} htmlFor="achador">
-                                    Encontrado por:
+                                    Achado Por:
                                 </label>
                                 <input
                                     className={styles['input-cadastro']}
