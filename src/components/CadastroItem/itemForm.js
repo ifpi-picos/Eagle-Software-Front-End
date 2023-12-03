@@ -73,7 +73,6 @@ export default function ItemForm() {
     const handleFormSubmit = async (event) => {
         event.preventDefault();
     
-        // Adicione a lógica de validação aqui
         if (!formData.achadoPor || !formData.local || !formData.armazenado || !formData.data || !formData.detalhes) {
             setErrorMessage('Por favor, preencha todos os campos antes de cadastrar.');
             setShowErrorModal(true);
