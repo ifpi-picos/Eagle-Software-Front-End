@@ -332,7 +332,16 @@
 @media (max-width: 645px) and (max-height: 1080px) {
     .formItem{
         width: 400px;
-        height: 50rem;
+        height: 56rem;
+    }
+
+    .image-preview-container{
+        margin-bottom: 0;
+        height: 10rem;
+    }
+    
+    .image-preview{
+        margin-top: -3rem;
     }
 
     .titulo{

@@ -76,7 +76,7 @@ const Itens = () => {
     item.detalhes.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  
+
   const handleSave = async () => {
     try {
       const response = await fetch(`https://api-eagles-software.onrender.com/itens/${editedItem.id}`, {
@@ -93,12 +93,12 @@ const Itens = () => {
           imagem_URL: editedItem.imagem_URL,
         }),
       });
-      
+
       if (response.ok) {
         const updatedItems = items.map((item) =>
-        item.id === editedItem.id ? editedItem : item
+          item.id === editedItem.id ? editedItem : item
         );
-        
+
         setItems(updatedItems);
         setIsEditingMode(false);
         setEditedItem({});
@@ -110,7 +110,7 @@ const Itens = () => {
       console.error('Erro ao atualizar item:', error);
     }
   };
-  
+
   const handleEdit = (item) => {
     setEditedItem(item);
     setIsEditingMode(true);
@@ -127,8 +127,8 @@ const Itens = () => {
   return (
     <div className='flex bg-aliceblue'>
       <Sidebar />
-      <div className="container mx-auto p-4">
-        <h1 className="text-3xl font-bold mb-4 flex justify-center">Lista de Itens</h1>
+      <div className="mx-auto self-center w-4/5 p-4">
+        <h1 className="text-3xl font-bold mb-4 flex items-center justify-center">Lista de Itens</h1>
 
         {/* <form>
           <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Buscar</label>
@@ -142,11 +142,11 @@ const Itens = () => {
           </div>  
         </form> */}
 
-        <div className="grid gap-8 grid-cols-2">
+        <div className="grid gap-8 grid-cols-1 md:grid-cols-2">
           {filteredItems.map((item) => (
             <div
               key={item.id}
-              className={`bg-gray-300 w-full h-full p-4 rounded-2xl shadow-[0px_2px_4px_2px_rgba(0,0,0,0.3)] cursor-pointer transform hover:shadow-[0px_8px_14px_8px_rgba(0,0,0,0.4)] transition duration-500 ease-in-out ${isEditingMode ? 'hidden' : ''}`}
+              className={`bg-gray-300 mx-auto w-80 sm:w-full h-full p-4 rounded-2xl shadow-[0px_2px_4px_2px_rgba(0,0,0,0.3)] cursor-pointer transform hover:shadow-[0px_8px_14px_8px_rgba(0,0,0,0.4)] transition duration-500 ease-in-out ${isEditingMode ? 'hidden' : ''}`}
               onClick={() => openModal(item)}
             >
               <div className="image-container mb-2 flex justify-center">
@@ -182,9 +182,10 @@ const Itens = () => {
                 <p className='ml-2'>{item.detalhes}</p>
               </div>
             </div>
-          ))
-          }
+          ))}
         </div>
+
+        // ...
 
         <Modal
           isOpen={isModalOpen}
@@ -200,12 +201,16 @@ const Itens = () => {
               alignItems: 'center',
             },
             content: {
-              width: '40rem',
-              height: '41rem',
+              width: '90vw',
+              maxWidth: '40rem',
+              height: '90vh',
+              maxHeight: '41rem',
               margin: 'auto',
               position: 'absolute',
               borderRadius: '10px',
               boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.4)',
+              display: 'flex',
+              flexDirection: 'column',
             },
           }}
         >
@@ -226,40 +231,37 @@ const Itens = () => {
               <h2 className="text-xl font-bold mb-2">Item Achado</h2>
 
               <div className="mb-2 w-10/12">
-                <div className="flex justify-between mb-2">
-                  <div className="flex flex-col">
-                    <p className="font-bold mb-2 whitespace-pre-wrap">Encontrado Por:</p>
-                    <p className='whitespace-pre-wrap'>{selectedItem.achadoPor}</p>
-                  </div>
-
-                  <div className="flex flex-col items-center  min-w-[150px]">
-                    <p className="font-bold mb-2 whitespace-pre-wrap">Data:</p>
-                    <p className='whitespace-pre-wrap'>{formatDate(selectedItem.data)}</p>
-                  </div>
+                <div className="flex flex-col mb-2">
+                  <p className="font-bold whitespace-pre-wrap">Encontrado Por:</p>
+                  <p>{selectedItem.achadoPor}</p>
                 </div>
 
-                <div className="flex justify-between mb-2 mt-6">
-                  <div className="flex flex-col">
-                    <p className="font-bold mb-2 whitespace-pre-wrap">Local:</p>
-                    <p className='whitespace-pre-wrap'>{selectedItem.local}</p>
-                  </div>
-
-                  <div className="flex flex-col items-center  min-w-[150px]">
-                    <p className="font-bold mb-2 whitespace-pre-wrap">Armazenado:</p>
-                    <p className='whitespace-pre-wrap'>{selectedItem.armazenado}</p>
-                  </div>
+                <div className="flex flex-col mb-2">
+                  <p className="font-bold whitespace-pre-wrap">Data:</p>
+                  <p>{formatDate(selectedItem.data)}</p>
                 </div>
 
-                <div className="mb-2 mt-8">
-                  <p className="font-bold mb-2 flex justify-center">Descrição:</p>
-                  <p className="text-center whitespace-pre-wrap">{selectedItem.detalhes}</p>
+                <div className="flex flex-col mb-2">
+                  <p className="font-bold whitespace-pre-wrap">Local:</p>
+                  <p>{selectedItem.local}</p>
+                </div>
+
+                <div className="flex flex-col mb-2">
+                  <p className="font-bold whitespace-pre-wrap">Armazenado:</p>
+                  <p>{selectedItem.armazenado}</p>
+                </div>
+
+                <div className="flex flex-col">
+                  <p className="font-bold whitespace-pre-wrap">Descrição:</p>
+                  <p>{selectedItem.detalhes}</p>
                 </div>
               </div>
 
               <div className="flex justify-center mt-4">
                 <button
                   className="bg-blue-500 text-white w-32 px-4 py-2 mr-2 flex justify-center shadow-[0px_2px_4px_2px_rgba(0,0,0,0.3)] rounded-lg items-center self-center transition duration-300 ease-in-out hover:bg-blue-600 hover:shadow-md"
-                  onClick={() => { handleEdit(selectedItem); }}>
+                  onClick={() => { handleEdit(selectedItem); }}
+                >
                   <FaEdit className="mr-2" /> Editar
                 </button>
 
@@ -269,11 +271,9 @@ const Itens = () => {
                 >
                   <FaTrash className="mr-2" /> Remover
                 </button>
-
               </div>
             </div>
           )}
-
         </Modal>
 
         <Modal
@@ -340,8 +340,10 @@ const Itens = () => {
               alignSelf: 'center'
             },
             content: {
-              width: '22rem',
-              height: '14rem',
+              width: '90%', 
+              maxWidth: '22rem', 
+              height: '90%', 
+              maxHeight: '14rem', 
               margin: 'auto',
               position: 'absolute',
               borderRadius: '10px',
@@ -405,7 +407,7 @@ const Itens = () => {
                   <div className={styles['campoItem']}>
                     <p className="font-bold mb-2 whitespace-pre-wrap">Local:</p>
                     <input
-                      className={styles['input-cadastro']}  
+                      className={styles['input-cadastro']}
                       type="text"
                       id="local"
                       value={editedItem.local}
@@ -472,12 +474,12 @@ const Itens = () => {
                   Salvar
                 </button>
 
-                <button 
-                className={styles['btn-reset']} 
-                type="reset"
-                onClick={handleEditCancel}
+                <button
+                  className={styles['btn-reset']}
+                  type="reset"
+                  onClick={handleEditCancel}
 
-               >
+                >
                   Cancelar
                 </button>
 

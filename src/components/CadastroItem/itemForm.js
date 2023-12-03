@@ -13,6 +13,14 @@ export default function ItemForm() {
     const [localImage, setLocalImage] = useState(null);
     const [readyToUpload, setReadyToUpload] = useState(false);
 
+    const handleImageClear = () => {
+        setLocalImage(null);
+        setReadyToUpload(false);
+        setImage(null);
+        setImageLoaded(false);
+    };
+    
+
     const handleFormClear = () => {
         setFormData({
             achadoPor: '',
@@ -21,6 +29,7 @@ export default function ItemForm() {
             data: '',
             detalhes: '',
         });
+        handleImageClear();
     };
 
     const [showSuccessModal, setShowSuccessModal] = useState(false);
