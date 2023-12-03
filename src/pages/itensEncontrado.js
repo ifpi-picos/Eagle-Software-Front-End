@@ -19,9 +19,13 @@ const Itens = () => {
 
   const formatDate = (isoDate) => {
     const date = new Date(isoDate);
-    const formattedDate = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
+
+    const options = { timeZone: 'UTC' };
+    const formattedDate = date.toLocaleDateString('pt-BR', options);
+  
     return formattedDate;
   };
+  
 
   const openModal = (item) => {
     setSelectedItem(item);
@@ -127,7 +131,7 @@ const Itens = () => {
   return (
     <div className='flex bg-aliceblue'>
       <Sidebar />
-      <div className="mx-auto self-center w-4/5 p-4">
+      <div className="mx-auto self-center lg:w-2/3 p-4">
         <h1 className="text-3xl font-bold mb-4 flex items-center justify-center">Lista de Itens</h1>
 
         {/* <form>
@@ -142,7 +146,7 @@ const Itens = () => {
           </div>  
         </form> */}
 
-        <div className="grid gap-8 grid-cols-1 md:grid-cols-2">
+        <div className="grid gap-8 grid-cols-1 md:grid-cols-2 sm:ml-28 ml-[50px]">
           {filteredItems.map((item) => (
             <div
               key={item.id}
@@ -152,7 +156,7 @@ const Itens = () => {
               <div className="image-container mb-2 flex justify-center">
                 <img
                   src={item.imagem_URL}
-                  alt={`Imagem do Item ${item.id}`}
+                  alt={`${item.id}`}
                   className="rounded-full border-2 object-cover w-52 h-52"
                 />
               </div>
@@ -185,8 +189,6 @@ const Itens = () => {
           ))}
         </div>
 
-        // ...
-
         <Modal
           isOpen={isModalOpen}
           onRequestClose={closeModal}
@@ -203,8 +205,8 @@ const Itens = () => {
             content: {
               width: '90vw',
               maxWidth: '40rem',
-              height: '90vh',
-              maxHeight: '41rem',
+              height: '92vh',
+              maxHeight: '43rem',
               margin: 'auto',
               position: 'absolute',
               borderRadius: '10px',
@@ -221,10 +223,10 @@ const Itens = () => {
           </div>
 
           {selectedItem && (
-            <div className="flex flex-col items-center p-4">
+            <div className="flex flex-col -mt-2 items-center p-4">
               <img
                 src={selectedItem.imagem_URL}
-                alt={`Imagem do Item ${selectedItem.id}`}
+                alt={`${selectedItem.id}`}
                 className="mb-2 rounded-full border-2 mx-auto w-52 h-52"
               />
 

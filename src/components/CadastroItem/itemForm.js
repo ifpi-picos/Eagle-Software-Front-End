@@ -38,6 +38,7 @@ export default function ItemForm() {
     const [errorMessage, setErrorMessage] = useState('');
     const [image, setImage] = useState(null);
     const [imageLoaded, setImageLoaded] = useState(false);
+    const [isButtonDisabled, setButtonDisabled] = useState(false);  
 
     const cloudinaryUploadPreset = 'my-uploads';
     const cloudinaryAPI = 'https://api.cloudinary.com/v1_1/dsrnunimq/image/upload';
@@ -71,8 +72,16 @@ export default function ItemForm() {
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
-
+    
+        // Adicione a lógica de validação aqui
+        if (!formData.achadoPor || !formData.local || !formData.armazenado || !formData.data || !formData.detalhes) {
+            setErrorMessage('Por favor, preencha todos os campos antes de cadastrar.');
+            setShowErrorModal(true);
+            return;
+        }
+    
         try {
+            setButtonDisabled(true);
             const response = await fetch('https://api-eagles-software.onrender.com/itens', {
                 method: 'POST',
                 headers: {
@@ -83,7 +92,7 @@ export default function ItemForm() {
                     imagem_URL: image,
                 }),
             });
-
+    
             if (response.ok) {
                 setSuccessMessage('Item cadastrado com sucesso!');
                 setShowSuccessModal(true);
@@ -107,8 +116,11 @@ export default function ItemForm() {
             console.error('Erro ao cadastrar item:', error);
             setErrorMessage('Erro ao cadastrar item. Por favor, tente novamente.');
             setShowErrorModal(true);
+        } finally {
+            setButtonDisabled(false);
         }
     };
+    
 
     useEffect(() => {
         return () => {
@@ -123,7 +135,7 @@ export default function ItemForm() {
 
             <form className={styles['formItem']} id="itemForm" onSubmit={(e) => e.preventDefault()}>
                 <div>
-                    <h1 className={styles['titulo']}>Cadastro de Itens</h1>
+                    <h1 className={styles['titulo']}>Cadastro de Itens</h1> 
                 </div>
 
                 <div className="grid grid-cols md:grid-cols-2 gap-4 justify-center">
@@ -194,7 +206,7 @@ export default function ItemForm() {
 
                         <div className={styles['campoItem']}>
                             <label className={styles['textItem']} htmlFor="detalhes">
-                                Detalhes do item:
+                                Descrição:
                             </label>
                             <textarea
                                 className={styles['itemDetails']}
@@ -235,12 +247,27 @@ export default function ItemForm() {
                 <div className={styles['btn-acao']}>
                     <button
                         className={styles['btn-submit']}
-                        type="button"
-                        onClick={(event) => readyToUpload && handleFormSubmit(event)}
+                        type='submit'
+                        onClick={(event) => handleFormSubmit(event)}
+                        disabled={isButtonDisabled}
                     >
                         Cadastrar
                     </button>
-                    <button className={styles['btn-reset']} type="reset" onClick={handleFormClear}>
+
+                    <button
+                     className={styles['btn-reset']}
+                     type="reset" 
+                     onClick={handleFormClear}
+                     disabled={
+                        !formData.achadoPor ||
+                        !formData.local ||
+                        !formData.armazenado ||
+                        !formData.data ||
+                        !formData.detalhes ||
+                        !image ||
+                        isButtonDisabled
+                    }
+                     >
                         Limpar
                     </button>
 
