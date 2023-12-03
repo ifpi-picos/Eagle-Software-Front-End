@@ -15,6 +15,10 @@ const Itens = () => {
   const [editedItem, setEditedItem] = useState({});
   const [isEditingMode, setIsEditingMode] = useState(false);
   const [showForm, setShowForm] = useState(false);
+  const [localImage, setLocalImage] = useState(null);
+  const [imageLoaded, setImageLoaded] = useState(false);
+  const [isLocalImageLoaded, setIsLocalImageLoaded] = useState(false);
+  const [newItemImage, setNewItemImage] = useState(null);
 
 
   const formatDate = (isoDate) => {
@@ -64,6 +68,20 @@ const Itens = () => {
     }
   };
 
+  const handleFileChange = async (event) => {
+    const file = event.target.files[0];
+  
+    if (file) {
+      try {
+        const localImageUrl = URL.createObjectURL(file);
+        setLocalImage(localImageUrl);
+        setNewItemImage(file);
+      } catch (error) {
+        console.error('Erro ao processar nova imagem:', error);
+      }
+    }
+  };
+
   useEffect(() => {
     fetch(`https://api-eagles-software.onrender.com/itens?search=${searchTerm}`)
       .then((response) => response.json())
@@ -81,34 +99,47 @@ const Itens = () => {
   );
 
 
+  const cloudinaryUploadPreset = 'my-uploads';
+  const cloudinaryAPI = 'https://api.cloudinary.com/v1_1/dsrnunimq/image/upload';
+
   const handleSave = async () => {
     try {
-      const response = await fetch(`https://api-eagles-software.onrender.com/itens/${editedItem.id}`, {
+      let updatedItem = { ...editedItem };
+  
+      if (newItemImage) {
+        const formData = new FormData();
+        formData.append('file', newItemImage);
+        formData.append('upload_preset', cloudinaryUploadPreset);
+  
+        const responseCloudinary = await fetch(cloudinaryAPI, {
+          method: 'POST',
+          body: formData,
+        });
+  
+        const dataCloudinary = await responseCloudinary.json();
+        updatedItem = { ...updatedItem, imagem_URL: dataCloudinary.secure_url };
+      }
+
+      const responseUpdate = await fetch(`https://api-eagles-software.onrender.com/itens/${editedItem.id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          achadoPor: editedItem.achadoPor,
-          local: editedItem.local,
-          armazenado: editedItem.armazenado,
-          data: editedItem.data,
-          detalhes: editedItem.detalhes,
-          imagem_URL: editedItem.imagem_URL,
-        }),
+        body: JSON.stringify(updatedItem),
       });
-
-      if (response.ok) {
+  
+      if (responseUpdate.ok) {
         const updatedItems = items.map((item) =>
-          item.id === editedItem.id ? editedItem : item
+          item.id === editedItem.id ? updatedItem : item
         );
-
+  
         setItems(updatedItems);
         setIsEditingMode(false);
         setEditedItem({});
+        setNewItemImage(null); 
         setShowForm(false);
       } else {
-        console.error('Erro ao atualizar item:', response);
+        console.error('Erro ao atualizar item:', responseUpdate);
       }
     } catch (error) {
       console.error('Erro ao atualizar item:', error);
@@ -120,6 +151,17 @@ const Itens = () => {
     setIsEditingMode(true);
     setShowForm(true);
     closeModal();
+
+    if (item.imagem_URL) {
+      setLocalImage(item.imagem_URL);
+      setIsLocalImageLoaded(true);
+    } else {
+
+      setLocalImage(null);
+      setIsLocalImageLoaded(false);
+    }
+  
+    setNewItemImage(null);
   };
 
   const handleEditCancel = () => {
@@ -445,7 +487,7 @@ const Itens = () => {
                   </div>
                 </div>
 
-                {/* <div className={styles['input-upload']}>
+                <div className={styles['input-upload']}>
                   <div className={styles['image-preview-container']}>
                     {localImage ? (
                       <img src={localImage} alt="Imagem do item" className={styles['image-preview']} />
@@ -464,7 +506,8 @@ const Itens = () => {
                       </button>
                     </div>
                   </div>
-                </div> */}
+                </div>
+
               </div>
 
               <div className={styles['btn-acao']}>

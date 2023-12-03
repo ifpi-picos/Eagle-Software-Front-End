@@ -103,16 +103,13 @@
                             detalhes: '',
                         });
                         setShowSuccessModal(false);
-                        handleImageClear();
                     }, 3000);
                 } else {
                     const errorData = await response.json();
-                    console.error('Erro ao cadastrar item:', errorData);
                     setErrorMessage('Erro ao cadastrar item. Por favor, tente novamente.');
                     setShowErrorModal(true);
                 }
             } catch (error) {
-                console.error('Erro ao cadastrar item:', error);
                 setErrorMessage('Erro ao cadastrar item. Por favor, tente novamente.');
                 setShowErrorModal(true);
             } finally {
@@ -257,7 +254,6 @@
                         className={styles['btn-reset']}
                         type="reset" 
                         onClick={handleFormClear}
-
                         >
                             Limpar
                         </button>
