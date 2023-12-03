@@ -31,6 +31,11 @@ const Sidebar = () => {
     }
   }, [open]);
 
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    router.push('/login').then(() => window.location.reload());
+  };
+
   return (
     <section className="flex gap-6">
       <div
@@ -61,6 +66,7 @@ const Sidebar = () => {
               key={i}
               className={` ${menu?.margin && "mt-5"
                 } group flex items-center text-sm  gap-3.5 font-medium p-4 hover:bg-gray-800 rounded-md`}
+                onClick={menu?.name === "Sair" ? handleLogout : null}
             >
               <div>{React.createElement(menu?.icon, { size: "20" })}</div>
               <h2

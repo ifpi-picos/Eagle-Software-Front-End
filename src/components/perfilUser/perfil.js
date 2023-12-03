@@ -33,7 +33,6 @@ export default function Perfil() {
 
     const handleSaveClick = () => {
         setEditing(false);
-        // Aqui você pode adicionar lógica para salvar os dados no backend, se necessário.
     };
 
     return (
