@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { BiEnvelope, BiLock, BiShow } from 'react-icons/bi';
+import { BiEnvelope, BiLock, BiShow, BiHide } from 'react-icons/bi'; 
 import styles from './formLoginCadastro.module.css';
 import Link from 'next/link';
+import { ImEye, ImEyeBlocked } from "react-icons/im";
 import { useRouter } from 'next/router';
 
 const LoginForm = () => {
@@ -20,7 +21,7 @@ const LoginForm = () => {
     setShowWelcomeModal(true);
     setTimeout(() => {
       setShowWelcomeModal(false);
-    }, 5000); // O modal será exibido por 5 segundos
+    }, 5000);
   };
 
   const handleFormEdit = (e, field) => {
@@ -125,10 +126,17 @@ const LoginForm = () => {
             required value={formData.senha}
             minLength="8"
           />
-          <BiShow
-            className={styles['show-password']}
-            onClick={() => setShowPassword(!showPassword)}
-          />
+          {showPassword ? (
+            <ImEye
+              className={styles['show-password']}
+              onClick={() => setShowPassword(!showPassword)}
+            />
+          ) : (
+            <ImEyeBlocked
+              className={styles['show-password']}
+              onClick={() => setShowPassword(!showPassword)}
+            />
+          )}
         </div>
 
         <div className={styles['forgot-password']}>
