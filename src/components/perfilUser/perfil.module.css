@@ -19,8 +19,8 @@
 
 .profile-picture {
     position: relative;
-    width: 150px;
-    height: 150px;
+    width: 14rem;
+    height: 14rem;
     border-radius: 50%;
     overflow: hidden;
     margin-bottom: 20px;
@@ -110,6 +110,13 @@
 }
 
 .save-button {
+    width: 6rem;
+    background-color: #3498db;
+    color: #ffffff;
+}
+
+.cancel-button {
+    width: 6rem;
     background-color: #3498db;
     color: #ffffff;
 }

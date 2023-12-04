@@ -53,12 +53,13 @@ const LoginForm = () => {
         console.log('Login bem-sucedido:', data);
 
         localStorage.setItem('token', data.token);
-        
-        router.push('/home');
 
+        // Buscar informações do perfil do usuário
+        fetchUserProfile();
+
+        router.push('/home');
         showWelcome();
         return;
-
       } else {
         const errorData = await response.json();
         console.error('Erro ao fazer login:', errorData);
@@ -69,24 +70,39 @@ const LoginForm = () => {
       console.error('Erro inesperado:', error);
       setError('Ocorreu um erro ao processar o login. Tente novamente mais tarde.');
       setShowErrorModal(true);
-
     } finally {
       setIsLoading(false);
     }
-  }; {
-    showWelcomeModal && (
-      <div className={styles.modalBackground}>
-        <div className={styles.modalContent}>
-          <p>Bem-vindo! Você fez login com sucesso.</p>
-          <button onClick={() => setShowWelcomeModal(false)}>Fechar</button>
-        </div>
-      </div>
-    )
-  }
+  };
+
+  // Função para buscar informações do perfil do usuário
+  const fetchUserProfile = async () => {
+    try {
+      const token = localStorage.getItem('token');
+
+      if (token) {
+        const response = await fetch('https://api-eagles-software.onrender.com/usuarios/perfil', {
+          method: 'GET',
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json',
+          },
+        });
+
+        if (response.ok) {
+          const userData = await response.json();
+          console.log('Perfil do usuário:', userData);
+        }
+      }
+    } catch (error) {
+      console.error('Erro ao obter perfil do usuário:', error);
+    }
+  };
 
   const closeErrorModal = () => {
     setShowErrorModal(false);
   };
+
 
 
   return (
