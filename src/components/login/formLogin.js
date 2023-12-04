@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BiEnvelope, BiLock, BiShow, BiHide } from 'react-icons/bi'; 
+import { BiEnvelope, BiLock } from 'react-icons/bi'; 
 import styles from './formLoginCadastro.module.css';
 import Link from 'next/link';
 import { ImEye, ImEyeBlocked } from "react-icons/im";

@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { BiUser, BiEnvelope, BiLock, BiShow } from 'react-icons/bi'
+import { ImEye, ImEyeBlocked } from "react-icons/im";
 import styles from '../login/formLoginCadastro.module.css'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
@@ -107,10 +108,17 @@ export default function CadastroForm() {
             required value={formData.senha}
             minLength="8"
           />
-          <BiShow
-            className={styles['show-password']}
-            onClick={() => setShowPassword(!showPassword)}
-          />
+          {showPassword ? (
+            <ImEye
+              className={styles['show-password']}
+              onClick={() => setShowPassword(!showPassword)}
+            />
+          ) : (
+            <ImEyeBlocked
+              className={styles['show-password']}
+              onClick={() => setShowPassword(!showPassword)}
+            />
+          )}
         </div>
 
         <button type="submit" className={styles['button-style']}>

@@ -351,7 +351,7 @@ const Itens = ({ sortingCriteria }) => {
               alignSelf: 'center'
             },
             content: {
-              width: '24rem',
+              width: '26rem',
               height: '16rem',
               margin: 'auto',
               position: 'absolute',

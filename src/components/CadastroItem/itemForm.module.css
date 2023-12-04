@@ -272,6 +272,10 @@
     background-color: #2a7aaf;
 }
 
+.custom-modal-content-small-screen {
+    margin-left: 2rem;
+  }
+
 @keyframes fadeIn {
     from {
         opacity: 0;
