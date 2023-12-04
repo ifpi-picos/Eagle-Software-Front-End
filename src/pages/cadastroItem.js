@@ -2,8 +2,9 @@ import React from "react"
 import Sidebar from '../components/sidebar/menu'
 import ItemForm from "../components/CadastroItem/itemForm"
 import styles from '../components/CadastroItem/itemForm.module.css'
+import { authMiddleware } from "../middlewares/authMiddleware";
 
-export default function CadastrarItem() {
+const CadastrarItem = () =>  {
     return (
         <div className={styles['main-cadastro-item']}>
         <div className="flex">
@@ -16,3 +17,5 @@ export default function CadastrarItem() {
         </div>
     );
 }
+
+export default authMiddleware(CadastrarItem);

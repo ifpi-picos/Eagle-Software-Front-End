@@ -1,8 +1,9 @@
 import React from "react"
 import Sidebar from '../components/sidebar/menu'
 import Perfil from "../components/perfilUser/perfil"
+import { authMiddleware } from "../middlewares/authMiddleware";
 
-export default function PerfilUser() {
+const PerfilUser = () => {
     return (
         <div className='flex'>
             <Sidebar />
@@ -12,3 +13,5 @@ export default function PerfilUser() {
         </div>
     );
 }
+
+export default authMiddleware(PerfilUser)

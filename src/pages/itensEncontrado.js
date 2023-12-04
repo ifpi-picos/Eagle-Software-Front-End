@@ -1,6 +1,9 @@
 import React from "react";
 import Itens from "../components/listaItens/itensCadastrados";
+import { authMiddleware } from "../middlewares/authMiddleware";
 
-export default function ItensPage () {
+const ItensPage = () => {
   return <Itens sortingCriteria="id" />;
 }
+
+export default authMiddleware(ItensPage);

@@ -51,14 +51,18 @@ const LoginForm = () => {
       if (response.ok) {
         const data = await response.json();
         console.log('Login bem-sucedido:', data);
-
+    
         localStorage.setItem('token', data.token);
-
-        // Buscar informações do perfil do usuário
-        fetchUserProfile();
-
-        router.push('/home');
-        showWelcome();
+    
+        if (data.token) {
+          fetchUserProfile();
+          router.push('/home');
+          showWelcome();
+        } else {
+          setError('Falha ao obter token de autenticação.');
+          setShowErrorModal(true);
+        }
+    
         return;
       } else {
         const errorData = await response.json();

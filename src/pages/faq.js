@@ -1,8 +1,9 @@
 import Sidebar from '../components/sidebar/menu';
 import styles from '../components/sidebar/menu.module.css';
 import FaqPage from '../components/paginaFaq/faq';
-
-export default function telaFaq() {
+import { authMiddleware } from '../middlewares/authMiddleware';
+ 
+const telaFaq = () => {
   return (
     <div className={styles['body-faq']}>
       <div className="flex bg-aliceblue h-screen">
@@ -14,3 +15,5 @@ export default function telaFaq() {
     </div>
   );
 }
+
+export default authMiddleware(telaFaq);
