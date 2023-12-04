@@ -5,7 +5,7 @@ import { FaPlus, FaEye, FaUser, FaQuestion, FaArrowLeft, } from 'react-icons/fa'
 import Link from 'next/link'
 import SearchBar from "../busca/search"
 import { isMobile } from 'react-device-detect'
-
+import { router } from 'next/router';
 
 const Sidebar = () => {
   const menus = [
@@ -33,7 +33,7 @@ const Sidebar = () => {
 
   const handleLogout = () => {
     localStorage.removeItem('token');
-    router.push('/login').then(() => window.location.reload());
+    router.push('/login');
   };
 
   return (
