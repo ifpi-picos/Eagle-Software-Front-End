@@ -18,7 +18,7 @@ const Perfil = () => {
                 const token = localStorage.getItem('token');
 
                 if (token) {
-                    const response = await fetch('http://localhost:4000/usuarios/perfil', {
+                    const response = await fetch('https://api-eagles-software.onrender.com/usuarios/perfil', {
                         method: 'GET',
                         headers: {
                             'Authorization': `Bearer ${token}`,
@@ -61,7 +61,7 @@ const Perfil = () => {
                     formData.append('usuario_IMG', newImage);
                 }
 
-                const response = await fetch('http://localhost:4000/usuarios/atualizar-perfil', {
+                const response = await fetch('https://api-eagles-software.onrender.com/usuarios/atualizar-perfil', {
                     method: 'PUT',
                     headers: {
                         'Authorization': `Bearer ${token}`,
