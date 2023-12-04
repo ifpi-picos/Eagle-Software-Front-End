@@ -11,6 +11,7 @@ const Perfil = () => {
     const [editing, setEditing] = useState(false);
     const [newImage, setNewImage] = useState(null);
     const [tempUserData, setTempUserData] = useState({});
+    const [previewImage, setPreviewImage] = useState('');
 
     useEffect(() => {
         const fetchUserProfile = async () => {
@@ -88,6 +89,7 @@ const Perfil = () => {
         if (file) {
             setNewImage(file);
             setTempUserData((prevTempUserData) => ({ ...prevTempUserData, usuario_IMG: URL.createObjectURL(file) }));
+            setPreviewImage(URL.createObjectURL(file));
         }
     };
 
@@ -99,13 +101,20 @@ const Perfil = () => {
         <div className={styles.containerPerfil}>
             <div className={styles.profile}>
                 <div className={styles['profile-picture']}>
-                    {editing ? (
-                        <input
-                            type="file"
-                            id="image-upload"
-                            accept="image/*"
-                            onChange={handleImageChange}
-                        />
+                {editing ? (
+                        <>
+                            <input
+                                type="file"
+                                id="image-upload"
+                                accept="image/*"
+                                onChange={handleImageChange}
+                            />
+                            <img
+                                className={styles['profile-img-preview']}
+                                src={previewImage || '/perfil_imagem.png'}
+                                alt="Prévia da foto de perfil"
+                            />
+                        </>
                     ) : (
                         <img
                             className={styles['profile-img']}
