@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from "react"
-import { HiMenuAlt3 } from "react-icons/hi"
-import { AiFillHome } from "react-icons/ai"
-import { FaPlus, FaEye, FaUser, FaQuestion, FaArrowLeft, } from 'react-icons/fa'
-import Link from 'next/link'
-import SearchBar from "../busca/search"
-import { isMobile } from 'react-device-detect'
-import { router } from 'next/router';
+import React, { useState, useEffect } from "react";
+import { HiMenuAlt3 } from "react-icons/hi";
+import { AiFillHome } from "react-icons/ai";
+import { FaPlus, FaEye, FaUser, FaQuestion, FaArrowLeft } from 'react-icons/fa';
+import Link from 'next/link';
+import SearchBar from "../busca/search";
+import { isMobile } from 'react-device-detect';
+import { useRouter } from 'next/router';
 
-const Sidebar = () => {
+const Sidebar = ({ onSearch }) => {
   const menus = [
     { name: "Home", link: "/home", icon: AiFillHome },
     { name: "Itens Encontrados", link: "/itensEncontrado", icon: FaEye },
@@ -24,6 +24,8 @@ const Sidebar = () => {
     }
     return false;
   });
+
+  const router = useRouter();
 
   useEffect(() => {
     if (typeof window !== "undefined" && !isMobile) {
@@ -59,7 +61,7 @@ const Sidebar = () => {
             </div>
           </div>
 
-          <SearchBar open={open} />
+          <SearchBar onSearch={onSearch} />
 
           {menus?.map((menu, i) => (
             <Link href={menu?.link}

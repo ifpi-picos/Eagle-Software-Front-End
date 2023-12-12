@@ -1,28 +1,30 @@
 import React, { useState } from 'react';
-import { BiEnvelope, BiLock } from 'react-icons/bi'; 
+import { BiEnvelope, BiLock } from 'react-icons/bi';
 import styles from './formLoginCadastro.module.css';
 import Link from 'next/link';
 import { ImEye, ImEyeBlocked } from "react-icons/im";
 import { useRouter } from 'next/router';
+import ErrorModal from '../modals/modalError';
 
 const LoginForm = () => {
   const [formData, setFormData] = useState({
     email: '',
     senha: '',
   });
+  
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [showErrorModal, setShowErrorModal] = useState(false);
   const router = useRouter();
-  const [showWelcomeModal, setShowWelcomeModal] = useState(false);
+  // const [showWelcomeModal, setShowWelcomeModal] = useState(false);
 
-  const showWelcome = () => {
-    setShowWelcomeModal(true);
-    setTimeout(() => {
-      setShowWelcomeModal(false);
-    }, 5000);
-  };
+  // const showWelcome = () => {
+  //   setShowWelcomeModal(true);
+  //   setTimeout(() => {
+  //     setShowWelcomeModal(false);
+  //   }, 5000);
+  // };
 
   const handleFormEdit = (e, field) => {
     setFormData({ ...formData, [field]: e.target.value });
@@ -30,12 +32,6 @@ const LoginForm = () => {
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
-
-    if (!formData.email || !formData.senha) {
-      setError('Por favor, preencha todos os campos.');
-      setShowErrorModal(true);
-      return;
-    }
 
     setIsLoading(true);
 
@@ -51,9 +47,9 @@ const LoginForm = () => {
       if (response.ok) {
         const data = await response.json();
         console.log('Login bem-sucedido:', data);
-    
+
         localStorage.setItem('token', data.token);
-    
+
         if (data.token) {
           fetchUserProfile();
           router.push('/home');
@@ -62,16 +58,14 @@ const LoginForm = () => {
           setError('Falha ao obter token de autenticação.');
           setShowErrorModal(true);
         }
-    
+
         return;
+
       } else {
-        const errorData = await response.json();
-        console.error('Erro ao fazer login:', errorData);
         setError('Credenciais inválidas. Por favor, verifique seu e-mail e senha.');
         setShowErrorModal(true);
       }
     } catch (error) {
-      console.error('Erro inesperado:', error);
       setError('Ocorreu um erro ao processar o login. Tente novamente mais tarde.');
       setShowErrorModal(true);
     } finally {
@@ -106,8 +100,6 @@ const LoginForm = () => {
   const closeErrorModal = () => {
     setShowErrorModal(false);
   };
-
-
 
   return (
     <form className={styles['form-login-cadastro']} onSubmit={handleFormSubmit}>
@@ -173,28 +165,19 @@ const LoginForm = () => {
           </span>
         </div>
       </div>
+
       {showErrorModal && (
-        <div className={styles.modalBackground}>
-          <div className={styles.modalContent}>
-            <div className={styles.errorIcon}>
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-              </svg>
-            </div>
-            <p>{error}</p>
-            <button onClick={closeErrorModal}>Fechar</button>
-          </div>
-        </div>
+        <ErrorModal errorMessage={error} onClose={closeErrorModal} />
       )}
 
-      {showWelcomeModal && (
+      {/* {showWelcomeModal && (
         <div className={styles.modalBackground}>
           <div className={styles.modalContent}>
             <p>Bem-vindo! Você fez login com sucesso.</p>
             <button onClick={() => setShowWelcomeModal(false)}>Fechar</button>
           </div>
         </div>
-      )}
+      )} */}
     </form>
   );
 };
