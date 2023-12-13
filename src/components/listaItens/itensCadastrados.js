@@ -9,7 +9,6 @@ import EditItemForm from '../editItem/editItemForm.js';
 import SuccessModal from '../modals/modalSucess.js';
 import ItemCard from '../card/ItemCard.js';
 
-
 const Itens = ({ sortingCriteria }) => {
   const [items, setItems] = useState([]);
   const [selectedItem, setSelectedItem] = useState(null);
@@ -122,21 +121,21 @@ const Itens = ({ sortingCriteria }) => {
   const handleSave = async () => {
     try {
       let updatedItem = { ...editedItem };
-
+  
       if (newItemImage) {
         const formData = new FormData();
         formData.append('file', newItemImage);
         formData.append('upload_preset', cloudinaryUploadPreset);
-
+  
         const responseCloudinary = await fetch(cloudinaryAPI, {
           method: 'POST',
           body: formData,
         });
-
+  
         const dataCloudinary = await responseCloudinary.json();
         updatedItem = { ...updatedItem, imagem_URL: dataCloudinary.secure_url };
       }
-
+  
       const responseUpdate = await fetch(`https://api-eagles-software.onrender.com/itens/${editedItem.id}`, {
         method: 'PUT',
         headers: {
@@ -144,12 +143,12 @@ const Itens = ({ sortingCriteria }) => {
         },
         body: JSON.stringify(updatedItem),
       });
-
+  
       if (responseUpdate.ok) {
         const updatedItems = items.map((item) =>
           item.id === editedItem.id ? updatedItem : item
         );
-
+  
         setItems(updatedItems);
         setIsEditingMode(false);
         setEditedItem({});

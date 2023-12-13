@@ -7,6 +7,7 @@ import { useRouter } from 'next/router'
 import SuccessModal from '../modals/modalSucess';
 import ErrorModal from '../modals/modalError';
 import { cadastrarUsuario } from '../../services/userService';
+import { BeatLoader } from 'react-spinners';
 
 export default function CadastroForm() {
   const [formData, setFormData] = useState({
@@ -14,12 +15,13 @@ export default function CadastroForm() {
     email: '',
     senha: '',
   });
-  
+
   const [showPassword, setShowPassword] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [showErrorModal, setShowErrorModal] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
 
   const handleFormEdit = (e, field) => {
@@ -27,7 +29,9 @@ export default function CadastroForm() {
   };
 
   const handleFormSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault(); 
+
+    setIsLoading(true);
 
     try {
       const result = await cadastrarUsuario(formData);
@@ -39,9 +43,10 @@ export default function CadastroForm() {
         setShowErrorModal(true);
       }
     } catch (error) {
-      console.error('Erro inesperado:', error);
       setErrorMessage('Erro interno do servidor');
       setShowErrorModal(true);
+    }finally {
+      setIsLoading(false);
     }
   };
 
@@ -114,9 +119,23 @@ export default function CadastroForm() {
           )}
         </div>
 
-        <button type="submit" className={styles['button-style']}>
-          Cadastrar
+        <button type="submit" className={styles['button-style']} disabled={isLoading}>
+          {isLoading ? (
+            <BeatLoader size={10} color={'#fff'} loading={isLoading} />
+          ) : (
+            'Cadastrar'
+          )}
         </button>
+
+        {/* <button type="submit" className={styles['button-style']} disabled={isLoading}>
+          {isLoading ? (
+            <div className={styles['spinner']}>
+              <BeatLoader size={10} color={'#fff'} loading={isLoading} />
+            </div>
+          ) : (
+            'Cadastrar'
+          )}
+        </button> */}
 
         <div className={styles['link-page']}>
           <span className={styles['text-login-cadastro']}>

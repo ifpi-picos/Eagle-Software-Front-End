@@ -1,5 +1,6 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styles from '../CadastroItem/itemForm.module.css';
+import { BeatLoader } from 'react-spinners';
 
 const EditItemForm = ({
     editedItem,
@@ -10,6 +11,9 @@ const EditItemForm = ({
     localImage,
     imageLoaded,
 }) => {
+
+    const [loadingSave, setLoadingSave] = useState(false);
+
     return (
         <div className={`${styles['bodyItem']} ${styles['form-container']}`}>
             <form className={styles['formItem']} id="itemForm" onSubmit={(e) => e.preventDefault()}>
@@ -103,8 +107,17 @@ const EditItemForm = ({
                 </div>
 
                 <div className={styles['btn-acao']}>
-                    <button className={styles['btn-submit']} type="button" onClick={handleSave}>
-                        Salvar
+                    <button
+                        className={styles['btn-submit']}
+                        type="button"
+                        onClick={handleSave}
+                        disabled={loadingSave}
+                    >
+                        {loadingSave ? (
+                            <BeatLoader size={10} color={'#fff'} loading={loadingSave} />
+                        ) : (
+                            'Salvar'
+                        )}
                     </button>
 
                     <button className={styles['btn-reset']} type="reset" onClick={handleEditCancel}>

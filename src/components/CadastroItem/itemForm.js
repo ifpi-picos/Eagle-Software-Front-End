@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styles from './itemForm.module.css';
+import { BeatLoader } from 'react-spinners';
 
 export default function ItemForm() {
     const [formData, setFormData] = useState({
@@ -12,6 +13,7 @@ export default function ItemForm() {
 
     const [localImage, setLocalImage] = useState(null);
     const [readyToUpload, setReadyToUpload] = useState(false);
+    const [loadingSubmit, setLoadingSubmit] = useState(false);
 
     const handleImageClear = () => {
         setLocalImage(null);
@@ -260,7 +262,11 @@ export default function ItemForm() {
                         onClick={(event) => handleFormSubmit(event)}
                         disabled={isButtonDisabled}
                     >
-                        Cadastrar
+                        {loadingSubmit ? (
+                            <BeatLoader size={10} color={'#fff'} loading={loadingSubmit} />
+                        ) : (
+                            'Cadastrar'
+                        )}
                     </button>
 
                     <button

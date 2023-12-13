@@ -7,6 +7,7 @@ import { useRouter } from 'next/router';
 import ErrorModal from '../modals/modalError';
 import { fazerLogin } from '../../services/userService';
 import SuccessModal from '../modals/modalSucess';
+import { BeatLoader } from 'react-spinners';
 
 const LoginForm = () => {
   const [formData, setFormData] = useState({
@@ -149,8 +150,13 @@ const LoginForm = () => {
           <a className={styles['forgot-password-link']} href="/recuperarSenha">Esqueceu a senha?</a>
         </div>
 
+
         <button type="submit" className={styles['button-style']} disabled={isLoading}>
-          {isLoading ? 'Carregando...' : 'Entrar'}
+          {isLoading ? (
+            <BeatLoader size={10} color={'#fff'} loading={isLoading} />
+          ) : (
+            'Entrar'
+          )}
         </button>
 
         <div className={styles['link-page']}>
