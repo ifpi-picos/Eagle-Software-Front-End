@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import SuccessModal from '../modals/modalSucess';
 import ErrorModal from '../modals/modalError';
+import { cadastrarUsuario } from '../../services/userService';
 
 export default function CadastroForm() {
   const [formData, setFormData] = useState({
@@ -29,23 +30,14 @@ export default function CadastroForm() {
     e.preventDefault();
 
     try {
-      const response = await fetch('https://api-eagles-software.onrender.com/usuarios', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
+      const result = await cadastrarUsuario(formData);
 
-      if (response.ok) {
-        const data = await response.json();
+      if (result.success) {
         setShowSuccessModal(true);
       } else {
-        const errorData = await response.json();
-        setErrorMessage(errorData.error || 'Erro desconhecido');
+        setErrorMessage(result.error);
         setShowErrorModal(true);
       }
-
     } catch (error) {
       console.error('Erro inesperado:', error);
       setErrorMessage('Erro interno do servidor');

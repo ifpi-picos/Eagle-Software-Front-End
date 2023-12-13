@@ -89,26 +89,26 @@ const Itens = ({ sortingCriteria }) => {
     }
   };
 
-useEffect(() => {
-  let apiUrl = 'https://api-eagles-software.onrender.com/itens';
+  useEffect(() => {
+    let apiUrl = 'https://api-eagles-software.onrender.com/itens';
 
-  if (sortingCriteria === 'recentes') {
-    apiUrl += '/recentes';
-    setPageTitle('Itens Recentes');
-  } else if (sortingCriteria === 'antigos') {
-    apiUrl += '/antigos';
-    setPageTitle('Itens Antigos');
-  } else {
-    setPageTitle('Lista de Itens');
-  }
+    if (sortingCriteria === 'recentes') {
+      apiUrl += '/recentes';
+      setPageTitle('Itens Recentes');
+    } else if (sortingCriteria === 'antigos') {
+      apiUrl += '/antigos';
+      setPageTitle('Itens Antigos');
+    } else {
+      setPageTitle('Lista de Itens');
+    }
 
-  apiUrl += `?search=${searchTerm}`;
+    apiUrl += `?search=${searchTerm}`;
 
-  fetch(apiUrl)
-    .then((response) => response.json())
-    .then((data) => setItems(data))
-    .catch((error) => console.error('Erro ao obter itens:', error));
-}, [searchTerm, sortingCriteria]);
+    fetch(apiUrl)
+      .then((response) => response.json())
+      .then((data) => setItems(data))
+      .catch((error) => console.error('Erro ao obter itens:', error));
+  }, [searchTerm, sortingCriteria]);
 
 
   const filteredItems = items.filter((item) =>
@@ -195,7 +195,7 @@ useEffect(() => {
 
   return (
     <div className='flex bg-aliceblue'>
-        <Sidebar onSearch={handleSearch} />
+      <Sidebar onSearch={handleSearch} />
       <div className="mx-auto self-center lg:w-2/3 p-4">
         <h1 className="text-3xl font-bold mb-4 flex items-center justify-center">{pageTitle}</h1>
         <div className="grid gap-8 grid-cols-1 md:grid-cols-2 sm:ml-28 ml-[50px]">

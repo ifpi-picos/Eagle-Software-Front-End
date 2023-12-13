@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { ImEye, ImEyeBlocked } from "react-icons/im";
 import { useRouter } from 'next/router';
 import ErrorModal from '../modals/modalError';
+import { fazerLogin } from '../../services/userService';
 
 const LoginForm = () => {
   const [formData, setFormData] = useState({
@@ -17,14 +18,6 @@ const LoginForm = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [showErrorModal, setShowErrorModal] = useState(false);
   const router = useRouter();
-  // const [showWelcomeModal, setShowWelcomeModal] = useState(false);
-
-  // const showWelcome = () => {
-  //   setShowWelcomeModal(true);
-  //   setTimeout(() => {
-  //     setShowWelcomeModal(false);
-  //   }, 5000);
-  // };
 
   const handleFormEdit = (e, field) => {
     setFormData({ ...formData, [field]: e.target.value });
@@ -36,16 +29,10 @@ const LoginForm = () => {
     setIsLoading(true);
 
     try {
-      const response = await fetch('https://api-eagles-software.onrender.com/usuarios/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
+      const result = await fazerLogin(formData);
 
-      if (response.ok) {
-        const data = await response.json();
+      if (result.success) {
+        const data = result.data;
         console.log('Login bem-sucedido:', data);
 
         localStorage.setItem('token', data.token);
@@ -62,7 +49,7 @@ const LoginForm = () => {
         return;
 
       } else {
-        setError('Credenciais inválidas. Por favor, verifique seu e-mail e senha.');
+        setError(result.error);
         setShowErrorModal(true);
       }
     } catch (error) {
@@ -170,14 +157,6 @@ const LoginForm = () => {
         <ErrorModal errorMessage={error} onClose={closeErrorModal} />
       )}
 
-      {/* {showWelcomeModal && (
-        <div className={styles.modalBackground}>
-          <div className={styles.modalContent}>
-            <p>Bem-vindo! Você fez login com sucesso.</p>
-            <button onClick={() => setShowWelcomeModal(false)}>Fechar</button>
-          </div>
-        </div>
-      )} */}
     </form>
   );
 };
