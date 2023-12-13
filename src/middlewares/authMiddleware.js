@@ -10,7 +10,6 @@ export const authMiddleware = (WrappedComponent) => {
       const checkAuth = async () => {
         const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null;
 
-        // Verificar se o usuário está autenticado
         if (!token) {
           router.replace('/login');
         } else {

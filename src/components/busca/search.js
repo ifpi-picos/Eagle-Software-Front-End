@@ -16,7 +16,7 @@ const SearchBar = ({ open, onSearch }) => {
       <input
         type="search"
         placeholder="Buscar"
-        className={`text-base bg-transparent w-full ml-4 text-white focus:outline-none`}
+        className={`text-base bg-transparent w-full ml-4 text-white focus:outline-none ${!open}`}
         value={searchQuery}
         onChange={handleInputChange}
       />
