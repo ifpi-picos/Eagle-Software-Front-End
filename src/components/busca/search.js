@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { BsSearch } from "react-icons/bs";
 
-const SearchBar = ({ open, onSearch }) => {
+const SearchBar = ({ onSearch, isOpen }) => {
   const [searchQuery, setSearchQuery] = useState("");
 
   const handleInputChange = (e) => {
@@ -11,12 +11,12 @@ const SearchBar = ({ open, onSearch }) => {
   };
 
   return (
-    <div className="flex items-center m-0 rounded-md bg-ligth-white mt-6 h-12 px-4 py-2">
-      <BsSearch className={`text-white flex w-8 h-5 text-lg ${!open && 'opacity-1'}`} />
+    <div className="flex items-center m-0 rounded-md bg-ligth-white mt-6 h-12 pl-4 py-2">
+      <BsSearch className="text-white flex w-8 h-5 text-lg" />
       <input
         type="search"
-        placeholder="Buscar"
-        className={`text-base bg-transparent w-full ml-4 text-white focus:outline-none ${!open}`}
+        placeholder={isOpen ? "Buscar" : ""}
+        className="text-base bg-transparent w-full text-white focus:outline-none"
         value={searchQuery}
         onChange={handleInputChange}
       />

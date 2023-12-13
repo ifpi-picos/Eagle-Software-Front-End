@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BiEnvelope, BiLock } from 'react-icons/bi';
 import styles from './formLoginCadastro.module.css';
 import Link from 'next/link';
@@ -6,17 +6,20 @@ import { ImEye, ImEyeBlocked } from "react-icons/im";
 import { useRouter } from 'next/router';
 import ErrorModal from '../modals/modalError';
 import { fazerLogin } from '../../services/userService';
+import SuccessModal from '../modals/modalSucess';
 
 const LoginForm = () => {
   const [formData, setFormData] = useState({
     email: '',
     senha: '',
   });
-  
+
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [showErrorModal, setShowErrorModal] = useState(false);
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
+
   const router = useRouter();
 
   const handleFormEdit = (e, field) => {
@@ -40,7 +43,7 @@ const LoginForm = () => {
         if (data.token) {
           fetchUserProfile();
           router.push('/home');
-          showWelcome();
+          setShowSuccessModal(true);
         } else {
           setError('Falha ao obter token de autenticação.');
           setShowErrorModal(true);
@@ -59,6 +62,11 @@ const LoginForm = () => {
       setIsLoading(false);
     }
   };
+
+  useEffect(() => {
+    // Este código será executado quando o componente for montado
+    setShowSuccessModal(false); // Reinicializa o estado ao montar o componente
+  }, []);
 
   // Função para buscar informações do perfil do usuário
   const fetchUserProfile = async () => {
@@ -152,6 +160,13 @@ const LoginForm = () => {
           </span>
         </div>
       </div>
+
+      {showSuccessModal && (
+        <SuccessModal
+          message="Login bem-sucedido."
+          onClose={() => setShowSuccessModal(false)}
+        />
+      )}
 
       {showErrorModal && (
         <ErrorModal errorMessage={error} onClose={closeErrorModal} />

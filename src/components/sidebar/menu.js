@@ -61,7 +61,7 @@ const Sidebar = ({ onSearch }) => {
             </div>
           </div>
 
-          <SearchBar onSearch={onSearch} />
+          <SearchBar onSearch={onSearch} isOpen={open} />
 
           {menus?.map((menu, i) => (
             <Link href={menu?.link}
