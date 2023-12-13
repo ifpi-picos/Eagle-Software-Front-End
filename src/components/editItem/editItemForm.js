@@ -9,15 +9,12 @@ const EditItemForm = ({
     handleFileChange,
     localImage,
     imageLoaded,
-    image,
-
 }) => {
-    
     return (
         <div className={`${styles['bodyItem']} ${styles['form-container']}`}>
             <form className={styles['formItem']} id="itemForm" onSubmit={(e) => e.preventDefault()}>
                 <div>
-                    <h1 className={styles['titulo']}>Editar Itens</h1>
+                    <h1 className={styles['titulo']}>Editar Item</h1>
                 </div>
 
                 <div className="grid grid-cols md:grid-cols-2 gap-4 justify-center">
@@ -87,8 +84,8 @@ const EditItemForm = ({
                         <div className={styles['image-preview-container']}>
                             {localImage ? (
                                 <img src={localImage} alt="Imagem do item" className={styles['image-preview']} />
-                            ) : imageLoaded ? (
-                                <img src={image} alt="Imagem do item" className={styles['image-preview']} />
+                            ) : editedItem.imagem_URL && imageLoaded ? (
+                                <img src={editedItem.imagem_URL} alt="Imagem do item" className={styles['image-preview']} />
                             ) : (
                                 <img src="/camera.jpg" alt="Imagem padrão" className={styles['image-preview']} />
                             )}

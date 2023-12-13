@@ -174,12 +174,9 @@ const Itens = ({ sortingCriteria }) => {
       setLocalImage(item.imagem_URL);
       setIsLocalImageLoaded(true);
     } else {
-
       setLocalImage(null);
       setIsLocalImageLoaded(false);
     }
-
-    setNewItemImage(null);
   };
 
   const handleEditCancel = () => {
@@ -319,6 +316,7 @@ const Itens = ({ sortingCriteria }) => {
               setEditedItem={setEditedItem}
               handleSave={handleSave}
               handleEditCancel={handleEditCancel}
+              handleFileChange={handleFileChange}
             />
           </div>
         )}

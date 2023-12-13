@@ -64,8 +64,7 @@ const LoginForm = () => {
   };
 
   useEffect(() => {
-    // Este código será executado quando o componente for montado
-    setShowSuccessModal(false); // Reinicializa o estado ao montar o componente
+    setShowSuccessModal(false);
   }, []);
 
   // Função para buscar informações do perfil do usuário

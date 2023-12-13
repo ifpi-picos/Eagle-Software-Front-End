@@ -61,6 +61,7 @@ export default function ItemForm() {
                 });
 
                 const data = await response.json();
+                console.log('Data from Cloudinary:', data); // Log para verificar a resposta do Cloudinary
                 setImage(data.secure_url);
                 setImageLoaded(true);
             } catch (error) {
@@ -68,6 +69,7 @@ export default function ItemForm() {
             }
         }
     };
+
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
@@ -87,7 +89,6 @@ export default function ItemForm() {
             setShowErrorModal(true);
             return;
         }
-
 
         try {
             setButtonDisabled(true);
@@ -117,17 +118,18 @@ export default function ItemForm() {
                 }, 3000);
             } else {
                 const errorData = await response.json();
+                console.error('Erro ao cadastrar item. Detalhes:', errorData); // Log para verificar os detalhes do erro
                 setErrorMessage('Erro ao cadastrar item. Por favor, tente novamente.');
                 setShowErrorModal(true);
             }
         } catch (error) {
+            console.error('Erro ao cadastrar item. Detalhes:', error); // Log para verificar os detalhes do erro
             setErrorMessage('Erro ao cadastrar item. Por favor, tente novamente.');
             setShowErrorModal(true);
         } finally {
             setButtonDisabled(false);
         }
     };
-
 
     useEffect(() => {
         return () => {

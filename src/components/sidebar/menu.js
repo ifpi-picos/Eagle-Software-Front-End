@@ -54,7 +54,9 @@ const Sidebar = ({ onSearch }) => {
         <div className="mt-4 flex flex-col gap-4 relative">
           <div className="flex items-center gap-3.5 font-medium p-2">
             <div className='fixed mr-2'>
-              <img src="/logotipo-fotor.png" alt="Logo" className="w-10 h-10" />
+              <Link href="/home">
+                <img src="/logotipo-fotor.png" alt="Logo" className="w-10 h-10 cursor-pointer" />
+              </Link>
             </div>
             <div className={`whitespace-pre transition-all duration-500 ${!open ? "opacity-0 translate-x-[-1rem] overflow-hidden" : ""}`}>
               <h2 className='ml-16'>Eagles Software</h2>
@@ -68,7 +70,7 @@ const Sidebar = ({ onSearch }) => {
               key={i}
               className={` ${menu?.margin && "mt-5"
                 } group flex items-center text-sm  gap-3.5 font-medium p-4 hover:bg-gray-800 rounded-md`}
-                onClick={menu?.name === "Sair" ? handleLogout : null}
+              onClick={menu?.name === "Sair" ? handleLogout : null}
             >
               <div>{React.createElement(menu?.icon, { size: "20" })}</div>
               <h2

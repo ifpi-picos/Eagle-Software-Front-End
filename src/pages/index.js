@@ -29,9 +29,9 @@ export default function telaInicial() {
               <p>
                 Bem-vindo(a) ao <span>EAGLE'S SOFTWARE</span>, uma solução inovadora e eficiente para resolver o problema comum de perda de itens. Encontre seus pertences perdidos em um piscar de olhos.
               </p>
-
+              
               <a href="/cadastro" className={styles.btn}>Continuar</a>
-d
+
             </div>
             <div className={styles.imgPage}>
 
