@@ -10,8 +10,9 @@ module.exports = {
       colors: {
         "dark-purple": "#081A51",
         "ligth-white": "rgba(255,255,255,0.18)",
-        "aliceblue": "#f0f8ff",
-        "dark-blue": "#1E1F31"
+        "dark-blue": "#186fad",
+        "custom-blue": "#14bce8",
+        "blue-light": "#3B82F6"
       }
     },
   },

@@ -58,7 +58,7 @@ const Itens = ({ sortingCriteria }) => {
 
   const handleDeleteConfirmation = async () => {
     try {
-      const response = await fetch(`https://api-eagles-software.onrender.com/itens/${selectedItem.id}`, {
+      const response = await fetch(`http://localhost:3000/itens/${selectedItem.id}`, {
         method: 'DELETE',
       });
 
@@ -89,7 +89,7 @@ const Itens = ({ sortingCriteria }) => {
   };
 
   useEffect(() => {
-    let apiUrl = 'https://api-eagles-software.onrender.com/itens';
+    let apiUrl = 'http://localhost:3000/itens';
 
     if (sortingCriteria === 'recentes') {
       apiUrl += '/recentes';
@@ -136,7 +136,7 @@ const Itens = ({ sortingCriteria }) => {
         updatedItem = { ...updatedItem, imagem_URL: dataCloudinary.secure_url };
       }
   
-      const responseUpdate = await fetch(`https://api-eagles-software.onrender.com/itens/${editedItem.id}`, {
+      const responseUpdate = await fetch(`http://localhost:3000/itens${editedItem.id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

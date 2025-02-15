@@ -94,7 +94,7 @@ export default function ItemForm() {
 
         try {
             setButtonDisabled(true);
-            const response = await fetch('https://api-eagles-software.onrender.com/itens', {
+            const response = await fetch('http://localhost:3000/itens', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

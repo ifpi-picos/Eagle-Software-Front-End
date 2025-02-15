@@ -74,7 +74,7 @@ const LoginForm = () => {
       const token = localStorage.getItem('token');
 
       if (token) {
-        const response = await fetch('https://api-eagles-software.onrender.com/usuarios/perfil', {
+        const response = await fetch('http://localhost:3000/usuarios/perfil', {
           method: 'GET',
           headers: {
             'Authorization': `Bearer ${token}`,
@@ -96,12 +96,17 @@ const LoginForm = () => {
     setShowErrorModal(false);
   };
 
+//   <div className={styles.styleTitulo}>
+//   <h2 className={styles['site-name']}>Eagles</h2>
+//   <h1 className={styles['site-name2']}>Software</h1>
+// </div>
+
   return (
     <form className={styles['form-login-cadastro']} onSubmit={handleFormSubmit}>
       <div className={styles.center}>
         <div className={styles.header}>
-          <img src="/logo.png" alt="Logo do Eagles Software" className={styles.logo} />
-          <h1 className={styles['site-name']}>Eagles Software</h1>
+          <img src="/LOGO-INSTA.svg" alt="Logo do Eagles Software" className={styles.logo} />
+            <h2 className={styles['site-name']}>Eagles Software</h2>
         </div>
 
         <h1 className={styles['h1-login-cadastro']}>Login</h1>

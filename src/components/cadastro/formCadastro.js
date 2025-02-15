@@ -59,7 +59,7 @@ export default function CadastroForm() {
     <form className={styles['form-login-cadastro']} onSubmit={handleFormSubmit}>
       <div className={styles.center}>
         <div className={styles.header}>
-          <img src="/logo.png" alt="Logo do Eagles Software" className={styles.logo} />
+          <img src="/LOGO-INSTA.svg" alt="Logo do Eagles Software" className={styles.logo} />
           <h1 className={styles['site-name']}>Eagles Software</h1>
         </div>
 

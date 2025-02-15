@@ -1,12 +1,12 @@
   .header {
     display: flex;
     align-items: center;
-    margin-right: 50px;
+    margin-right: 11vh;
   }
 
   .logo {
-    max-width: 100px;
-    max-height: 85px;
+    max-width: 150px;
+    max-height: 150px;
   }
 
   .site-name {
@@ -15,7 +15,7 @@
     font-family: sans-serif;
     font-weight: bold;
   }
-
+  
 
   .center {
     display: flex;
@@ -71,14 +71,15 @@
     font-weight: bold;
     align-self: flex-start;
     font-size: 15px;
+    margin-left: 1vh;
   }
 
 
   .form-login-cadastro {
-    width: 450px;
-    height: 600px;
+    width: 600px;
+    height: 650px;
     padding: 20px;
-    background-color: #fff;
+    background: linear-gradient(135deg, #fff,#f7f7f7);
     border-radius: 1rem;
     box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
     text-align: center;
@@ -92,7 +93,7 @@
   .input-wrapper {
     display: flex;
     align-items: center;
-    width: 100%;
+    width: 94%;
     margin-bottom: 20px;
     position: relative;
   }
@@ -101,7 +102,6 @@
     font-size: 25px;
     margin-right: 10px;
     color: #000;
-    margin-left: 8px;
     margin-top: 3px;
   }
 
@@ -132,7 +132,7 @@
 
   .button-style {
     width: 50%;
-    background: #ADD8E6;
+    background: #4E7BF3;
     color: #000;
     padding: 8px;
     border-color: #ADD8E6;
@@ -146,7 +146,7 @@
   }
 
   .button-style:hover {
-    background: #4E7BF3;
+    background: #ADD8E6;
   }
 
   .button-style:active {

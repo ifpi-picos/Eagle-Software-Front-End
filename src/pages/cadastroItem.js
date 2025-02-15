@@ -18,4 +18,5 @@ const CadastrarItem = () =>  {
     );
 }
 
-export default authMiddleware(CadastrarItem);
+// export default authMiddleware(CadastrarItem);
+export default CadastrarItem;

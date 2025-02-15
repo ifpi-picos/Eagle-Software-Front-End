@@ -16,4 +16,4 @@ const telaFaq = () => {
   );
 }
 
-export default authMiddleware(telaFaq);
+export default telaFaq;

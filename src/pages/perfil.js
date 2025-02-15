@@ -14,4 +14,5 @@ const PerfilUser = () => {
     );
 }
 
-export default authMiddleware(PerfilUser)
+// export default authMiddleware(PerfilUser)
+export default PerfilUser;

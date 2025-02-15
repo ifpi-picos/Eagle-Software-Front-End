@@ -1,6 +1,6 @@
 export const cadastrarUsuario = async (formData) => {
     try {
-        const response = await fetch('https://api-eagles-software.onrender.com/usuarios', {
+        const response = await fetch('http://localhost:3000/usuarios', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -24,7 +24,7 @@ export const cadastrarUsuario = async (formData) => {
 
 export const fazerLogin = async (formData) => {
     try {
-        const response = await fetch('https://api-eagles-software.onrender.com/usuarios/login', {
+        const response = await fetch('http://localhost:3000/usuarios/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

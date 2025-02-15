@@ -1,36 +1,39 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+  @tailwind base;
+  @tailwind components;
+  @tailwind utilities;
 
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-    min-height: 100vh;
-    background-color: aliceblue;
-}
+  html {
+    scroll-behavior: smooth;
+  }
+    
+  body {
+    padding: 0;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+      Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+      min-height: 100vh;
+      background-color: white;
+  }
 
-* {
-  box-sizing: border-box;
-}
+  * {
+    box-sizing: border-box;
+  }
 
-.body-loginCadastro {
-  font-family: Arial, sans-serif;
-  background: linear-gradient(to right, #87ceeb, #836FFF);
-  height: 100vh;
-  margin: 0;
-}
+  .body-loginCadastro {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #87ceeb, #836FFF);
+    height: 100vh;
+    margin: 0;
+  }
 
-.main-log {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
+  .main-log {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
 
-.error{
-  color: red;
-  margin-top: -20px;
-}
+  .error{
+    color: red;
+    margin-top: -20px;
+  }
