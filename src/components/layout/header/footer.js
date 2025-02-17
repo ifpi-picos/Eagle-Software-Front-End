@@ -10,7 +10,7 @@ export default function Footer() {
                 </div>
 
                 <div className="flex flex-col items-center text-base">
-                    <div className="flex items-center space-x-2">
+                    <div className="flex items-center space-x-2 mt-4">
                         <Mail className="w-5 h-5" />
                         <p>eaglesoftware.suporte@gmail.com</p>
                     </div>
