@@ -36,7 +36,7 @@ export default function Header() {
               </Link>
             </li>
             <li>
-              <Link href="#equipe" className="hover:underline hover:underline-offset-4 hover:decoration-2">
+              <Link href="#team" className="hover:underline hover:underline-offset-4 hover:decoration-2">
                 Equipe
               </Link>
             </li>

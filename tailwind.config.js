@@ -12,7 +12,8 @@ module.exports = {
         "ligth-white": "rgba(255,255,255,0.18)",
         "dark-blue": "#186fad",
         "custom-blue": "#14bce8",
-        "blue-light": "#3B82F6"
+        "blue-light": "#3B82F6",
+        "blue-mar": "#002037"
       }
     },
   },

@@ -5,6 +5,7 @@ import ScrollToTop from "../components/layout/header/scrollToTop";
 import FeatureSection from "../components/sections/Features";
 import CtaSection from "../components/sections/Cta";
 import TeamSection from "../components/sections/Team";
+import Footer from "../components/layout/header/footer";
 
 export default function Index() {
   return (
@@ -30,6 +31,7 @@ export default function Index() {
       />
       <CtaSection/>
       <TeamSection/>
+      <Footer/>
       <ScrollToTop />
     </div>
   );
