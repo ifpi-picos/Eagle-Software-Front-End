@@ -16,7 +16,7 @@ export default function Footer() {
                     </div>
                     <div className="border-t border-white my-4">
                         <p className="text-center text-base" style={{ fontSize: '1rem', lineHeight: '2rem' }}>
-                            &copy; 2024 Eagles Software. Todos os direitos reservados.
+                            &copy; 2025 Eagles Software. Todos os direitos reservados.
                         </p>
                     </div>
                 </div>

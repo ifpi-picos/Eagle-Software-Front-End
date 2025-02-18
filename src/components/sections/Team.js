@@ -5,11 +5,13 @@ const teamMembers = [
     name: "João Victor Pereira Borges",
     role: "Team Leader & Desenvolvedor Back-End",
     image: "/joaoVictor.jpeg",
+    linkedin: "https://www.linkedin.com/in/joão-victor-pereira-borges-37288325a/"
   },
   {
     name: "Renan Lucas de Lime Oliveira",
     role: "Product Owner & Desenvolvedor Front-End",
     image: "/Renan.jpeg",
+    linkedin: "https://www.linkedin.com/in/renan-lucas-lima-oliveira-8b7b472bb/"
   },
 ];
 
@@ -17,7 +19,7 @@ export default function TeamSection() {
   return (
     <section id="team" className="py-16 bg-white-500">
       <div className="container mx-auto text-center">
-        <h2 className="text-3xl font-bold text-blue-700 mb-8">
+        <h2 className="text-2xl font-bold text-blue-700 mb-8">
           Conheça o time por trás desta solução
         </h2>
         <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-8 justify-center">
@@ -40,9 +42,14 @@ export default function TeamSection() {
               </h3>
               <p className="text-gray-600 text-lg">{member.role}</p>
               <div className="mt-4">
-                <button className="px-6 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-colors duration-300">
+                <a
+                  href={member.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-6 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-colors duration-300"
+                >
                   Ver Perfil
-                </button>
+                </a>
               </div>
             </div>
           ))}
