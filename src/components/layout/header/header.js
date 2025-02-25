@@ -23,7 +23,7 @@ export default function Header() {
         <button onClick={() => scrollToSection("inicio")}>
           <Image
             src="/EAGLES_LOGOTIPO6.svg"
-            alt="EAGLE'S SOFTWARE"
+            alt="Eagles Software"
             width={150}
             height={90}
             className="cursor-pointer"
@@ -67,22 +67,22 @@ export default function Header() {
       </div>
 
       <div
-        className={`absolute top-16 right-0 w-full bg-[#27C0EF] text-white flex flex-col items-center py-4 transition-all duration-300 ${menuOpen ? "opacity-100 visible" : "opacity-0 invisible"
+        className={`absolute top-16 right-4 w-[92%] bg-[#005F8C] text-white flex flex-col items-center py-6 rounded-lg shadow-lg transition-all duration-300 ${menuOpen ? "opacity-100 visible scale-100" : "opacity-0 invisible scale-90"
           }`}
         style={{ zIndex: 99 }}
       >
-        <button onClick={() => scrollToSection("inicio")} className="py-4 text-2xl text-white">
+        <button onClick={() => scrollToSection("inicio")} className="py-4 text-lg font-semibold w-full text-center hover:bg-[#0080B3] rounded">
           Início
         </button>
-        <button onClick={() => scrollToSection("features")} className="py-4 text-2xl text-white">
+        <button onClick={() => scrollToSection("features")} className="py-4 text-lg font-semibold w-full text-center hover:bg-[#0080B3] rounded">
           Benefícios
         </button>
-        <button onClick={() => scrollToSection("team")} className="py-4 text-2xl text-white">
+        <button onClick={() => scrollToSection("team")} className="py-4 text-lg font-semibold w-full text-center hover:bg-[#0080B3] rounded">
           Equipe
         </button>
-        <Link href="/login">
+        <Link href="/login" className="w-40">
           <button
-            className="mt-6 bg-white text-blue-600 px-6 py-2 rounded-lg font-semibold shadow-md hover:bg-blue-100 transition"
+            className="mt-6 bg-white text-blue-600 px-6 py-2 rounded-lg font-semibold shadow-md hover:bg-blue-100 transition w-full"
             onClick={() => setMenuOpen(false)}
           >
             Login
