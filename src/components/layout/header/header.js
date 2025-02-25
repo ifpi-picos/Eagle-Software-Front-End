@@ -22,9 +22,9 @@ export default function Header() {
       <div className="container mx-auto flex justify-between items-center px-6 py-4">
         <button onClick={() => scrollToSection("inicio")}>
           <Image
-            src="/EAGLES_LOGOTIPO6.png"
+            src="/EAGLES_LOGOTIPO6.svg"
             alt="EAGLE'S SOFTWARE"
-            width={180}
+            width={150}
             height={90}
             className="cursor-pointer"
           />
@@ -39,7 +39,7 @@ export default function Header() {
             </li>
             <li>
               <button onClick={() => scrollToSection("features")} className="hover:underline">
-              Benefícios
+                Benefícios
               </button>
             </li>
             <li>

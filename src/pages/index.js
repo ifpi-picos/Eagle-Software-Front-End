@@ -14,18 +14,18 @@ export default function Index() {
       <Hero />
       <Benefits />
       <FeatureSection
-        image="/Device-MacbookPro.png"
+        image="/Macbook1.jpg"
         title="Cadastro Inteligente"
         text="Registre todas as informações importantes sobre os objetos para o sistema online. Sem correr o risco de esquecê-las."
       />
       <FeatureSection
-        image="/Device-MacbookPro(1).png"
+        image="/Macbook2.jpg"
         title="Gerenciamento Completo"
         text="O administrador tem total controle sobre as informações que serão exibidas. Simples, rápido e organizado."
         reverse
       />
       <FeatureSection
-        image="/Device-MacbookPro(2).png"
+        image="/Macbook3.jpg"
         title="Divulgação Eficiente"
         text="Toda e qualquer pessoa devidamente cadastrado no sistema terá acesso aos objetos que estão sendo exibidos."
       />

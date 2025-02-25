@@ -10,7 +10,7 @@ function MyApp({ Component, pageProps }) {
         <link rel="icon" type="image/png" sizes="32x32" href="/logotipo.svg" />
         <link rel="icon" type="image/png" sizes="16x16" href="/logotipo.svg" />
         <link rel="apple-touch-icon" sizes="180x180" href="/logotipo.svg" />
-        <link rel="icon" href="/logotiopo.svg" />
+        <link rel="icon" href="/logotipo.svg" />
       </Head>
       <Component {...pageProps} />
     </>

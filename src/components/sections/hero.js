@@ -14,7 +14,6 @@ export default function Hero() {
       }}
     >
       <div className="container mx-auto flex flex-col md:flex-row items-center px-6">
-
         <div className="md:w-1/2 text-center md:text-left">
           <h1 className="text-4xl md:text-5xl font-bold leading-tight">
             Melhorar a experiência de encontrar objetos perdidos nunca foi tão fácil
@@ -47,7 +46,7 @@ export default function Hero() {
         </div>
 
         <div className="md:w-1/2 mt-10 md:mt-0 flex justify-center">
-          <Image src="/Illustration.png" alt="Ilustração Hero" width={400} height={400} />
+          <Image src="/Illustration.svg" alt="Ilustração Hero" width={400} height={400} />
         </div>
 
       </div>

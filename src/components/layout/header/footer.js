@@ -6,7 +6,7 @@ export default function Footer() {
         <footer className="bg-blue-mar text-white py-6">
             <div className="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center">
                 <div className="flex items-center space-x-2">
-                    <Image src="/EAGLES_LOGOTIPO6.png" alt="EAGLES Software" width={120} height={50} />
+                    <Image src="/EAGLES_LOGOTIPO6.svg" alt="EAGLES Software" width={120} height={50} />
                 </div>
 
                 <div className="flex flex-col items-center text-base">
@@ -26,9 +26,15 @@ export default function Footer() {
                         <span className="absolute -top-6 left-1/2 transform -translate-x-1/2 bg-gray-700 text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition">
                             Apoio
                         </span>
-                        <Image src="/GuaribasValley.png" alt="Guaribas Valley" width={100} height={40} />
+                        <Image src="/Guaribas.svg" alt="Guaribas Valley" width={100} height={40} />
                     </div>
-                    <Image src="/mambee.png" alt="Mambee" width={100} height={40} />
+
+                    <div className="relative group">
+                        <span className="absolute -top-6 left-1/2 transform -translate-x-1/2 bg-gray-700 text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition">
+                            Apoio
+                        </span>
+                        <Image src="/mambee.svg" alt="Mambee" width={100} height={40} />
+                    </div>
                 </div>
             </div>
         </footer>
