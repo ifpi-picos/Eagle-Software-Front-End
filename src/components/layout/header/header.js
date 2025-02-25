@@ -17,23 +17,18 @@ export default function Header() {
   return (
     <header
       id="inicio"
-      className="text-white py-4 top-0 left-0 w-full z-50 shadow-md"
-      style={{
-        background: "linear-gradient(to bottom, #27C0EF 0%, #0DB0E2 66%, #00A8DB 100%)",
-      }}
+      className="absolute top-0 left-0 w-full z-50 shadow-md bg-gradient-to-b from-[#27C0EF] via-[#0DB0E2] to-[#00A8DB] text-white"
     >
-      <div className="container mx-auto flex justify-between items-center px-6">
-        <div className="flex items-center">
-          <button onClick={() => scrollToSection("inicio")}>
-            <Image
-              src="/EAGLES_LOGOTIPO6.png"
-              alt="EAGLE'S SOFTWARE"
-              width={200}
-              height={100}
-              className="cursor-pointer"
-            />
-          </button>
-        </div>
+      <div className="container mx-auto flex justify-between items-center px-6 py-4">
+        <button onClick={() => scrollToSection("inicio")}>
+          <Image
+            src="/EAGLES_LOGOTIPO6.png"
+            alt="EAGLE'S SOFTWARE"
+            width={180}
+            height={90}
+            className="cursor-pointer"
+          />
+        </button>
 
         <nav className="hidden md:flex">
           <ul className="flex space-x-6 text-lg">
@@ -44,12 +39,7 @@ export default function Header() {
             </li>
             <li>
               <button onClick={() => scrollToSection("features")} className="hover:underline">
-                Features
-              </button>
-            </li>
-            <li>
-              <button onClick={() => scrollToSection("precos")} className="hover:underline">
-                Preços
+              Benefícios
               </button>
             </li>
             <li>
@@ -62,7 +52,7 @@ export default function Header() {
 
         <div className="hidden md:block">
           <Link href="/login">
-            <button className="bg-dark-blue text-white px-6 py-2 rounded-lg font-semibold shadow-md hover:bg-white hover:text-blue-500 transition">
+            <button className="bg-white text-blue-600 px-6 py-2 rounded-lg font-semibold shadow-md hover:bg-blue-100 transition">
               Login
             </button>
           </Link>
@@ -77,32 +67,26 @@ export default function Header() {
       </div>
 
       <div
-        className={`md:hidden fixed top-16 left-0 w-full bg-blue-500 text-white flex flex-col items-center py-4 transition-all duration-300 ${
-          menuOpen ? "h-auto opacity-100 visible" : "h-0 opacity-0 invisible"
-        }`}
-        style={{
-          zIndex: 99,
-          transition: "all 0.3s ease",
-        }}
+        className={`absolute top-16 right-0 w-full bg-[#27C0EF] text-white flex flex-col items-center py-4 transition-all duration-300 ${menuOpen ? "opacity-100 visible" : "opacity-0 invisible"
+          }`}
+        style={{ zIndex: 99 }}
       >
-        <button onClick={() => scrollToSection("inicio")} className="py-2 px-6 w-full text-center hover:bg-blue-600 transition-colors rounded-lg mb-2">
+        <button onClick={() => scrollToSection("inicio")} className="py-4 text-2xl text-white">
           Início
         </button>
-        <button onClick={() => scrollToSection("features")} className="py-2 px-6 w-full text-center hover:bg-blue-600 transition-colors rounded-lg mb-2">
-          Features
+        <button onClick={() => scrollToSection("features")} className="py-4 text-2xl text-white">
+          Benefícios
         </button>
-        <button onClick={() => scrollToSection("precos")} className="py-2 px-6 w-full text-center hover:bg-blue-600 transition-colors rounded-lg mb-2">
-          Preços
-        </button>
-        <button onClick={() => scrollToSection("team")} className="py-2 px-6 w-full text-center hover:bg-blue-600 transition-colors rounded-lg mb-2">
+        <button onClick={() => scrollToSection("team")} className="py-4 text-2xl text-white">
           Equipe
         </button>
-        <Link
-          href="/login"
-          className="bg-white text-blue-600 px-6 py-2 rounded-lg mt-2 hover:bg-blue-100 transition-all"
-          onClick={() => setMenuOpen(false)}
-        >
-          Login
+        <Link href="/login">
+          <button
+            className="mt-6 bg-white text-blue-600 px-6 py-2 rounded-lg font-semibold shadow-md hover:bg-blue-100 transition"
+            onClick={() => setMenuOpen(false)}
+          >
+            Login
+          </button>
         </Link>
       </div>
     </header>

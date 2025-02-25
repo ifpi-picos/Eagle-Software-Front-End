@@ -20,21 +20,29 @@ export default function Hero() {
             Melhorar a experiência de encontrar objetos perdidos nunca foi tão fácil
           </h1>
           <p className="mt-4 text-lg">
-            Com o <span className="font-bold">EAGLE'S SOFTWARE</span>, você encontra o que precisa rapidamente.
+            Com o <span className="font-bold">Eagles Software</span>, você encontra o que precisa rapidamente.
           </p>
 
           <div className="mt-6 flex justify-center md:justify-start space-x-4">
-            <Link href="/contratar">
-              <button className="bg-white text-blue-500 px-6 py-3 rounded-lg font-semibold shadow-md hover:bg-gray-200">
-                Contratar Agora
-              </button>
-            </Link>
-            <Link href="/demo">
-              <button className="border-2 border-white px-6 py-3 flex items-center rounded-lg font-semibold hover:bg-white hover:text-blue-500 transition">
-                Agendar Demonstração
-                <MdArrowForward className="ml-2 text-xl" />
-              </button>
-            </Link>
+            <a
+              href="mailto:eaglessoftware.suporte@gmail.com?subject=Suporte%20ao%20Cliente"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-white text-blue-500 px-6 py-3 rounded-lg font-semibold shadow-md hover:bg-gray-200 transition duration-300"
+            >
+              Fale Conosco
+            </a>
+
+            <a
+              href="https://calendar.app.google/BeSgVzFrMpu7o6xY6"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="border-2 border-white px-6 py-3 flex items-center rounded-lg font-semibold hover:bg-white hover:text-blue-500 transition"
+            >
+              Agendar Demonstração
+              <MdArrowForward className="ml-2 text-xl" />
+            </a>
+
           </div>
         </div>
 
@@ -43,6 +51,6 @@ export default function Hero() {
         </div>
 
       </div>
-    </section>
+    </section >
   );
 }

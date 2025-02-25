@@ -12,7 +12,7 @@ export default function Footer() {
                 <div className="flex flex-col items-center text-base">
                     <div className="flex items-center space-x-2 mt-4">
                         <Mail className="w-5 h-5" />
-                        <p>eaglesoftware.suporte@gmail.com</p>
+                        <p>eaglessoftware.suporte@gmail.com</p>
                     </div>
                     <div className="border-t border-white my-4">
                         <p className="text-center text-base" style={{ fontSize: '1rem', lineHeight: '2rem' }}>
