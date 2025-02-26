@@ -29,10 +29,10 @@ export default function Index() {
         title="Divulgação Eficiente"
         text="Toda e qualquer pessoa devidamente cadastrado no sistema terá acesso aos objetos que estão sendo exibidos."
       />
-      <CtaSection/>
-      <TeamSection/>
-      <Footer/>
+      <CtaSection />
+      <TeamSection />
       <ScrollToTop />
+      <Footer />
     </div>
   );
 }

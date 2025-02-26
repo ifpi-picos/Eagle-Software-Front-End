@@ -6,7 +6,7 @@ export default function Footer() {
         <footer className="bg-blue-mar text-white py-6">
             <div className="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center">
                 <div className="flex items-center space-x-2">
-                    <Image src="/EAGLES_LOGOTIPO6.svg" alt="EAGLES Software" width={120} height={50} />
+                    <Image src="/EAGLES_LOGOTIPO6.svg" alt="EAGLES Software" width={150} height={100} />
                 </div>
 
                 <div className="flex flex-col items-center text-base">
