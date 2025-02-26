@@ -46,7 +46,7 @@ export default function Hero() {
         </div>
 
         <div className="md:w-1/2 mt-10 md:mt-0 flex justify-center">
-          <Image src="/Illustration.svg" alt="Ilustração Hero" width={400} height={400} />
+          <Image src="/Illustration.svg" alt="Ilustração Hero" width={400} height={400} priority   />
         </div>
 
       </div>
