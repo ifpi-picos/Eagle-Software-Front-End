@@ -17,7 +17,7 @@ export default function CtaSection() {
                 href="mailto:eaglessoftware.suporte@gmail.com?subject=Suporte%20ao%20Cliente"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-white text-blue-500 px-6 py-3 rounded-lg font-semibold shadow-md hover:bg-gray-200 transition duration-300"
+                className="bg-white text-blue-customize px-6 py-3 rounded-lg font-semibold shadow-md hover:bg-gray-200 transition duration-300"
               >
                 Fale Conosco
               </a>

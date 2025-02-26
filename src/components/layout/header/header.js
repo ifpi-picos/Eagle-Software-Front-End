@@ -24,8 +24,8 @@ export default function Header() {
           <Image
             src="/EAGLES_LOGOTIPO6.svg"
             alt="Eagles Software"
-            width={150}
-            height={90}
+            width={200}
+            height={100}
             className="cursor-pointer"
           />
         </button>
@@ -52,7 +52,7 @@ export default function Header() {
 
         <div className="hidden md:block">
           <Link href="/login">
-            <button className="bg-white text-blue-600 px-6 py-2 rounded-lg font-semibold shadow-md hover:bg-blue-100 transition">
+            <button className="bg-white text-blue-customize px-6 py-2 rounded-lg font-semibold shadow-md hover:bg-blue-100 transition">
               Login
             </button>
           </Link>
