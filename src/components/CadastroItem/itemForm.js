@@ -140,8 +140,8 @@ export default function ItemForm() {
   }, [localImage]);
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-white ml-12">
-      <div className="w-4/5 mx-auto p-6 rounded-lg bg-gray-100 shadow-lg">
+    <div className="flex items-center justify-center min-h-screen bg-blue-50 ml-12">
+      <div className="w-full max-w-screen-lg mx-auto p-6 rounded-lg bg-white shadow-lg">
         <form className="space-y-6" id="itemForm" onSubmit={(e) => e.preventDefault()}>
           <h1 className="text-2xl font-semibold text-center">Cadastro de Itens</h1>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -300,5 +300,6 @@ export default function ItemForm() {
         </form>
       </div>
     </div>
+
   );
 }
