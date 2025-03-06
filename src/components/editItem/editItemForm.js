@@ -14,7 +14,7 @@ const EditItemForm = ({
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-white ml-12">
-      <div className="w-full mx-auto p-6 rounded-lg bg-gray-100 shadow-lg">
+      <div className="w-full mx-auto p-10 rounded-lg bg-gray-100 shadow-lg">
         <form className="space-y-6" id="itemForm" onSubmit={(e) => e.preventDefault()}>
           <h1 className="text-2xl font-semibold text-center">Editar Item</h1>
 
@@ -118,7 +118,7 @@ const EditItemForm = ({
 
           <div className="flex justify-between">
             <button
-              className="w-32 py-2 bg-blue-500 text-white rounded-md cursor-pointer hover:bg-blue-600 disabled:bg-blue-300 focus:outline-none"
+              className="w-32 py-2 bg-blue-500 text-white mr-4 rounded-md cursor-pointer hover:bg-blue-600 disabled:bg-blue-300 focus:outline-none"
               type="button"
               onClick={handleSave}
               disabled={loadingSave}
