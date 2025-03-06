@@ -55,7 +55,7 @@ const Sidebar = ({ onSearch }) => {
           <div className="flex items-center gap-3.5 font-medium p-2">
             <div className='fixed mr-2'>
               <Link href="/home">
-                <img src="/logotipo-fotor.png" alt="Logo" className="w-10 h-10 cursor-pointer" />
+                <img src="/logotipo-fotor.avif" alt="Logo" className="w-10 h-10 rounded-full cursor-pointer" />
               </Link>
             </div>
             <div className={`whitespace-pre transition-all duration-500 ${!open ? "opacity-0 translate-x-[-1rem] overflow-hidden" : ""}`}>

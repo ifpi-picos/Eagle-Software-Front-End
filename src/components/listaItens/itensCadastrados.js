@@ -193,7 +193,7 @@ const Itens = ({ sortingCriteria }) => {
     <div className='flex bg-aliceblue'>
       <Sidebar onSearch={handleSearch} />
       <div className="mx-auto self-center lg:w-2/3 p-4">
-        <h1 className="text-3xl font-bold mb-4 flex items-center justify-center">{pageTitle}</h1>
+        <h1 className="text-2xl font-bold mb-4 flex items-center justify-center">{pageTitle}</h1>
         <div className="grid gap-8 grid-cols-1 md:grid-cols-2 sm:ml-28 ml-[50px]">
           {filteredItems.map((item) => (
             <ItemCard

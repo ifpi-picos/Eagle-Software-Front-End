@@ -249,7 +249,10 @@ export default function ItemForm() {
                             <div className={styles['upload-button']}>
                                 <button className={styles['btn-upload']}>
                                     Selecione o arquivo
-                                    <input type="file" id="imagem" onChange={handleFileChange} />
+                                    <label aria-label='Botão de Selecionar Imagem'>
+                                        <input type="file" id="imagem" onChange={handleFileChange} />
+
+                                    </label>
                                 </button>
                             </div>
                         </div>

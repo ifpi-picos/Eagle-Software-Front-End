@@ -1,9 +1,15 @@
 import Image from 'next/image';
-import Link from 'next/link';
+import Head from "next/head";
 import { MdArrowForward } from "react-icons/md";
 
 export default function Hero() {
   return (
+    <>
+    <Head>
+        <title>Eagles Software</title>
+        <meta name="description" content="Eagles Software: A solução ideal para encontrar objetos perdidos com rapidez e eficiência." />
+        <link rel="icon" href="/favicon.ico"/>
+      </Head>
     <section
       id="hero"
       className="text-white py-20 bg-cover bg-center"
@@ -45,11 +51,12 @@ export default function Hero() {
           </div>
         </div>
 
-        <div className="md:w-1/2 mt-10 md:mt-0 flex justify-center">
-          <Image src="/Illustration.svg" alt="Ilustração Hero" width={400} height={400} priority   />
-        </div>
+          <div className="md:w-1/2 mt-10 md:mt-0 flex justify-center">
+            <Image src="/Illustration.svg" alt="Ilustração Hero" width={400} height={400} priority   />
+          </div>
 
       </div>
     </section >
+    </>
   );
 }
