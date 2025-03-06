@@ -58,14 +58,19 @@ const Itens = ({ sortingCriteria }) => {
 
   const handleDeleteConfirmation = async () => {
     try {
-      const response = await fetch(`http://localhost:3000/itens/${selectedItem.id}`, {
+      const response = await fetch(`https://api-eagles-software.onrender.com/itens/${selectedItem.id}`, {
         method: 'DELETE',
       });
-
+  
       if (response.ok) {
         setItems(items.filter((item) => item.id !== selectedItem.id));
         setShowSuccessModal(true);
         setIsModalOpen(false);
+  
+        // Fechar automaticamente após 3 segundos
+        setTimeout(() => {
+          setShowSuccessModal(false);
+        }, 3000);
       }
     } catch (error) {
       console.error('Erro ao excluir item:', error);
@@ -73,6 +78,7 @@ const Itens = ({ sortingCriteria }) => {
       closeDeleteModal();
     }
   };
+  
 
   const handleFileChange = async (event) => {
     const file = event.target.files[0];
@@ -89,7 +95,7 @@ const Itens = ({ sortingCriteria }) => {
   };
 
   useEffect(() => {
-    let apiUrl = 'http://localhost:3000/itens';
+    let apiUrl = 'https://api-eagles-software.onrender.com/itens';
 
     if (sortingCriteria === 'recentes') {
       apiUrl += '/recentes';
@@ -136,7 +142,7 @@ const Itens = ({ sortingCriteria }) => {
         updatedItem = { ...updatedItem, imagem_URL: dataCloudinary.secure_url };
       }
   
-      const responseUpdate = await fetch(`http://localhost:3000/itens${editedItem.id}`, {
+      const responseUpdate = await fetch(`https://api-eagles-software.onrender.com/itens/${editedItem.id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

@@ -66,11 +66,10 @@ const Sidebar = ({ onSearch }) => {
           <SearchBar onSearch={onSearch} isOpen={open} />
 
           {menus?.map((menu, i) => (
-            <Link href={menu?.link}
+            <div
               key={i}
-              className={` ${menu?.margin && "mt-5"
-                } group flex items-center text-sm  gap-3.5 font-medium p-4 hover:bg-gray-800 rounded-md`}
-              onClick={menu?.name === "Sair" ? handleLogout : null}
+              className={` ${menu?.margin && "mt-5"} group flex items-center text-sm gap-3.5 font-medium p-4 hover:bg-gray-800 rounded-md cursor-pointer`}
+              onClick={menu?.name === "Sair" ? handleLogout : () => router.push(menu?.link)}
             >
               <div>{React.createElement(menu?.icon, { size: "20" })}</div>
               <h2
@@ -88,7 +87,7 @@ const Sidebar = ({ onSearch }) => {
               >
                 {menu?.name}
               </h2>
-            </Link>
+            </div>
           ))}
         </div>
       </div>
