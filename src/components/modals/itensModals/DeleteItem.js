@@ -18,8 +18,10 @@ const DeleteConfirmationModal = ({ isOpen, onClose, onConfirm }) => {
           alignSelf: 'center'
         },
         content: {
-          width: '26rem',
+          inset: '4rem',
+          width: '20rem',
           height: '16rem',
+          maxHeight: '20rem',
           margin: 'auto',
           position: 'absolute',
           borderRadius: '10px',

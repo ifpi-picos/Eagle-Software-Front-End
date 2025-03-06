@@ -10,7 +10,7 @@ const FaqPage = () => {
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center">
-      <div className="max-w-full sm:max-w-md md:max-w-lg lg:max-w-2xl xl:max-w-4xl p-8 bg-white ml-16 shadow-md rounded-md text-center lg:flex lg:items-center lg:justify-start">
+      <div className="max-w-full sm:max-w-md md:max-w-lg lg:max-w-2xl xl:max-w-4xl p-8 bg-gray-200 ml-16 shadow-md rounded-md text-center lg:flex lg:items-center lg:justify-start">
         <div className="lg:w-1/3 lg:mr-6 mb-6 lg:mb-0">
           <img
             src="/FAQ.avif"

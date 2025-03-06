@@ -1,7 +1,6 @@
 import Sidebar from '../components/sidebar/menu';
 import styles from '../components/sidebar/menu.module.css';
 import FaqPage from '../components/paginaFaq/faq';
-import { authMiddleware } from '../middlewares/authMiddleware';
  
 const telaFaq = () => {
   return (

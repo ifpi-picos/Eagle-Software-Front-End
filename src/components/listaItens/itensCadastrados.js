@@ -61,12 +61,12 @@ const Itens = ({ sortingCriteria }) => {
       const response = await fetch(`https://api-eagles-software.onrender.com/itens/${selectedItem.id}`, {
         method: 'DELETE',
       });
-  
+
       if (response.ok) {
         setItems(items.filter((item) => item.id !== selectedItem.id));
         setShowSuccessModal(true);
         setIsModalOpen(false);
-  
+
         // Fechar automaticamente após 3 segundos
         setTimeout(() => {
           setShowSuccessModal(false);
@@ -78,7 +78,7 @@ const Itens = ({ sortingCriteria }) => {
       closeDeleteModal();
     }
   };
-  
+
 
   const handleFileChange = async (event) => {
     const file = event.target.files[0];
@@ -127,21 +127,21 @@ const Itens = ({ sortingCriteria }) => {
   const handleSave = async () => {
     try {
       let updatedItem = { ...editedItem };
-  
+
       if (newItemImage) {
         const formData = new FormData();
         formData.append('file', newItemImage);
         formData.append('upload_preset', cloudinaryUploadPreset);
-  
+
         const responseCloudinary = await fetch(cloudinaryAPI, {
           method: 'POST',
           body: formData,
         });
-  
+
         const dataCloudinary = await responseCloudinary.json();
         updatedItem = { ...updatedItem, imagem_URL: dataCloudinary.secure_url };
       }
-  
+
       const responseUpdate = await fetch(`https://api-eagles-software.onrender.com/itens/${editedItem.id}`, {
         method: 'PUT',
         headers: {
@@ -149,12 +149,12 @@ const Itens = ({ sortingCriteria }) => {
         },
         body: JSON.stringify(updatedItem),
       });
-  
+
       if (responseUpdate.ok) {
         const updatedItems = items.map((item) =>
           item.id === editedItem.id ? updatedItem : item
         );
-  
+
         setItems(updatedItems);
         setIsEditingMode(false);
         setEditedItem({});
@@ -199,8 +199,8 @@ const Itens = ({ sortingCriteria }) => {
     <div className='flex bg-aliceblue'>
       <Sidebar onSearch={handleSearch} />
       <div className="mx-auto self-center lg:w-2/3 p-4">
-        <h1 className="text-2xl font-bold mb-4 flex items-center justify-center">{pageTitle}</h1>
-        <div className="grid gap-8 grid-cols-1 md:grid-cols-2 sm:ml-28 ml-[50px]">
+        <h1 className="text-2xl font-bold mb-4 flex px-14 items-center justify-center">{pageTitle}</h1>
+        <div className="grid gap-8 grid-cols-1 md:grid-cols-2 sm:ml-28 px-14">
           {filteredItems.map((item) => (
             <ItemCard
               key={item.id}
@@ -226,7 +226,8 @@ const Itens = ({ sortingCriteria }) => {
               alignItems: 'center',
             },
             content: {
-              width: '90vw',
+              inset: '3.5rem',
+              width: '85%',
               maxWidth: '40rem',
               height: '92vh',
               maxHeight: '43rem',
@@ -239,6 +240,7 @@ const Itens = ({ sortingCriteria }) => {
             },
           }}
         >
+
           <div className="flex justify-end">
             <button className="text-gray-500" onClick={closeModal}>
               <IoIosClose size={30} />

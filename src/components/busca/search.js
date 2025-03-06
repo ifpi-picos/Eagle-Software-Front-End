@@ -12,8 +12,7 @@ const SearchBar = ({ onSearch, isOpen }) => {
 
   return (
     <div className="flex items-center m-0 rounded-md bg-ligth-white mt-6 h-12 pl-4 py-2">
-      <BsSearch className="text-white flex w-8 h-5 text-lg" />
-      <label aria-label="Campo de Busca">
+      <label className="flex flex-row-reverse" aria-label="Campo de Busca">
         <input
           type="search"
           placeholder={isOpen ? "Buscar" : ""}
@@ -22,6 +21,7 @@ const SearchBar = ({ onSearch, isOpen }) => {
           onChange={handleInputChange}
           aria-label="Busca"
         />
+        <BsSearch className="text-white w-8 h-5 text-lg" />
       </label>
     </div>
   );
