@@ -8,7 +8,7 @@ const teamMembers = [
     linkedin: "https://www.linkedin.com/in/joão-victor-pereira-borges-37288325a/"
   },
   {
-    name: "Renan Lucas de Lime Oliveira",
+    name: "Renan Lucas de Lima Oliveira",
     role: "Product Owner & Desenvolvedor Front-End",
     image: "/Renan.jpeg",
     linkedin: "https://www.linkedin.com/in/renan-lucas-lima-oliveira-8b7b472bb/"
