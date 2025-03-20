@@ -20,7 +20,7 @@ const EditItemForm = ({
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="space-y-4">
-              <div>
+              {/* <div>
                 <label className="block text-sm font-medium text-gray-700" htmlFor="achadoPor">
                   Achado Por:
                 </label>
@@ -31,7 +31,7 @@ const EditItemForm = ({
                   value={editedItem.achadoPor}
                   onChange={(e) => setEditedItem({ ...editedItem, achadoPor: e.target.value })}
                 />
-              </div>
+              </div> */}
 
               <div>
                 <label className="block text-sm font-medium text-gray-700" htmlFor="data">

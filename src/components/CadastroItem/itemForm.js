@@ -3,7 +3,7 @@ import { BeatLoader } from 'react-spinners';
 
 export default function ItemForm() {
   const [formData, setFormData] = useState({
-    achadoPor: '',
+    // achadoPor: '',
     local: '',
     armazenado: '',
     data: '',
@@ -23,7 +23,7 @@ export default function ItemForm() {
 
   const handleFormClear = () => {
     setFormData({
-      achadoPor: '',
+      // achadoPor: '',
       local: '',
       armazenado: '',
       data: '',
@@ -74,7 +74,7 @@ export default function ItemForm() {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
-    const fieldsInOrder = ['achadoPor', 'data', 'local', 'armazenado', 'detalhes'];
+    const fieldsInOrder = ['data', 'local', 'armazenado', 'detalhes'];
     let firstEmptyField = null;
 
     for (const field of fieldsInOrder) {
@@ -108,7 +108,7 @@ export default function ItemForm() {
         setShowSuccessModal(true);
         setTimeout(() => {
           setFormData({
-            achadoPor: '',
+            // achadoPor: '',
             local: '',
             armazenado: '',
             data: '',
@@ -140,13 +140,13 @@ export default function ItemForm() {
   }, [localImage]);
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-blue-50 ml-12">
-      <div className="w-full max-w-screen-lg mx-auto p-6 rounded-lg bg-white shadow-lg">
+    <div className="flex items-center justify-center min-h-screen bg-white ml-12">
+      <div className="w-full bg-gray-100 max-w-screen-lg mx-auto p-6 rounded-lg shadow-lg">
         <form className="space-y-6" id="itemForm" onSubmit={(e) => e.preventDefault()}>
           <h1 className="text-2xl font-semibold text-center">Cadastro de Itens</h1>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="space-y-4">
-              <div>
+              {/* <div>
                 <label className="block text-sm font-medium text-gray-700" htmlFor="achador">
                   Achado Por:
                 </label>
@@ -160,7 +160,7 @@ export default function ItemForm() {
                   maxLength={40}
                   required
                 />
-              </div>
+              </div> */}
 
               <div>
                 <label className="block text-sm font-medium text-gray-700" htmlFor="data">
@@ -227,7 +227,7 @@ export default function ItemForm() {
             </div>
 
             <div className="flex flex-col items-center justify-center">
-              <div className="w-48 h-48 bg-gray-200 rounded-md overflow-hidden">
+              <div className="w-48 h-48 border-4 bg-white rounded-md overflow-hidden">
                 {localImage ? (
                   <img src={localImage} alt="Imagem do item" className="object-cover w-full h-full" />
                 ) : imageLoaded ? (

@@ -199,7 +199,7 @@ const Itens = ({ sortingCriteria }) => {
     <div className='flex bg-aliceblue'>
       <Sidebar onSearch={handleSearch} />
       <div className="mx-auto self-center lg:w-2/3 p-4">
-        <h1 className="text-2xl font-bold mb-4 flex px-14 items-center justify-center">{pageTitle}</h1>
+        <h1 className="text-2xl font-bold mb-4 flex px-14 items-center justify-center ml-12">{pageTitle}</h1>
         <div className="grid gap-8 grid-cols-1 md:grid-cols-2 sm:ml-28 px-14">
           {filteredItems.map((item) => (
             <ItemCard
@@ -258,10 +258,10 @@ const Itens = ({ sortingCriteria }) => {
               <h2 className="text-xl font-bold mb-2">Item Achado</h2>
 
               <div className="mb-2 w-10/12">
-                <div className="flex flex-col mb-2">
+                {/* <div className="flex flex-col mb-2">
                   <p className="font-bold whitespace-pre-wrap">Achado Por:</p>
                   <p>{selectedItem.achadoPor}</p>
-                </div>
+                </div> */}
 
                 <div className="flex flex-col mb-2">
                   <p className="font-bold whitespace-pre-wrap">Data:</p>

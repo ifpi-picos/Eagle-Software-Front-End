@@ -15,11 +15,11 @@ const ItemCard = ({ item, openModal, isEditingMode, formatDate }) => {
                     className="rounded-full border-4 border-white object-cover w-48 h-48 shadow-sm"
                 />
             </div>
-            <div className='mb-2 flex items-center'>
+            {/* <div className='mb-2 flex items-center'>
                 <FaUser className="text-gray-600 mr-2" />
                 <p className="font-bold text-gray-700">Achado Por:</p>
                 <p className='ml-2 text-gray-800 truncate'>{item.achadoPor}</p>
-            </div>
+            </div> */}
 
             <div className='mb-2 flex items-center'>
                 <FaCalendarAlt className="text-gray-600 mr-2" />
