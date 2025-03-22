@@ -66,8 +66,7 @@ const Itens = ({ sortingCriteria }) => {
         setItems(items.filter((item) => item.id !== selectedItem.id));
         setShowSuccessModal(true);
         setIsModalOpen(false);
-
-        // Fechar automaticamente após 3 segundos
+        
         setTimeout(() => {
           setShowSuccessModal(false);
         }, 3000);

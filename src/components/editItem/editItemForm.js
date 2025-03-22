@@ -14,7 +14,7 @@ const EditItemForm = ({
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-white ml-12">
-      <div className="w-full mx-auto p-10 rounded-lg bg-gray-100 shadow-lg">
+      <div className="w-full mx-auto p-10 rounded-lg bg-gray-200 shadow-lg">
         <form className="space-y-6" id="itemForm" onSubmit={(e) => e.preventDefault()}>
           <h1 className="text-2xl font-semibold text-center">Editar Item</h1>
 

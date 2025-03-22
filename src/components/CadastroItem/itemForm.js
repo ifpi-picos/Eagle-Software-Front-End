@@ -141,7 +141,7 @@ export default function ItemForm() {
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-white ml-12">
-      <div className="w-full bg-gray-100 max-w-screen-lg mx-auto p-6 rounded-lg shadow-lg">
+      <div className="w-full bg-gray-200 max-w-screen-lg mx-auto p-6 rounded-lg shadow-lg">
         <form className="space-y-6" id="itemForm" onSubmit={(e) => e.preventDefault()}>
           <h1 className="text-2xl font-semibold text-center">Cadastro de Itens</h1>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
