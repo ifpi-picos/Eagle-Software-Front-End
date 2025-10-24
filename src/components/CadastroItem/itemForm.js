@@ -3,7 +3,7 @@ import { BeatLoader } from 'react-spinners';
 
 export default function ItemForm() {
   const [formData, setFormData] = useState({
-    // achadoPor: '',
+    achadoPor: '',
     local: '',
     armazenado: '',
     data: '',
@@ -23,7 +23,7 @@ export default function ItemForm() {
 
   const handleFormClear = () => {
     setFormData({
-      // achadoPor: '',
+      achadoPor: '',
       local: '',
       armazenado: '',
       data: '',
@@ -108,7 +108,7 @@ export default function ItemForm() {
         setShowSuccessModal(true);
         setTimeout(() => {
           setFormData({
-            // achadoPor: '',
+            achadoPor: '',
             local: '',
             armazenado: '',
             data: '',
@@ -146,7 +146,7 @@ export default function ItemForm() {
           <h1 className="text-2xl font-semibold text-center">Cadastro de Itens</h1>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="space-y-4">
-              {/* <div>
+              <div>
                 <label className="block text-sm font-medium text-gray-700" htmlFor="achador">
                   Achado Por:
                 </label>
@@ -160,7 +160,7 @@ export default function ItemForm() {
                   maxLength={40}
                   required
                 />
-              </div> */}
+              </div>
 
               <div>
                 <label className="block text-sm font-medium text-gray-700" htmlFor="data">
